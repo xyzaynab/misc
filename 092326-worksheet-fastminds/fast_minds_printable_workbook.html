@@ -40,10 +40,10 @@
       print-color-adjust: exact !important;
     }
 
-    /* Page Setup - US Letter Portrait with Uniform 0.85in Side Gutter Margins for Hole Punching */
+    /* Page Setup - US Letter Portrait with a Wide 1.0in Left Gutter for Hole Punching / Binding, Trimmer 0.55in Right Margin */
     @page {
       size: letter portrait;
-      margin: 0.70in 0.85in 0.60in 0.85in;
+      margin: 0.70in 0.55in 0.60in 1.0in;
     }
 
     .page {
@@ -51,7 +51,7 @@
       height: 11in;
       box-sizing: border-box;
       margin: 20px auto;
-      padding: 0.70in 0.85in 0.60in 0.85in;
+      padding: 0.70in 0.55in 0.60in 1.0in;
       background: #ffffff;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       position: relative;
@@ -349,7 +349,7 @@
         box-shadow: none !important;
         width: 8.5in !important;
         height: 11in !important;
-        padding: 0.70in 0.85in 0.60in 0.85in !important;
+        padding: 0.70in 0.55in 0.60in 1.0in !important;
         page-break-after: always;
         break-after: page;
       }
