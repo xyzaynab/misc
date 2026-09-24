@@ -40,10 +40,13 @@
       print-color-adjust: exact !important;
     }
 
-    /* Page Setup - US Letter Portrait with a Wide 1.0in Left Gutter for Hole Punching / Binding, Trimmer 0.55in Right Margin */
+    /* Page Setup - US Letter Portrait with a Wide 1.0in Left Gutter for Hole Punching / Binding, Trimmer 0.55in Right Margin.
+       @page margin is 0 here on purpose: the .page div's own padding below is what creates the visible margin.
+       If @page also sets a margin, the print engine shrinks the whole 8.5x11in .page div to fit inside an
+       already-shrunk printable area, doubling the margin and adding an extra whitespace border. */
     @page {
       size: letter portrait;
-      margin: 0.70in 0.55in 0.60in 1.0in;
+      margin: 0;
     }
 
     .page {
