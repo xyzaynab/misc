@@ -13,7 +13,10 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "Mood-reflection spread (Week 49): open reflection prompt, \"what impacted your mood\" 3-column box, monthly reflection, happy moment + gratitude box.",
-      "flags": "Same planner as 3.jpg"
+      "flags": "Same planner as 3.jpg",
+      "product_group": "mood-planner-wk49",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "3.jpg",
@@ -26,7 +29,10 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "Weekly spread: weekly goals, to-do, mood wheel, mood colour scale, two mini month calendars, notes, quote, 7-day list (Mon-Fri full rows, Sat/Sun split).",
-      "flags": "Same planner as 2.jpg"
+      "flags": "Same planner as 2.jpg",
+      "product_group": "mood-planner-wk49",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "4.jpg",
@@ -39,7 +45,10 @@
       "page_orientation": "portrait",
       "layout": "single page (in device frame)",
       "description": "\"Weekly Overview\" (Momentum): top things to get done, event/date table, to-do this week, habit tracker M-S. Marketing callouts.",
-      "flags": "Page partly cropped at left"
+      "flags": "Page partly cropped at left",
+      "product_group": "standalone-4",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "5.jpg",
@@ -52,7 +61,10 @@
       "page_orientation": "landscape",
       "layout": "single sheet",
       "description": "\"ADHD Daily Planner\" pad: month/day strip, focus, priorities 1-3 + reward, do later, everything else, time/task schedule, productivity/mood/energy, self-care icon grid, habit tracker, meals, brain dump.",
-      "flags": "Sheet is landscape (not book-shaped)"
+      "flags": "Sheet is landscape (not book-shaped)",
+      "product_group": "adhd-daily-family",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "6.png",
@@ -65,7 +77,11 @@
       "page_orientation": "portrait",
       "layout": "single page",
       "description": "Weekly review page: small wins, % progress on priorities, time-savers, \"what kept you centred\", continue/change.",
-      "flags": "Review page, not a planning page. Weekly or other?"
+      "flags": "Review page, not a planning page. Weekly or other?",
+      "product_group": "standalone-6",
+      "duplicate_of": null,
+      "is_own": false,
+      "review_zone": "reflect"
     },
     {
       "file": "7.jpg",
@@ -74,11 +90,14 @@
       "width_px": 1500,
       "height_px": 1500,
       "source_type": "screenshot",
-      "page_type": "other",
+      "page_type": "weekly",
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "Bi-weekly \"Growth Check-In\": date, intentional challenge box, 3 lists (proud of / challenges / lessons), next-2-weeks goals, plus a lined notes page.",
-      "flags": "Bi-weekly, not weekly or daily. Needs a page type"
+      "flags": "Bi-weekly check-in folded into weekly per user; keep note that it spans 2 weeks",
+      "product_group": "growth-journal",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "8.jpg",
@@ -91,7 +110,10 @@
       "page_orientation": "portrait",
       "layout": "single page (one side of spread)",
       "description": "Morning Intention + Evening Reflection: mantra, feelings row, looking forward to, how I want to show up, top 3 wins, grateful for, leave behind.",
-      "flags": "Callout text on right is marketing"
+      "flags": "Callout text on right is marketing",
+      "product_group": "growth-journal",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "9.jpg",
@@ -104,7 +126,10 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "\"Week 1 Planning\": 7-day grid (3 + 4 columns), date box, habit-dot tracker, weekly intention, non-negotiables (5), stackables (10), theme line.",
-      "flags": ""
+      "flags": "",
+      "product_group": "standalone-9",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "10.jpg",
@@ -117,7 +142,10 @@
       "page_orientation": "portrait",
       "layout": "single sheet (pad, angled)",
       "description": "\"Let's Do This\" daily pad: date + weather icons, clock, top priorities, to-do, to-buy, appointments, meal planning, water drops, health/fitness, end-of-day check, dotted free space.",
-      "flags": "Photo is at an angle"
+      "flags": "Photo is at an angle",
+      "product_group": "threekin-collective",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "11.jpg",
@@ -130,7 +158,10 @@
       "page_orientation": "landscape",
       "layout": "single sheet (pad)",
       "description": "\"The Week Ahead\": week-of + focus word, goal box, Mon-Fri columns + Sat/Sun, daily tracker, dotted free space, colour key (highlighter system). Filled in as an example.",
-      "flags": "Includes handwritten example content"
+      "flags": "Includes handwritten example content",
+      "product_group": "threekin-collective",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "12.jpg",
@@ -143,7 +174,10 @@
       "page_orientation": "landscape",
       "layout": "single sheet",
       "description": "\"Dashboard\" weekly: week of/focus, theme line, 7-day highlights row, top 3 priorities, 5 focus-area checklists, daily tracker + dots.",
-      "flags": "Near-duplicate layout of 15.jpg"
+      "flags": "Near-duplicate layout of 15.jpg",
+      "product_group": "dashboard-weekly",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "13.jpg",
@@ -156,7 +190,10 @@
       "page_orientation": "portrait",
       "layout": "single page (cropped, spiral)",
       "description": "\"Mini ETP\" daily: vertical checkbox time column with start / optional mid-break, three major tasks, 4-7 optional, \"what else is going on\" with hour labels.",
-      "flags": "Right edge cropped; page is cut off"
+      "flags": "Right edge cropped; page is cut off",
+      "product_group": "standalone-13",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "14.jpg",
@@ -169,7 +206,11 @@
       "page_orientation": "portrait",
       "layout": "single page (in book)",
       "description": "\"Weekly Reflection & Goals\": wins, lessons, how to improve, next priorities (checkbox lists), goals by life area (6 boxes), weekly habit & skills tracker.",
-      "flags": "Reflection + planning mix"
+      "flags": "Reflection + planning mix",
+      "product_group": "standalone-14",
+      "duplicate_of": null,
+      "is_own": false,
+      "review_zone": "reflect"
     },
     {
       "file": "15.jpg",
@@ -182,7 +223,10 @@
       "page_orientation": "landscape",
       "layout": "single sheet (spiral)",
       "description": "Spiral \"Productivity Weekly Planner\" with the same \"dashboard\" layout as 12.jpg in another colourway.",
-      "flags": "Near-duplicate of 12.jpg"
+      "flags": "Near-duplicate of 12.jpg",
+      "product_group": "dashboard-weekly",
+      "duplicate_of": "12",
+      "is_own": false
     },
     {
       "file": "16.jpg",
@@ -195,7 +239,10 @@
       "page_orientation": "portrait",
       "layout": "single page",
       "description": "\"Today's Plan\": date + weekday circles, intention banner, goals, top 3, to-do (9), notes/brain release, meals + water, schedule split morning/afternoon/evening/night, highlight.",
-      "flags": ""
+      "flags": "",
+      "product_group": "standalone-16",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "17.jpg",
@@ -208,7 +255,10 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "\"ADHD Task Hub\": 3x4 grid of sorted lists (call, email, text, do today, appointments, follow up, do soon, schedule, research, wins, buy, random thoughts) + date and M-S circles. Left page filled in, right blank.",
-      "flags": "Daily task sorting; weekly-ish? Left page is a worked example"
+      "flags": "Daily task sorting; weekly-ish? Left page is a worked example | classed daily by assistant (not confirmed)",
+      "product_group": "standalone-17",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "18.jpg",
@@ -221,7 +271,10 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "1-3-5 daily planner: month/day strip + mood, brain dump + not-to-do, priorities, do later, everything else, notes, today's win, tomorrow's first step.",
-      "flags": "Right page cut off; same product as 19.jpg"
+      "flags": "Right page cut off; same product as 19.jpg",
+      "product_group": "adhd-daily-family",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "19.jpg",
@@ -234,7 +287,10 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "1-3-5 daily framework: focus task, 3 support tasks, 5 tiny wins, brain dump, not-to-do, people to connect, appointments, need to buy, energy notes + times, body check, learning box, tomorrow's first step.",
-      "flags": "Same product as 18.jpg"
+      "flags": "Same product as 18.jpg",
+      "product_group": "adhd-daily-family",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "20.jpg",
@@ -247,7 +303,10 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "Minimal daily spread: month/day strip, hourly schedule (7-9), 3 priorities, circle list, lined notes page.",
-      "flags": ""
+      "flags": "",
+      "product_group": "standalone-20",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "21.png",
@@ -260,7 +319,10 @@
       "page_orientation": "landscape",
       "layout": "single page spread (crop)",
       "description": "Japanese-style daily: memo, total time, 2-column to-do boxes, free note, vertical time record (05-04) coloured with highlighters. Filled in.",
-      "flags": "Low resolution; handwriting in Japanese"
+      "flags": "Low resolution; handwriting in Japanese",
+      "product_group": "standalone-21",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "22.jpg",
@@ -273,7 +335,10 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "\"Daily Productivity\": weekday + date, top 3 priorities, other tasks (5 checkboxes), highlight of the day, one lesson, notes, mood & energy check-in, daily plan (time left, tasks right). Shows Mon + Tue.",
-      "flags": "Mon/Tue show a 1-day-per-page repeat"
+      "flags": "Mon/Tue show a 1-day-per-page repeat",
+      "product_group": "standalone-22",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "23.jpg",
@@ -286,7 +351,10 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "\"5 Mins Morning / Evening\": morning routine + checkboxes, quote, identity statement, gratitude, secondary habit, priority task; evening habit checklist, resistance, ANTs/PETs, went well, improve, grateful, pre-sleep.",
-      "flags": "Very dense; lots of prompts"
+      "flags": "Very dense; lots of prompts",
+      "product_group": "habit-ant-journal",
+      "duplicate_of": null,
+      "is_own": false
     },
     {
       "file": "24.webp",
@@ -299,7 +367,12 @@
       "page_orientation": "landscape",
       "layout": "two-page spread",
       "description": "\"Weekly Review & Planning\": habit chart (9 habits x 7 days + total), secondary habits, proud of, easier/struggled, insights, next-week planning, challenges, relationships, reward.",
-      "flags": "Review + planning combined"
+      "flags": "Review + planning combined",
+      "product_group": "habit-ant-journal",
+      "duplicate_of": null,
+      "is_own": false,
+      "review_zone": "reflect"
     }
-  ]
+  ],
+  "counting_rule": "Count one layout per (product_group, page_type, layout). Same product shown as weekly and as daily = separate entries. Only true duplicates (duplicate_of set) are collapsed; 18 and 19 are different daily layouts, not duplicates."
 }
