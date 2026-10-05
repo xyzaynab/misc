@@ -173,6 +173,8 @@ textarea.json{width:100%;min-height:120px;background:var(--surface-2);border:1px
     <button class="btn" id="compare" type="button" aria-pressed="false">Compare</button>
     <button class="btn" id="stepsBtn" type="button" aria-pressed="false">Build steps</button>
     <button class="btn" id="printBtn" type="button">Print actual size</button>
+    <button class="btn" id="pngBtn" type="button">Save PNG (300 dpi)</button>
+    <button class="btn" id="svgBtn" type="button">Save SVG</button>
   </div>
   <div class="tb" aria-label="View settings">
     <label class="lbl" for="pitch">Dot pitch</label>
@@ -183,7 +185,7 @@ textarea.json{width:100%;min-height:120px;background:var(--surface-2);border:1px
     <button class="btn" id="theme" type="button" aria-pressed="false">Paper view</button>
     <button class="btn" id="overlap" type="button" aria-pressed="false">Allow overlap</button>
     <button class="btn" id="dotsPrint" type="button" aria-pressed="true">Print dots</button>
-    <span class="hint" id="printhint">Printing works from the downloaded file, not inside the claude.ai viewer.</span>
+    <span class="hint" id="printhint">Print works from the downloaded file. Anywhere else, save the PNG: at 300 dpi it prints exactly 5.5 × 8.25 in.</span>
   </div>
 
   <div id="panels" style="display:flex;flex-direction:column;gap:14px"></div>
@@ -912,7 +914,7 @@ $('panels').addEventListener('change',e=>{if(e.target.id==='cmp-a'){cmp.a=e.targ
 $('fileIn').addEventListener('change',e=>{const fl=e.target.files[0];if(!fl)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||!d.tabs)throw 0;useDoc(d);showLayouts=false;$('layouts').setAttribute('aria-pressed','false');toast('Opened "'+doc.name+'"');}catch(err){toast('That is not a layout file');}e.target.value='';};r.readAsText(fl);});
 function copyText(t){try{navigator.clipboard.writeText(t).then(()=>toast('Copied'),()=>fallbackCopy(t));}catch(e){fallbackCopy(t);}}
 function fallbackCopy(t){const a=$('impText');if(a){a.value=t;a.select();toast('Select and copy the text in the box');}else{showLayouts=true;paintPanels();const b=$('impText');if(b){b.value=t;b.select();}toast('Copy the JSON from the box');}}
-function download(name,d){try{const b=new Blob([JSON.stringify(d,null,1)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(name||'layout').replace(/[^\w\- ]+/g,'')+'.json';document.body.appendChild(a);a.click();a.remove();toast('Download started. If nothing happens, use Copy JSON.');}catch(e){fallbackCopy(JSON.stringify(d,null,1));}}
+function download(name,d){saveFile(safeName(name)+'.json',JSON.stringify(d,null,1)).then(ok=>{if(ok)toast('Saved');});return;try{const b=new Blob([JSON.stringify(d,null,1)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(name||'layout').replace(/[^\w\- ]+/g,'')+'.json';document.body.appendChild(a);a.click();a.remove();toast('Download started. If nothing happens, use Copy JSON.');}catch(e){fallbackCopy(JSON.stringify(d,null,1));}}
 
 /* ================= print ================= */
 $('printBtn').addEventListener('click',()=>{
@@ -922,6 +924,37 @@ $('printBtn').addEventListener('click',()=>{
     h+='<div class="psheet">'+sheetSVG(t,{paper:true,page:pg,dots:S.printDots,fixed:false})+'</div>';});});
   root.innerHTML=h;
   try{window.print();}catch(e){toast('Printing is not available here');}
+});
+
+
+/* ================= save files (PNG / SVG / JSON) ================= */
+const EXPORT_CSS='.pg{fill:#f1e8d4}.dots{stroke:#bdb5a5;stroke-width:.14;stroke-linecap:round;fill:none}.ln{stroke:#2b2724;stroke-width:.07;fill:none;stroke-linecap:round;stroke-linejoin:round}.fi{stroke:#8e867a;stroke-width:.06;fill:none;stroke-linecap:round}.dt{stroke:#8e867a;stroke-width:.1;stroke-dasharray:0 .22;stroke-linecap:round;fill:none}.dsh{stroke-dasharray:.28 .2}.fl{fill:#2b2724;stroke:none}.tint{fill:rgba(110,100,170,.14);stroke:none}text{fill:#2b2724;font-family:"Atkinson Hyperlegible",Arial,Helvetica,sans-serif;letter-spacing:.4px}text.lab,text.head{font-weight:700}text.sm{fill:#8e867a}text.ghint{fill:#8e867a;font-style:italic}.hit,.selbox{display:none}';
+function exportSVG(tab,pg){
+  let svg=sheetSVG(tab,{paper:true,page:pg,dots:S.printDots});
+  svg=svg.replace(/^<svg class="sheet th-paper"/,'<svg').replace('xmlns="http://www.w3.org/2000/svg"','xmlns="http://www.w3.org/2000/svg" width="5.5in" height="8.25in"');
+  svg=svg.replace(/(<svg[^>]*>)/,'$1<style>'+EXPORT_CSS+'</style>').replace(/var\(--spine\)/g,'#c9bfa9');
+  return svg;
+}
+async function saveFile(name,data){
+  let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null;}catch(e){dl=null;}
+  if(dl){try{await dl.save({filename:name,data});return true;}catch(e){if(e&&e.code==='declined')return false;toast('Could not save here: '+((e&&e.message)||e));return false;}}
+  try{const blob=data instanceof Blob?data:new Blob([data]),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();return true;}catch(e){return false;}
+}
+const safeName=n=>(n||'layout').replace(/[^\w\- ]+/g,'').trim()||'layout';
+function pagesOf(tab){return tab.canvas==='spread'?[0,1]:[null];}
+$('svgBtn').addEventListener('click',async()=>{
+  const tab=doc.tabs[tabIdx];
+  for(const pg of pagesOf(tab)){const nm=safeName(doc.name)+' - '+safeName(tab.label)+(pg==null?'':(pg?' right':' left'))+'.svg';if(!await saveFile(nm,exportSVG(tab,pg)))break;}
+});
+function svgToPng(svg){return new Promise((res,rej)=>{
+  const img=new Image(),W=1650,H=2475;
+  img.onload=()=>{const c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');x.fillStyle='#f1e8d4';x.fillRect(0,0,W,H);x.drawImage(img,0,0,W,H);c.toBlob(b=>b?res(b):rej(new Error('png failed')),'image/png');};
+  img.onerror=()=>rej(new Error('image failed'));
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);});}
+$('pngBtn').addEventListener('click',async()=>{
+  const tab=doc.tabs[tabIdx];
+  try{for(const pg of pagesOf(tab)){const png=await svgToPng(exportSVG(tab,pg));const nm=safeName(doc.name)+' - '+safeName(tab.label)+(pg==null?'':(pg?' right':' left'))+' (5.5x8.25in 300dpi).png';if(!await saveFile(nm,png))break;}}
+  catch(e){toast('Could not make the PNG here');}
 });
 
 /* ================= boot ================= */
