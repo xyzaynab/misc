@@ -28,7 +28,7 @@
    "daily_effort": "1-3 daily fill-in load",
    "skip_tolerance": "high = forgiving if a day is skipped; low = looks broken/guilt-inducing",
    "footprint_dots": "approx width x height in dots at 5 mm pitch; portrait page 28x42, spread 56x42",
-   "hobonichi_overlap": "general knowledge only; unverified until user supplies Hobonichi photos"
+   "hobonichi_overlap": "verified against the user's Hobonichi daily + weekly spreads where noted; otherwise general knowledge, marked unverified"
   },
   "images_covered": [
    2,
@@ -52,9 +52,11 @@
    21,
    22,
    23,
-   24
+   24,
+   25,
+   26
   ],
-  "variant_count": 188
+  "variant_count": 201
  },
  "pages": {
   "weekly": {
@@ -89,10 +91,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weeks/Techo print week range and week number. (unverified)",
+         "hobonichi_note": "Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)",
          "adhd_notes": "Set once per spread; makes the page findable later.",
          "sensory_notes": "Quiet, fixed position.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -120,10 +123,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weeks/Techo print week range and week number. (unverified)",
+         "hobonichi_note": "Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)",
          "adhd_notes": "Set once per spread; makes the page findable later.",
          "sensory_notes": "Quiet, fixed position.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -151,10 +155,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weeks/Techo print week range and week number. (unverified)",
+         "hobonichi_note": "Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)",
          "adhd_notes": "Set once per spread; makes the page findable later.",
          "sensory_notes": "Quiet, fixed position.",
          "product_group": "standalone-4",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -182,10 +187,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weeks/Techo print week range and week number. (unverified)",
+         "hobonichi_note": "Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)",
          "adhd_notes": "Set once per spread; makes the page findable later.",
          "sensory_notes": "Quiet, fixed position.",
          "product_group": "standalone-9",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -213,10 +219,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weeks/Techo print week range and week number. (unverified)",
+         "hobonichi_note": "Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)",
          "adhd_notes": "Set once per spread; makes the page findable later.",
          "sensory_notes": "Quiet, fixed position.",
          "product_group": "threekin-weekly-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -244,10 +251,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weeks/Techo print week range and week number. (unverified)",
+         "hobonichi_note": "Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)",
          "adhd_notes": "Set once per spread; makes the page findable later.",
          "sensory_notes": "Quiet, fixed position.",
          "product_group": "dashboard-weekly",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -275,10 +283,43 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weeks/Techo print week range and week number. (unverified)",
+         "hobonichi_note": "Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)",
          "adhd_notes": "Set once per spread; makes the page findable later.",
          "sensory_notes": "Quiet, fixed position.",
          "product_group": "standalone-14",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e26_01",
+         "source_image": "examples/mine/26_hobonichi_weekly.jpg",
+         "crop_path": "catalog/weekly/header/week_header/e26_01.png",
+         "crop_box": [
+          438,
+          350,
+          741,
+          451
+         ],
+         "page_type": "weekly",
+         "zone": "header",
+         "element": "week_header",
+         "variant_name": "month banner: year, month, big month name",
+         "variant_group": "title + write-in date",
+         "description": "Dark banner at top left with year and month in kanji and a big OCT.",
+         "input_style": "write-in line",
+         "footprint_dots": [
+          9,
+          3
+         ],
+         "draw_effort": 1,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)",
+         "adhd_notes": "Set once per spread; makes the page findable later.",
+         "sensory_notes": "Quiet, fixed position.",
+         "product_group": "hobonichi-weekly",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -310,11 +351,12 @@
          "draw_effort": 2,
          "daily_effort": 1,
          "skip_tolerance": "high",
-         "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo prints a daily quote; no personal mantra field. (unverified)",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "A printed quote sits at the foot of each daily page (not user-written). (verified from your Hobonichi photos)",
          "adhd_notes": "Optional; copying a quote each day becomes a chore.",
          "sensory_notes": "Calm if short; text-heavy if long.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -347,10 +389,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Printed on every Hobonichi page. (unverified)",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
          "adhd_notes": "Cheap anchor; one line, no decision needed.",
          "sensory_notes": "Predictable position; very low noise.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -378,10 +421,43 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Printed on every Hobonichi page. (unverified)",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
          "adhd_notes": "Cheap anchor; one line, no decision needed.",
          "sensory_notes": "Predictable position; very low noise.",
          "product_group": "standalone-9",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e26_04",
+         "source_image": "examples/mine/26_hobonichi_weekly.jpg",
+         "crop_path": "catalog/weekly/header/date_header/e26_04.png",
+         "crop_box": [
+          741,
+          332,
+          2267,
+          393
+         ],
+         "page_type": "weekly",
+         "zone": "header",
+         "element": "date_header",
+         "variant_name": "date number + weekday tag per column (Sunday in red)",
+         "variant_group": "date write-in line",
+         "description": "Each column starts with a large date number and a boxed weekday tag; Saturday dark, Sunday red.",
+         "input_style": "write-in line",
+         "footprint_dots": [
+          45,
+          2
+         ],
+         "draw_effort": 1,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
+         "adhd_notes": "Cheap anchor; one line, no decision needed.",
+         "sensory_notes": "Predictable position; very low noise.",
+         "product_group": "hobonichi-weekly",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -414,10 +490,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One short phrase is a good re-entry cue after a skipped stretch.",
          "sensory_notes": "Minimal.",
          "product_group": "standalone-9",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -445,10 +522,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One short phrase is a good re-entry cue after a skipped stretch.",
          "sensory_notes": "Minimal.",
          "product_group": "standalone-9",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -476,10 +554,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One short phrase is a good re-entry cue after a skipped stretch.",
          "sensory_notes": "Minimal.",
          "product_group": "threekin-weekly-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -507,10 +586,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One short phrase is a good re-entry cue after a skipped stretch.",
          "sensory_notes": "Minimal.",
          "product_group": "threekin-weekly-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -538,10 +618,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One short phrase is a good re-entry cue after a skipped stretch.",
          "sensory_notes": "Minimal.",
          "product_group": "dashboard-weekly",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -569,10 +650,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One short phrase is a good re-entry cue after a skipped stretch.",
          "sensory_notes": "Minimal.",
          "product_group": "dashboard-weekly",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -609,10 +691,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Weekly sorting task; good pattern-finding, heavy if every day. Sorting into 3 columns is quick pattern-finding but needs weekly time.",
          "sensory_notes": "Three columns, clear edges.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -645,10 +728,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Many prompts = high effort; one prompt is manageable. Open blank space is easy to leave empty without it looking broken.",
          "sensory_notes": "Prompt text adds reading load.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -676,10 +760,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Many prompts = high effort; one prompt is manageable.",
          "sensory_notes": "Prompt text adds reading load.",
          "product_group": "standalone-6",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -707,10 +792,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Many prompts = high effort; one prompt is manageable.",
          "sensory_notes": "Prompt text adds reading load.",
          "product_group": "standalone-6",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -738,10 +824,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Many prompts = high effort; one prompt is manageable.",
          "sensory_notes": "Prompt text adds reading load.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -769,10 +856,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Many prompts = high effort; one prompt is manageable.",
          "sensory_notes": "Prompt text adds reading load.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -800,10 +888,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Many prompts = high effort; one prompt is manageable.",
          "sensory_notes": "Prompt text adds reading load.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -836,10 +925,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast positive prompt; fine to skip.",
          "sensory_notes": "Open lines are calm.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -872,10 +962,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One line; easy to finish.",
          "sensory_notes": "One box.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -908,10 +999,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Reward-focused; counters 'I did nothing'.",
          "sensory_notes": "Few lines.",
          "product_group": "standalone-6",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -939,10 +1031,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Reward-focused; counters 'I did nothing'.",
          "sensory_notes": "Few lines.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -970,10 +1063,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Reward-focused; counters 'I did nothing'.",
          "sensory_notes": "Few lines.",
          "product_group": "standalone-14",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1001,10 +1095,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Reward-focused; counters 'I did nothing'.",
          "sensory_notes": "Few lines.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1037,10 +1132,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast % check-in.",
          "sensory_notes": "Simple.",
          "product_group": "standalone-6",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1068,10 +1164,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast % check-in.",
          "sensory_notes": "Simple.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1104,10 +1201,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Forward-looking; avoids blame.",
          "sensory_notes": "Few lines.",
          "product_group": "standalone-6",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1135,10 +1233,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Forward-looking; avoids blame.",
          "sensory_notes": "Few lines.",
          "product_group": "standalone-14",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1166,10 +1265,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Forward-looking; avoids blame.",
          "sensory_notes": "Few lines.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1202,10 +1302,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One optional challenge a week; low load.",
          "sensory_notes": "One box.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1233,10 +1334,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One optional challenge a week; low load.",
          "sensory_notes": "One box.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1269,10 +1371,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Can feel evaluative; keep optional.",
          "sensory_notes": "Few lines.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1300,10 +1403,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Can feel evaluative; keep optional.",
          "sensory_notes": "Few lines.",
          "product_group": "standalone-14",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1331,10 +1435,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Can feel evaluative; keep optional.",
          "sensory_notes": "Few lines.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1367,10 +1472,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Six boxes can overwhelm; pick 2-3. Six areas can overwhelm; use two or three.",
          "sensory_notes": "Boxed layout, moderately busy.",
          "product_group": "standalone-14",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1403,10 +1509,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Therapy-style prompts; heavy daily asks.",
          "sensory_notes": "Text-dense.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1439,10 +1546,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Pairs effort with a payoff; strong for ADHD motivation if the reward is concrete.",
          "sensory_notes": "One line.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1479,10 +1587,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Set once a week; low daily load.",
          "sensory_notes": "Few lines.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1510,10 +1619,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Set once a week; low daily load.",
          "sensory_notes": "Few lines.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1546,10 +1656,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified)",
+         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified: general knowledge)",
          "adhd_notes": "Long lists breed overwhelm; unfilled checkboxes pile up guilt.",
          "sensory_notes": "Many repeated lines/boxes add visual noise.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1577,10 +1688,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified)",
+         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified: general knowledge)",
          "adhd_notes": "Long lists breed overwhelm; unfilled checkboxes pile up guilt.",
          "sensory_notes": "Many repeated lines/boxes add visual noise.",
          "product_group": "standalone-4",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1608,10 +1720,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified)",
+         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified: general knowledge)",
          "adhd_notes": "Long lists breed overwhelm; unfilled checkboxes pile up guilt. Ten lines may feel long; use as a parking list.",
          "sensory_notes": "Many repeated lines/boxes add visual noise.",
          "product_group": "standalone-9",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1644,10 +1757,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "standalone-4",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1675,10 +1789,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure. The conditional wording frames five as enough.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "standalone-9",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1706,10 +1821,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "dashboard-weekly",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1737,10 +1853,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "standalone-14",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1768,10 +1885,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1804,10 +1922,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Monthly calendar and week pages cover dates. (unverified)",
+         "hobonichi_note": "Monthly calendar and week pages cover dates. (unverified: general knowledge)",
          "adhd_notes": "Writing each event once is easy; skipping is harmless.",
          "sensory_notes": "Two-column table, clear grid.",
          "product_group": "standalone-4",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1840,10 +1959,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Good for project grouping but many lists to maintain.",
          "sensory_notes": "Multi-column dense grid: high visual noise.",
          "product_group": "dashboard-weekly",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1876,10 +1996,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Names rather than tasks lowers friction for reaching out; optional.",
          "sensory_notes": "Small icons per row add noise; plain lines are enough.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1916,10 +2037,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast single mark; emotional check-in without writing. Twice-daily marks are a heavy ask; circle is hard to draw by hand.",
          "sensory_notes": "Faces are quick; wheel versions are heavy. Curved text and many segments are visually busy.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -1947,10 +2069,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast single mark; emotional check-in without writing. Quick colour-in; rules for what each colour means can be forgotten.",
          "sensory_notes": "Faces are quick; wheel versions are heavy.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -1983,10 +2106,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo users add their own; not printed. (unverified)",
+         "hobonichi_note": "Techo users add their own; not printed. (unverified: general knowledge)",
          "adhd_notes": "Streak gaps feel punishing; weekly grids limit the damage.",
          "sensory_notes": "Repeated boxes are regular but busy.",
          "product_group": "standalone-4",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2014,10 +2138,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo users add their own; not printed. (unverified)",
+         "hobonichi_note": "Techo users add their own; not printed. (unverified: general knowledge)",
          "adhd_notes": "Streak gaps feel punishing; weekly grids limit the damage. Dots are easy to colour in; 5 habits is a lot, pick 2-3.",
          "sensory_notes": "Repeated boxes are regular but busy.",
          "product_group": "standalone-9",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2045,10 +2170,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo users add their own; not printed. (unverified)",
+         "hobonichi_note": "Techo users add their own; not printed. (unverified: general knowledge)",
          "adhd_notes": "Streak gaps feel punishing; weekly grids limit the damage.",
          "sensory_notes": "Repeated boxes are regular but busy.",
          "product_group": "threekin-weekly-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2076,10 +2202,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo users add their own; not printed. (unverified)",
+         "hobonichi_note": "Techo users add their own; not printed. (unverified: general knowledge)",
          "adhd_notes": "Streak gaps feel punishing; weekly grids limit the damage.",
          "sensory_notes": "Repeated boxes are regular but busy.",
          "product_group": "dashboard-weekly",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2107,10 +2234,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo users add their own; not printed. (unverified)",
+         "hobonichi_note": "Techo users add their own; not printed. (unverified: general knowledge)",
          "adhd_notes": "Streak gaps feel punishing; weekly grids limit the damage.",
          "sensory_notes": "Repeated boxes are regular but busy.",
          "product_group": "standalone-14",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2138,10 +2266,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo users add their own; not printed. (unverified)",
+         "hobonichi_note": "Techo users add their own; not printed. (unverified: general knowledge)",
          "adhd_notes": "Streak gaps feel punishing; weekly grids limit the damage. Nine habits is very heavy; scale down to 3.",
          "sensory_notes": "Repeated boxes are regular but busy.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2169,10 +2298,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo users add their own; not printed. (unverified)",
+         "hobonichi_note": "Techo users add their own; not printed. (unverified: general knowledge)",
          "adhd_notes": "Streak gaps feel punishing; weekly grids limit the damage.",
          "sensory_notes": "Repeated boxes are regular but busy.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -2209,10 +2339,43 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Hobonichi has monthly spreads. (unverified)",
+         "hobonichi_note": "Mini month grid with the current week/day circled on both the daily and weekly pages. (verified from your Hobonichi photos)",
          "adhd_notes": "Reference only; duplicate of Hobonichi.",
          "sensory_notes": "Small grid text can be hard to read.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e26_02",
+         "source_image": "examples/mine/26_hobonichi_weekly.jpg",
+         "crop_path": "catalog/weekly/schedule/monthly_calendar/e26_02.png",
+         "crop_box": [
+          535,
+          457,
+          702,
+          663
+         ],
+         "page_type": "weekly",
+         "zone": "schedule",
+         "element": "monthly_calendar",
+         "variant_name": "mini month with current week ringed + week number",
+         "variant_group": "mini month with current week ringed + week number",
+         "description": "\"41st week\" label over a small month calendar; the current week is ringed and Sundays are coloured.",
+         "input_style": "free space",
+         "footprint_dots": [
+          5,
+          6
+         ],
+         "draw_effort": 3,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Mini month grid with the current week/day circled on both the daily and weekly pages. (verified from your Hobonichi photos)",
+         "adhd_notes": "Reference only; duplicate of Hobonichi.",
+         "sensory_notes": "Small grid text can be hard to read.",
+         "product_group": "hobonichi-weekly",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -2245,10 +2408,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weekly spread in Weeks/Cousin; Techo has week pages. (unverified)",
+         "hobonichi_note": "Weekly spread is seven vertical day columns, each with a 24-hour axis. (verified from your Hobonichi photos)",
          "adhd_notes": "Whole week visible at once; missing days leave blank boxes. Open rows have no prompts, so blank days read as neutral.",
          "sensory_notes": "Clear day edges are good; many boxes can be busy.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2276,10 +2440,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weekly spread in Weeks/Cousin; Techo has week pages. (unverified)",
+         "hobonichi_note": "Weekly spread is seven vertical day columns, each with a 24-hour axis. (verified from your Hobonichi photos)",
          "adhd_notes": "Whole week visible at once; missing days leave blank boxes. Even boxes, no times: easy to leave blank.",
          "sensory_notes": "Clear day edges are good; many boxes can be busy.",
          "product_group": "standalone-9",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2307,10 +2472,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weekly spread in Weeks/Cousin; Techo has week pages. (unverified)",
+         "hobonichi_note": "Weekly spread is seven vertical day columns, each with a 24-hour axis. (verified from your Hobonichi photos)",
          "adhd_notes": "Whole week visible at once; missing days leave blank boxes. Margin column supports a simple check/time system; lines invite lists rather than blocks.",
          "sensory_notes": "Clear day edges are good; many boxes can be busy.",
          "product_group": "threekin-weekly-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2338,10 +2504,80 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Weekly spread in Weeks/Cousin; Techo has week pages. (unverified)",
+         "hobonichi_note": "Weekly spread is seven vertical day columns, each with a 24-hour axis. (verified from your Hobonichi photos)",
          "adhd_notes": "Whole week visible at once; missing days leave blank boxes. Short boxes force one-line highlights, not full lists.",
          "sensory_notes": "Clear day edges are good; many boxes can be busy.",
          "product_group": "dashboard-weekly",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e26_06",
+         "source_image": "examples/mine/26_hobonichi_weekly.jpg",
+         "crop_path": "catalog/weekly/schedule/week_at_a_glance/e26_06.png",
+         "crop_box": [
+          741,
+          332,
+          2267,
+          1623
+         ],
+         "page_type": "weekly",
+         "zone": "schedule",
+         "element": "week_at_a_glance",
+         "variant_name": "7 vertical day columns each with 24h axis",
+         "variant_group": "stacked day rows",
+         "description": "Seven tall columns (Mon-Sun) across a spread, each with its own date tag and axis.",
+         "input_style": "free space",
+         "footprint_dots": [
+          45,
+          38
+         ],
+         "draw_effort": 3,
+         "daily_effort": 2,
+         "skip_tolerance": "medium",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Weekly spread is seven vertical day columns, each with a 24-hour axis. (verified from your Hobonichi photos)",
+         "adhd_notes": "Whole week visible at once; missing days leave blank boxes. Very tall columns suit time-blocking, but empty hours may read as unfilled.",
+         "sensory_notes": "Clear day edges are good; many boxes can be busy. Pale lines and even spacing; low noise.",
+         "product_group": "hobonichi-weekly",
+         "is_own": true,
+         "duplicate_of_image": null
+        }
+       ]
+      },
+      "time_blocks": {
+       "label": "Time blocks / hourly schedule",
+       "variants": [
+        {
+         "id": "e26_05",
+         "source_image": "examples/mine/26_hobonichi_weekly.jpg",
+         "crop_path": "catalog/weekly/schedule/time_blocks/e26_05.png",
+         "crop_box": [
+          741,
+          406,
+          927,
+          1610
+         ],
+         "page_type": "weekly",
+         "zone": "schedule",
+         "element": "time_blocks",
+         "variant_name": "hourly tick axis per day column over grid",
+         "variant_group": "flexible time column",
+         "description": "Hour labels (5 to 4) with tick marks down the left of each day column; fine grid behind.",
+         "input_style": "time grid",
+         "footprint_dots": [
+          5,
+          35
+         ],
+         "draw_effort": 2,
+         "daily_effort": 2,
+         "skip_tolerance": "low",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)",
+         "adhd_notes": "Blank hours feel like failure; high daily upkeep. Hourly labels are quiet; tasks can be written at any size.",
+         "sensory_notes": "Ruled lines are calm; multiple columns less so.",
+         "product_group": "hobonichi-weekly",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -2378,10 +2614,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "mood-planner-wk49",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2409,10 +2646,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2440,10 +2678,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "threekin-weekly-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2471,10 +2710,43 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "dashboard-weekly",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e26_03",
+         "source_image": "examples/mine/26_hobonichi_weekly.jpg",
+         "crop_path": "catalog/weekly/capture/notes/e26_03.png",
+         "crop_box": [
+          535,
+          702,
+          741,
+          1565
+         ],
+         "page_type": "weekly",
+         "zone": "capture",
+         "element": "notes",
+         "variant_name": "grid free space beside month block",
+         "variant_group": "unlined area",
+         "description": "Narrow strip of fine grid under the mini calendar for week notes.",
+         "input_style": "free space",
+         "footprint_dots": [
+          6,
+          25
+         ],
+         "draw_effort": 1,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
+         "adhd_notes": "Catch-all; reduces pressure on other zones.",
+         "sensory_notes": "Ruled or dotted = calm.",
+         "product_group": "hobonichi-weekly",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -2511,10 +2783,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Cuts decisions by pre-assigning meaning; needs 3 pens. Pre-assigned colours cut decisions; stick to 3.",
          "sensory_notes": "Adds colour; keep to 2-3.",
          "product_group": "threekin-weekly-pad",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -2554,11 +2827,12 @@
          "draw_effort": 3,
          "daily_effort": 1,
          "skip_tolerance": "high",
-         "hobonichi_overlap": "full",
-         "hobonichi_note": "Hobonichi has monthly calendars and date tabs. (unverified)",
+         "hobonichi_overlap": "partial",
+         "hobonichi_note": "Coloured month tabs on the page edge; no day-of-month strip. (verified from your Hobonichi photos)",
          "adhd_notes": "Orients you but is fiddly to draw; one mark per page.",
          "sensory_notes": "Colour-coded versions add noise; plain is better. Colour-coded months add visual noise.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2585,11 +2859,12 @@
          "draw_effort": 2,
          "daily_effort": 1,
          "skip_tolerance": "high",
-         "hobonichi_overlap": "full",
-         "hobonichi_note": "Hobonichi has monthly calendars and date tabs. (unverified)",
+         "hobonichi_overlap": "partial",
+         "hobonichi_note": "Coloured month tabs on the page edge; no day-of-month strip. (verified from your Hobonichi photos)",
          "adhd_notes": "Orients you but is fiddly to draw; one mark per page.",
          "sensory_notes": "Colour-coded versions add noise; plain is better. Very small and busy.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2616,11 +2891,12 @@
          "draw_effort": 2,
          "daily_effort": 1,
          "skip_tolerance": "high",
-         "hobonichi_overlap": "full",
-         "hobonichi_note": "Hobonichi has monthly calendars and date tabs. (unverified)",
+         "hobonichi_overlap": "partial",
+         "hobonichi_note": "Coloured month tabs on the page edge; no day-of-month strip. (verified from your Hobonichi photos)",
          "adhd_notes": "Orients you but is fiddly to draw; one mark per page.",
          "sensory_notes": "Colour-coded versions add noise; plain is better. Very small and busy.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2647,11 +2923,44 @@
          "draw_effort": 2,
          "daily_effort": 1,
          "skip_tolerance": "high",
-         "hobonichi_overlap": "full",
-         "hobonichi_note": "Hobonichi has monthly calendars and date tabs. (unverified)",
+         "hobonichi_overlap": "partial",
+         "hobonichi_note": "Coloured month tabs on the page edge; no day-of-month strip. (verified from your Hobonichi photos)",
          "adhd_notes": "Orients you but is fiddly to draw; one mark per page.",
          "sensory_notes": "Colour-coded versions add noise; plain is better. Colourless and quiet.",
          "product_group": "standalone-20",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e25_06",
+         "source_image": "examples/mine/25_hobonichi_daily.jpg",
+         "crop_path": "catalog/daily/header/month_year_strip/e25_06.png",
+         "crop_box": [
+          2032,
+          1146,
+          2112,
+          1217
+         ],
+         "page_type": "daily",
+         "zone": "header",
+         "element": "month_year_strip",
+         "variant_name": "edge month tab",
+         "variant_group": "colour-coded strip",
+         "description": "Coloured square tab with the month number sitting on the page edge.",
+         "input_style": "color-in",
+         "footprint_dots": [
+          2,
+          2
+         ],
+         "draw_effort": 2,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "partial",
+         "hobonichi_note": "Coloured month tabs on the page edge; no day-of-month strip. (verified from your Hobonichi photos)",
+         "adhd_notes": "Orients you but is fiddly to draw; one mark per page.",
+         "sensory_notes": "Colour-coded versions add noise; plain is better.",
+         "product_group": "hobonichi-daily",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -2684,10 +2993,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Printed on every Hobonichi page. (unverified)",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
          "adhd_notes": "Cheap anchor; one line, no decision needed.",
          "sensory_notes": "Predictable position; very low noise.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2715,10 +3025,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Printed on every Hobonichi page. (unverified)",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
          "adhd_notes": "Cheap anchor; one line, no decision needed.",
          "sensory_notes": "Predictable position; very low noise.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2746,10 +3057,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Printed on every Hobonichi page. (unverified)",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
          "adhd_notes": "Cheap anchor; one line, no decision needed.",
          "sensory_notes": "Predictable position; very low noise.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2777,10 +3089,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Printed on every Hobonichi page. (unverified)",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
          "adhd_notes": "Cheap anchor; one line, no decision needed.",
          "sensory_notes": "Predictable position; very low noise.",
          "product_group": "standalone-17",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2808,10 +3121,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Printed on every Hobonichi page. (unverified)",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
          "adhd_notes": "Cheap anchor; one line, no decision needed.",
          "sensory_notes": "Predictable position; very low noise.",
          "product_group": "standalone-21",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2839,10 +3153,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Printed on every Hobonichi page. (unverified)",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
          "adhd_notes": "Cheap anchor; one line, no decision needed.",
          "sensory_notes": "Predictable position; very low noise.",
          "product_group": "standalone-22",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2870,10 +3185,75 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Printed on every Hobonichi page. (unverified)",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
          "adhd_notes": "Cheap anchor; one line, no decision needed.",
          "sensory_notes": "Predictable position; very low noise.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e25_01",
+         "source_image": "examples/mine/25_hobonichi_daily.jpg",
+         "crop_path": "catalog/daily/header/date_header/e25_01.png",
+         "crop_box": [
+          486,
+          354,
+          768,
+          447
+         ],
+         "page_type": "daily",
+         "zone": "header",
+         "element": "date_header",
+         "variant_name": "boxed date: month, big day number, weekday tab, moon phase, day-of-year",
+         "variant_group": "date write-in line",
+         "description": "Printed box: small month, large day number, weekday tab (Sunday in a colour block), moon-phase glyph and day-of-year.",
+         "input_style": "write-in line",
+         "footprint_dots": [
+          9,
+          3
+         ],
+         "draw_effort": 1,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
+         "adhd_notes": "Cheap anchor; one line, no decision needed. Already printed, so zero setup.",
+         "sensory_notes": "Predictable position; very low noise.",
+         "product_group": "hobonichi-daily",
+         "is_own": true,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e25_07",
+         "source_image": "examples/mine/25_hobonichi_daily.jpg",
+         "crop_path": "catalog/daily/header/date_header/e25_07.png",
+         "crop_box": [
+          1303,
+          358,
+          1592,
+          453
+         ],
+         "page_type": "daily",
+         "zone": "header",
+         "element": "date_header",
+         "variant_name": "boxed date (facing page)",
+         "variant_group": "date write-in line",
+         "description": "Same box layout for the next day, with a thin weekday tab.",
+         "input_style": "write-in line",
+         "footprint_dots": [
+          9,
+          3
+         ],
+         "draw_effort": 1,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
+         "adhd_notes": "Cheap anchor; one line, no decision needed.",
+         "sensory_notes": "Predictable position; very low noise.",
+         "product_group": "hobonichi-daily",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -2905,11 +3285,12 @@
          "draw_effort": 2,
          "daily_effort": 1,
          "skip_tolerance": "high",
-         "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo prints a daily quote; no personal mantra field. (unverified)",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "A printed quote sits at the foot of each daily page (not user-written). (verified from your Hobonichi photos)",
          "adhd_notes": "Optional; copying a quote each day becomes a chore.",
          "sensory_notes": "Calm if short; text-heavy if long.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2936,11 +3317,12 @@
          "draw_effort": 2,
          "daily_effort": 1,
          "skip_tolerance": "high",
-         "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo prints a daily quote; no personal mantra field. (unverified)",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "A printed quote sits at the foot of each daily page (not user-written). (verified from your Hobonichi photos)",
          "adhd_notes": "Optional; copying a quote each day becomes a chore.",
          "sensory_notes": "Calm if short; text-heavy if long.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -2967,11 +3349,44 @@
          "draw_effort": 2,
          "daily_effort": 1,
          "skip_tolerance": "high",
-         "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo prints a daily quote; no personal mantra field. (unverified)",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "A printed quote sits at the foot of each daily page (not user-written). (verified from your Hobonichi photos)",
          "adhd_notes": "Optional; copying a quote each day becomes a chore.",
          "sensory_notes": "Calm if short; text-heavy if long.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e25_04",
+         "source_image": "examples/mine/25_hobonichi_daily.jpg",
+         "crop_path": "catalog/daily/header/quote_mantra/e25_04.png",
+         "crop_box": [
+          502,
+          1414,
+          1011,
+          1539
+         ],
+         "page_type": "daily",
+         "zone": "header",
+         "element": "quote_mantra",
+         "variant_name": "printed quote at page foot",
+         "variant_group": "printed quote",
+         "description": "Small grey quote text from an interview at the foot of the page; attribution on the facing page.",
+         "input_style": "write-in line",
+         "footprint_dots": [
+          16,
+          4
+         ],
+         "draw_effort": 2,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "A printed quote sits at the foot of each daily page (not user-written). (verified from your Hobonichi photos)",
+         "adhd_notes": "Optional; copying a quote each day becomes a chore.",
+         "sensory_notes": "Calm if short; text-heavy if long.",
+         "product_group": "hobonichi-daily",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -3004,10 +3419,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Dated pages already show the weekday. (unverified)",
+         "hobonichi_note": "Dated pages already show the weekday. (unverified: general knowledge)",
          "adhd_notes": "One tap to say which day it is; useful for undated pages.",
          "sensory_notes": "Tiny, regular, quiet.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3035,10 +3451,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Dated pages already show the weekday. (unverified)",
+         "hobonichi_note": "Dated pages already show the weekday. (unverified: general knowledge)",
          "adhd_notes": "One tap to say which day it is; useful for undated pages.",
          "sensory_notes": "Tiny, regular, quiet.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3066,10 +3483,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Dated pages already show the weekday. (unverified)",
+         "hobonichi_note": "Dated pages already show the weekday. (unverified: general knowledge)",
          "adhd_notes": "One tap to say which day it is; useful for undated pages.",
          "sensory_notes": "Tiny, regular, quiet.",
          "product_group": "standalone-17",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -3102,10 +3520,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One short phrase is a good re-entry cue after a skipped stretch.",
          "sensory_notes": "Minimal.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -3142,10 +3561,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One thing only; very ADHD-friendly if kept to one line.",
          "sensory_notes": "One open box; clear edge.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3173,10 +3593,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One thing only; very ADHD-friendly if kept to one line.",
          "sensory_notes": "One open box; clear edge.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3204,10 +3625,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One thing only; very ADHD-friendly if kept to one line.",
          "sensory_notes": "One open box; clear edge.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3235,10 +3657,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One thing only; very ADHD-friendly if kept to one line.",
          "sensory_notes": "One open box; clear edge.",
          "product_group": "standalone-21",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -3271,10 +3694,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure. A reward line ties effort to a payoff.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3302,10 +3726,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3333,10 +3758,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure. \"Realistic expectations\" message limits the day to 3 tasks.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "standalone-13",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3364,10 +3790,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3395,10 +3822,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density. Icon strips add complexity.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3426,10 +3854,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "standalone-20",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3457,10 +3886,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "standalone-22",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3488,10 +3918,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Not printed; users write them into the free grid. (unverified)",
+         "hobonichi_note": "Not printed; users write them into the free grid. (unverified: general knowledge)",
          "adhd_notes": "Capping at 3 limits overwhelm; blank lines don't read as failure.",
          "sensory_notes": "Few lines = low density.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -3524,10 +3955,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Gives a parking spot so the priority list stays short.",
          "sensory_notes": "Boxes are clearly separate from priorities.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3555,10 +3987,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Gives a parking spot so the priority list stays short.",
          "sensory_notes": "Boxes are clearly separate from priorities.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3586,10 +4019,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Gives a parking spot so the priority list stays short.",
          "sensory_notes": "Boxes are clearly separate from priorities.",
          "product_group": "standalone-13",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3617,10 +4051,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Gives a parking spot so the priority list stays short.",
          "sensory_notes": "Boxes are clearly separate from priorities.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3648,10 +4083,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Gives a parking spot so the priority list stays short.",
          "sensory_notes": "Boxes are clearly separate from priorities.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3679,10 +4115,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Gives a parking spot so the priority list stays short.",
          "sensory_notes": "Boxes are clearly separate from priorities.",
          "product_group": "standalone-22",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -3715,10 +4152,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified)",
+         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified: general knowledge)",
          "adhd_notes": "Long lists breed overwhelm; unfilled checkboxes pile up guilt.",
          "sensory_notes": "Many repeated lines/boxes add visual noise.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3746,10 +4184,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified)",
+         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified: general knowledge)",
          "adhd_notes": "Long lists breed overwhelm; unfilled checkboxes pile up guilt.",
          "sensory_notes": "Many repeated lines/boxes add visual noise.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3777,10 +4216,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified)",
+         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified: general knowledge)",
          "adhd_notes": "Long lists breed overwhelm; unfilled checkboxes pile up guilt.",
          "sensory_notes": "Many repeated lines/boxes add visual noise.",
          "product_group": "standalone-20",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3808,10 +4248,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified)",
+         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified: general knowledge)",
          "adhd_notes": "Long lists breed overwhelm; unfilled checkboxes pile up guilt.",
          "sensory_notes": "Many repeated lines/boxes add visual noise.",
          "product_group": "standalone-21",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3839,10 +4280,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified)",
+         "hobonichi_note": "Free grid is used for lists; no printed to-do. (unverified: general knowledge)",
          "adhd_notes": "Long lists breed overwhelm; unfilled checkboxes pile up guilt.",
          "sensory_notes": "Many repeated lines/boxes add visual noise.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -3875,10 +4317,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "Not printed; commonly kept in free notes. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Capture list that doesn't need daily upkeep.",
          "sensory_notes": "Simple box list.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3906,10 +4349,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "Not printed; commonly kept in free notes. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Capture list that doesn't need daily upkeep.",
          "sensory_notes": "Simple box list.",
          "product_group": "standalone-17",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -3937,10 +4381,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "Not printed; commonly kept in free notes. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Capture list that doesn't need daily upkeep.",
          "sensory_notes": "Simple box list.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -3973,10 +4418,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Time axis / calendar covers appointments. (unverified)",
+         "hobonichi_note": "Time axis covers timed appointments. (verified from your Hobonichi photos)",
          "adhd_notes": "Small list; only fills when needed.",
          "sensory_notes": "Few lines.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4004,10 +4450,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Time axis / calendar covers appointments. (unverified)",
+         "hobonichi_note": "Time axis covers timed appointments. (verified from your Hobonichi photos)",
          "adhd_notes": "Small list; only fills when needed.",
          "sensory_notes": "Few lines.",
          "product_group": "standalone-17",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4035,10 +4482,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Time axis / calendar covers appointments. (unverified)",
+         "hobonichi_note": "Time axis covers timed appointments. (verified from your Hobonichi photos)",
          "adhd_notes": "Small list; only fills when needed.",
          "sensory_notes": "Few lines.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -4071,10 +4519,11 @@
          "daily_effort": 3,
          "skip_tolerance": "low",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Reduces what-do-I-do-next, but 12 zones is a lot to fill.",
          "sensory_notes": "Colour-coded grid is high noise; plain version better. Colour blocks make zones clear but 12 zones is a lot.",
          "product_group": "standalone-17",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -4107,10 +4556,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Optional guard-rail list; can be skipped.",
          "sensory_notes": "Small box.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4138,10 +4588,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Optional guard-rail list; can be skipped.",
          "sensory_notes": "Small box.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -4174,10 +4625,11 @@
          "daily_effort": 3,
          "skip_tolerance": "low",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Strong structure but heavy daily asks; looks very empty if skipped.",
          "sensory_notes": "Dense, many icons and zones.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4205,10 +4657,11 @@
          "daily_effort": 3,
          "skip_tolerance": "low",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Strong structure but heavy daily asks; looks very empty if skipped.",
          "sensory_notes": "Dense, many icons and zones.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4236,10 +4689,11 @@
          "daily_effort": 3,
          "skip_tolerance": "low",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Strong structure but heavy daily asks; looks very empty if skipped.",
          "sensory_notes": "Dense, many icons and zones.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -4272,10 +4726,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Names rather than tasks lowers friction for reaching out; optional.",
          "sensory_notes": "Small icons per row add noise; plain lines are enough.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -4312,10 +4767,11 @@
          "daily_effort": 3,
          "skip_tolerance": "low",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Techo daily page has a time axis. (unverified)",
+         "hobonichi_note": "Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)",
          "adhd_notes": "Blank hours feel like failure; high daily upkeep.",
          "sensory_notes": "Ruled lines are calm; multiple columns less so. Grid is regular but dense.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4343,10 +4799,11 @@
          "daily_effort": 3,
          "skip_tolerance": "low",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Techo daily page has a time axis. (unverified)",
+         "hobonichi_note": "Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)",
          "adhd_notes": "Blank hours feel like failure; high daily upkeep. Boxes become tiny wins as each block is done; an optional break is built in.",
          "sensory_notes": "Ruled lines are calm; multiple columns less so. Two-colour code (blue/orange) is clear but busy.",
          "product_group": "standalone-13",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4374,10 +4831,11 @@
          "daily_effort": 3,
          "skip_tolerance": "low",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Techo daily page has a time axis. (unverified)",
+         "hobonichi_note": "Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)",
          "adhd_notes": "Blank hours feel like failure; high daily upkeep. Hour lines without boxes are easy to ignore.",
          "sensory_notes": "Ruled lines are calm; multiple columns less so.",
          "product_group": "standalone-20",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4405,10 +4863,43 @@
          "daily_effort": 3,
          "skip_tolerance": "low",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Techo daily page has a time axis. (unverified)",
+         "hobonichi_note": "Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)",
          "adhd_notes": "Blank hours feel like failure; high daily upkeep. No printed hours: you choose what time means.",
          "sensory_notes": "Ruled lines are calm; multiple columns less so.",
          "product_group": "standalone-22",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e25_02",
+         "source_image": "examples/mine/25_hobonichi_daily.jpg",
+         "crop_path": "catalog/daily/schedule/time_blocks/e25_02.png",
+         "crop_box": [
+          470,
+          461,
+          902,
+          1018
+         ],
+         "page_type": "daily",
+         "zone": "schedule",
+         "element": "time_blocks",
+         "variant_name": "vertical 24h axis (3-hour labels) over fine grid",
+         "variant_group": "hour-ruled lines",
+         "description": "Hour labels down the left edge every 3 hours with tick dots between, over a fine square grid that runs the full page.",
+         "input_style": "time grid",
+         "footprint_dots": [
+          13,
+          17
+         ],
+         "draw_effort": 2,
+         "daily_effort": 2,
+         "skip_tolerance": "low",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)",
+         "adhd_notes": "Blank hours feel like failure; high daily upkeep. Axis is a guide only; the open grid does not demand every hour be filled.",
+         "sensory_notes": "Ruled lines are calm; multiple columns less so. Grid is pale and even; very low noise.",
+         "product_group": "hobonichi-daily",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -4441,10 +4932,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Visual time awareness helps some; others find it fiddly.",
          "sensory_notes": "Round shape breaks the grid.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -4477,10 +4969,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Time axis is finer; no day-part labels. (unverified)",
+         "hobonichi_note": "Time axis is finer; no day-part labels. (unverified: general knowledge)",
          "adhd_notes": "Softer than hourly blocks; fewer decisions.",
          "sensory_notes": "Section rules give clear zones.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -4513,10 +5006,48 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Hobonichi time axis is used the same way. (unverified)",
+         "hobonichi_note": "The same 24-hour axis over a grid works for colouring time after the fact. (verified from your Hobonichi photos)",
          "adhd_notes": "Done after the fact, so no planning pressure; can be skipped. Colouring afterwards avoids pre-planning; blank is fine.",
          "sensory_notes": "Needs a colour palette; plain pen shading works. Needs highlighters; pen shading works too.",
          "product_group": "standalone-21",
+         "is_own": false,
+         "duplicate_of_image": null
+        }
+       ]
+      },
+      "monthly_calendar": {
+       "label": "Mini monthly calendar",
+       "variants": [
+        {
+         "id": "e25_05",
+         "source_image": "examples/mine/25_hobonichi_daily.jpg",
+         "crop_path": "catalog/daily/schedule/monthly_calendar/e25_05.png",
+         "crop_box": [
+          1913,
+          1430,
+          2061,
+          1552
+         ],
+         "page_type": "daily",
+         "zone": "schedule",
+         "element": "monthly_calendar",
+         "variant_name": "tiny month grid with current day circled",
+         "variant_group": "tiny month grid with current day circled",
+         "description": "Mini month calendar at the foot of the right page with the current date ringed.",
+         "input_style": "free space",
+         "footprint_dots": [
+          5,
+          4
+         ],
+         "draw_effort": 3,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Mini month grid with the current week/day circled on both the daily and weekly pages. (verified from your Hobonichi photos)",
+         "adhd_notes": "Reference only; duplicate of Hobonichi.",
+         "sensory_notes": "Small grid text can be hard to read.",
+         "product_group": "hobonichi-daily",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -4553,10 +5084,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid can be used as a brain dump. (unverified)",
+         "hobonichi_note": "The open grid doubles as a brain dump. (verified from your Hobonichi photos)",
          "adhd_notes": "Fast, no sorting; forgiving.",
          "sensory_notes": "Open box, quiet.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4584,10 +5116,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid can be used as a brain dump. (unverified)",
+         "hobonichi_note": "The open grid doubles as a brain dump. (verified from your Hobonichi photos)",
          "adhd_notes": "Fast, no sorting; forgiving.",
          "sensory_notes": "Open box, quiet.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4615,10 +5148,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid can be used as a brain dump. (unverified)",
+         "hobonichi_note": "The open grid doubles as a brain dump. (verified from your Hobonichi photos)",
          "adhd_notes": "Fast, no sorting; forgiving.",
          "sensory_notes": "Open box, quiet.",
          "product_group": "standalone-17",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4646,10 +5180,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid can be used as a brain dump. (unverified)",
+         "hobonichi_note": "The open grid doubles as a brain dump. (verified from your Hobonichi photos)",
          "adhd_notes": "Fast, no sorting; forgiving.",
          "sensory_notes": "Open box, quiet.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4677,10 +5212,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Free grid can be used as a brain dump. (unverified)",
+         "hobonichi_note": "The open grid doubles as a brain dump. (verified from your Hobonichi photos)",
          "adhd_notes": "Fast, no sorting; forgiving.",
          "sensory_notes": "Open box, quiet.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -4713,10 +5249,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4744,10 +5281,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "standalone-13",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4775,10 +5313,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4806,10 +5345,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "standalone-20",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4837,10 +5377,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "standalone-21",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4868,10 +5409,43 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "full",
-         "hobonichi_note": "Grid / free pages in Hobonichi. (unverified)",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
          "adhd_notes": "Catch-all; reduces pressure on other zones.",
          "sensory_notes": "Ruled or dotted = calm.",
          "product_group": "standalone-22",
+         "is_own": false,
+         "duplicate_of_image": null
+        },
+        {
+         "id": "e25_03",
+         "source_image": "examples/mine/25_hobonichi_daily.jpg",
+         "crop_path": "catalog/daily/capture/notes/e25_03.png",
+         "crop_box": [
+          470,
+          464,
+          1256,
+          1417
+         ],
+         "page_type": "daily",
+         "zone": "capture",
+         "element": "notes",
+         "variant_name": "full-page fine square grid",
+         "variant_group": "unlined area",
+         "description": "Whole writing area is a pale fine grid with no boxes or prompts.",
+         "input_style": "free space",
+         "footprint_dots": [
+          24,
+          30
+         ],
+         "draw_effort": 1,
+         "daily_effort": 1,
+         "skip_tolerance": "high",
+         "hobonichi_overlap": "full",
+         "hobonichi_note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
+         "adhd_notes": "Catch-all; reduces pressure on other zones.",
+         "sensory_notes": "Ruled or dotted = calm.",
+         "product_group": "hobonichi-daily",
+         "is_own": true,
          "duplicate_of_image": null
         }
        ]
@@ -4908,10 +5482,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Self-scoring productivity can feed guilt; keep optional.",
          "sensory_notes": "Simple.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -4939,10 +5514,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Self-scoring productivity can feed guilt; keep optional.",
          "sensory_notes": "Simple.",
          "product_group": "standalone-21",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -4975,10 +5551,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast single mark; emotional check-in without writing.",
          "sensory_notes": "Faces are quick; wheel versions are heavy.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5006,10 +5583,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast single mark; emotional check-in without writing.",
          "sensory_notes": "Faces are quick; wheel versions are heavy.",
          "product_group": "standalone-22",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5042,10 +5620,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One quick shaded bar; informs pacing.",
          "sensory_notes": "Simple.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5073,10 +5652,11 @@
          "daily_effort": 3,
          "skip_tolerance": "low",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One quick shaded bar; informs pacing. Data-gathering about patterns, not a to-do; helpful but optional.",
          "sensory_notes": "Simple.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5109,10 +5689,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Icons make it quick; drawing 12 icons is heavy.",
          "sensory_notes": "Icon grid is busy; keep icons simple.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5145,10 +5726,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo users add their own; not printed. (unverified)",
+         "hobonichi_note": "Techo users add their own; not printed. (unverified: general knowledge)",
          "adhd_notes": "Streak gaps feel punishing; weekly grids limit the damage. Daily habits without day columns avoid streak guilt.",
          "sensory_notes": "Repeated boxes are regular but busy.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5176,10 +5758,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo users add their own; not printed. (unverified)",
+         "hobonichi_note": "Techo users add their own; not printed. (unverified: general knowledge)",
          "adhd_notes": "Streak gaps feel punishing; weekly grids limit the damage. Thirteen habits is too many; pick 3.",
          "sensory_notes": "Repeated boxes are regular but busy.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5212,10 +5795,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "Not printed; Techo users log food in the free grid. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Useful for medication/eating reminders; skip is fine.",
          "sensory_notes": "Four lines, calm.",
          "product_group": "templatables-adhd-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5243,10 +5827,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "Not printed; Techo users log food in the free grid. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Useful for medication/eating reminders; skip is fine.",
          "sensory_notes": "Four lines, calm.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5274,10 +5859,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "Not printed; Techo users log food in the free grid. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Useful for medication/eating reminders; skip is fine.",
          "sensory_notes": "Four lines, calm.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5310,10 +5896,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Some Techo editions have a weather field. (unverified)",
+         "hobonichi_note": "Some Techo editions have a weather field. (unverified: general knowledge)",
          "adhd_notes": "One circle; trivial.",
          "sensory_notes": "Small icons, quiet.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5346,10 +5933,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Visible, easy wins; drops fill as you drink.",
          "sensory_notes": "Row of icons, quiet.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5377,10 +5965,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Visible, easy wins; drops fill as you drink.",
          "sensory_notes": "Row of icons, quiet.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5413,10 +6002,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Short checklist (water, meds, move); good if kept to 3-4 items.",
          "sensory_notes": "Small boxes.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5444,10 +6034,11 @@
          "daily_effort": 2,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Short checklist (water, meds, move); good if kept to 3-4 items. Meds box is a visible reminder.",
          "sensory_notes": "Small boxes.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5480,10 +6071,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "partial",
-         "hobonichi_note": "Techo time axis can show sleep. (unverified)",
+         "hobonichi_note": "Techo time axis can show sleep. (unverified: general knowledge)",
          "adhd_notes": "Two numbers a day.",
          "sensory_notes": "Tiny.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5520,10 +6112,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Name an emotion with one circle.",
          "sensory_notes": "Faces/words in a row.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5556,10 +6149,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Short, set once and reused.",
          "sensory_notes": "Simple.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5587,10 +6181,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Short, set once and reused.",
          "sensory_notes": "Simple.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5623,10 +6218,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Reward-focused; counters 'I did nothing'.",
          "sensory_notes": "Few lines.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5654,10 +6250,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Reward-focused; counters 'I did nothing'.",
          "sensory_notes": "Few lines.",
          "product_group": "standalone-17",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5685,10 +6282,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Reward-focused; counters 'I did nothing'.",
          "sensory_notes": "Few lines.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5716,10 +6314,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Reward-focused; counters 'I did nothing'.",
          "sensory_notes": "Few lines.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5752,10 +6351,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast positive prompt; fine to skip.",
          "sensory_notes": "Open lines are calm.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5783,10 +6383,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast positive prompt; fine to skip. Checking boxes needs no writing.",
          "sensory_notes": "Open lines are calm.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5814,10 +6415,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Fast positive prompt; fine to skip.",
          "sensory_notes": "Open lines are calm.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5850,10 +6452,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Optional venting spot.",
          "sensory_notes": "Small box.",
          "product_group": "growth-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5886,10 +6489,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Three kind options only (no 'failed'); safe if skipped. No \"bad day\" option, so a rough day is not scored as failure.",
          "sensory_notes": "Three boxes.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5917,10 +6521,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Three kind options only (no 'failed'); safe if skipped.",
          "sensory_notes": "Three boxes.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -5953,10 +6558,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One line; easy to finish.",
          "sensory_notes": "One box.",
          "product_group": "standalone-16",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -5984,10 +6590,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One line; easy to finish.",
          "sensory_notes": "One box.",
          "product_group": "standalone-22",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -6020,10 +6627,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Great for starting again after a gap.",
          "sensory_notes": "Single line.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -6051,10 +6659,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Great for starting again after a gap.",
          "sensory_notes": "Single line.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -6087,10 +6696,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Can feel evaluative; keep optional.",
          "sensory_notes": "Few lines.",
          "product_group": "one-three-five-daily-book",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -6118,10 +6728,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Can feel evaluative; keep optional.",
          "sensory_notes": "Few lines.",
          "product_group": "standalone-22",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -6154,10 +6765,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "One optional challenge a week; low load.",
          "sensory_notes": "One box.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -6190,10 +6802,11 @@
          "daily_effort": 2,
          "skip_tolerance": "medium",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Therapy-style prompts; heavy daily asks.",
          "sensory_notes": "Text-dense.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -6226,10 +6839,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Forward-looking; avoids blame.",
          "sensory_notes": "Few lines.",
          "product_group": "habit-ant-journal",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]
@@ -6266,10 +6880,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Decorative; purely cosmetic.",
          "sensory_notes": "Keep subtle.",
          "product_group": "threekin-daily-pad",
+         "is_own": false,
          "duplicate_of_image": null
         },
         {
@@ -6297,10 +6912,11 @@
          "daily_effort": 1,
          "skip_tolerance": "high",
          "hobonichi_overlap": "none",
-         "hobonichi_note": "No dedicated field. (unverified)",
+         "hobonichi_note": "Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.",
          "adhd_notes": "Decorative; purely cosmetic.",
          "sensory_notes": "Keep subtle.",
          "product_group": "standalone-13",
+         "is_own": false,
          "duplicate_of_image": null
         }
        ]

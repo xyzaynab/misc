@@ -11,7 +11,8 @@ sys.path.insert(0, HERE)
 import taxonomy as T
 import variant_groups as VG
 
-imgs = {int(i['file'].split('.')[0]): i for i in json.load(open(f'{ROOT}/data/images.json'))['images']}
+import re
+imgs = {int(re.match(r'\d+', i['file']).group()): i for i in json.load(open(f'{ROOT}/data/images.json'))['images']}
 REGIONS, ENTRIES = {}, {}
 for f in sorted(glob.glob(f'{HERE}/entries_*.py')):
     m = importlib.import_module(os.path.basename(f)[:-3])
@@ -38,15 +39,18 @@ for n in sorted(ENTRIES):
         os.makedirs(f"{ROOT}/catalog/{pt}/{zone}/{el}", exist_ok=True)
         x0, y0, x1, y1 = box
         Image.open(f"{ROOT}/{info['path']}").convert('RGB').crop((max(0,x0),max(0,y0),min(im.width,x1),min(im.height,y1))).save(f"{ROOT}/{rel}")
+        if el in T.VERIFIED_HOB: ho, hn = T.VERIFIED_HOB[el]; hob = (ho, hn + ' (verified from your Hobonichi photos)')
+        elif d['hobonichi_overlap'] == 'none': hob = ('none', 'Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.')
+        else: hob = (d['hobonichi_overlap'], d['hobonichi_note'] + ' (unverified: general knowledge)')
         vg, matched = VG.group(el, vname)
         if not matched: ungrouped.add((el, vname))
         v = dict(id=vid, source_image=info['path'], crop_path=rel, crop_box=list(box),
                  page_type=pt, zone=zone, element=el, variant_name=vname, variant_group=vg, description=desc,
                  input_style=d['input_style'], footprint_dots=footprint(box, REGIONS[n]),
                  draw_effort=d['draw_effort'], daily_effort=d['daily_effort'], skip_tolerance=d['skip_tolerance'],
-                 hobonichi_overlap=d['hobonichi_overlap'], hobonichi_note=d['hobonichi_note'] + ' (unverified)',
+                 hobonichi_overlap=hob[0], hobonichi_note=hob[1],
                  adhd_notes=d['adhd_notes'], sensory_notes=d['sensory_notes'],
-                 product_group=info['product_group'], duplicate_of_image=info.get('duplicate_of'))
+                 product_group=info['product_group'], is_own=info.get('is_own', False), duplicate_of_image=info.get('duplicate_of'))
         for k, val in ov.items():
             if k == 'adhd+': v['adhd_notes'] += ' ' + val
             elif k == 'sens+': v['sensory_notes'] += ' ' + val
@@ -61,7 +65,7 @@ meta = dict(hierarchy=['page_type', 'zone', 'element', 'variant'], zones=T.ZONES
             rubric=dict(draw_effort='1-3 time to hand-draw', daily_effort='1-3 daily fill-in load',
                         skip_tolerance='high = forgiving if a day is skipped; low = looks broken/guilt-inducing',
                         footprint_dots='approx width x height in dots at 5 mm pitch; portrait page 28x42, spread 56x42',
-                        hobonichi_overlap='general knowledge only; unverified until user supplies Hobonichi photos'),
+                        hobonichi_overlap='verified against the user\'s Hobonichi daily + weekly spreads where noted; otherwise general knowledge, marked unverified'),
             images_covered=sorted(ENTRIES), variant_count=n_total)
 json.dump(dict(meta=meta, pages=tree), open(f'{ROOT}/data/elements.json', 'w'), indent=1, ensure_ascii=False)
 print(n_total, 'variants from', len(ENTRIES), 'images')

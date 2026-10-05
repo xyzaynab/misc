@@ -140,3 +140,18 @@ ELEMENTS = {
  "banner": E("decorative","Banner / ribbon label","write-in line",1,1,"high","none","No dedicated field.",
     "Decorative; purely cosmetic.","Keep subtle."),
 }
+
+# Verified from the user's own Hobonichi photos (images 25, 26): element -> (overlap, note)
+VERIFIED_HOB = {
+ "date_header": ("full", "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year."),
+ "week_header": ("full", "Weekly spread prints a month banner (year, month, big month name) and the week number."),
+ "time_blocks": ("full", "Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both."),
+ "time_record": ("full", "The same 24-hour axis over a grid works for colouring time after the fact."),
+ "appointments": ("full", "Time axis covers timed appointments."),
+ "week_at_a_glance": ("full", "Weekly spread is seven vertical day columns, each with a 24-hour axis."),
+ "monthly_calendar": ("full", "Mini month grid with the current week/day circled on both the daily and weekly pages."),
+ "notes": ("full", "Whole writing area is a fine grid; free-write space is the default."),
+ "quote_mantra": ("full", "A printed quote sits at the foot of each daily page (not user-written)."),
+ "month_year_strip": ("partial", "Coloured month tabs on the page edge; no day-of-month strip."),
+ "brain_dump": ("partial", "The open grid doubles as a brain dump."),
+}

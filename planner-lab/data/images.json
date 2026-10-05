@@ -374,6 +374,38 @@
       "duplicate_of": null,
       "is_own": false,
       "review_zone": "reflect"
+    },
+    {
+      "file": "25_hobonichi_daily.jpg",
+      "path": "examples/mine/25_hobonichi_daily.jpg",
+      "batch": "mine",
+      "width_px": 2576,
+      "height_px": 1932,
+      "source_type": "my own planner",
+      "page_type": "daily",
+      "page_orientation": "landscape",
+      "layout": "two-page spread",
+      "description": "Hobonichi daily spread (Oct 4 and Oct 5, 2026): date box with weekday and moon phase, vertical hour axis (6 to 3, every 3 h), full grid writing area, printed quote and a mini month calendar at the foot, month tab at the edge.",
+      "flags": "Show-through from the reverse side is visible as ghosted marks; ignore it.",
+      "product_group": "hobonichi-daily",
+      "duplicate_of": null,
+      "is_own": true
+    },
+    {
+      "file": "26_hobonichi_weekly.jpg",
+      "path": "examples/mine/26_hobonichi_weekly.jpg",
+      "batch": "mine",
+      "width_px": 2576,
+      "height_px": 1932,
+      "source_type": "my own planner",
+      "page_type": "weekly",
+      "page_orientation": "landscape",
+      "layout": "two-page spread",
+      "description": "Hobonichi weekly spread (week of Oct 5, 2026): month/week block with mini month calendar and a grid notes area at left, then seven vertical day columns each with a date number, weekday tag and a 24-hour axis over a grid.",
+      "flags": "Show-through from the reverse side is visible as ghosted marks; ignore it.",
+      "product_group": "hobonichi-weekly",
+      "duplicate_of": null,
+      "is_own": true
     }
   ],
   "counting_rule": "Count one layout per (product_group, page_type, layout). Same product shown as weekly and as daily = separate entries. Only true duplicates (duplicate_of set) are collapsed; 18 and 19 are different daily layouts, not duplicates."
