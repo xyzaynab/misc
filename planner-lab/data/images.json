@@ -62,7 +62,7 @@
       "layout": "single sheet",
       "description": "\"ADHD Daily Planner\" pad: month/day strip, focus, priorities 1-3 + reward, do later, everything else, time/task schedule, productivity/mood/energy, self-care icon grid, habit tracker, meals, brain dump.",
       "flags": "Sheet is landscape (not book-shaped)",
-      "product_group": "adhd-daily-family",
+      "product_group": "templatables-adhd-daily-pad",
       "duplicate_of": null,
       "is_own": false
     },
@@ -143,9 +143,10 @@
       "layout": "single sheet (pad, angled)",
       "description": "\"Let's Do This\" daily pad: date + weather icons, clock, top priorities, to-do, to-buy, appointments, meal planning, water drops, health/fitness, end-of-day check, dotted free space.",
       "flags": "Photo is at an angle",
-      "product_group": "threekin-collective",
+      "product_group": "threekin-daily-pad",
       "duplicate_of": null,
-      "is_own": false
+      "is_own": false,
+      "brand": "Threekin Collective"
     },
     {
       "file": "11.jpg",
@@ -159,9 +160,10 @@
       "layout": "single sheet (pad)",
       "description": "\"The Week Ahead\": week-of + focus word, goal box, Mon-Fri columns + Sat/Sun, daily tracker, dotted free space, colour key (highlighter system). Filled in as an example.",
       "flags": "Includes handwritten example content",
-      "product_group": "threekin-collective",
+      "product_group": "threekin-weekly-pad",
       "duplicate_of": null,
-      "is_own": false
+      "is_own": false,
+      "brand": "Threekin Collective"
     },
     {
       "file": "12.jpg",
@@ -272,7 +274,7 @@
       "layout": "two-page spread",
       "description": "1-3-5 daily planner: month/day strip + mood, brain dump + not-to-do, priorities, do later, everything else, notes, today's win, tomorrow's first step.",
       "flags": "Right page cut off; same product as 19.jpg",
-      "product_group": "adhd-daily-family",
+      "product_group": "one-three-five-daily-book",
       "duplicate_of": null,
       "is_own": false
     },
@@ -288,7 +290,7 @@
       "layout": "two-page spread",
       "description": "1-3-5 daily framework: focus task, 3 support tasks, 5 tiny wins, brain dump, not-to-do, people to connect, appointments, need to buy, energy notes + times, body check, learning box, tomorrow's first step.",
       "flags": "Same product as 18.jpg",
-      "product_group": "adhd-daily-family",
+      "product_group": "one-three-five-daily-book",
       "duplicate_of": null,
       "is_own": false
     },
