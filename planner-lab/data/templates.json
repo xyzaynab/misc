@@ -1,0 +1,1136 @@
+{
+ "date_header|date write-in line": {
+  "k": "field",
+  "dw": 14,
+  "dh": 2,
+  "mw": 8,
+  "mh": 2,
+  "label": "DATE",
+  "pos": "left",
+  "slashes": true
+ },
+ "date_header|stacked DD / MM / YY boxes": {
+  "k": "stack",
+  "dw": 6,
+  "dh": 6,
+  "mw": 5,
+  "mh": 6,
+  "labels": [
+   "DD",
+   "MM",
+   "YY"
+  ]
+ },
+ "focus_theme|short write-in line": {
+  "k": "field",
+  "dw": 22,
+  "dh": 3,
+  "mw": 8,
+  "mh": 2,
+  "label": "THIS WEEK I'M FOCUSING ON",
+  "pos": "above"
+ },
+ "focus_theme|boxed goal line": {
+  "k": "box",
+  "dw": 26,
+  "dh": 3,
+  "mw": 10,
+  "mh": 3,
+  "label": "GOAL FOR THE WEEK:",
+  "inline": true
+ },
+ "focus_theme|sentence starter / frame": {
+  "k": "field",
+  "dw": 26,
+  "dh": 2,
+  "mw": 12,
+  "mh": 2,
+  "label": "THIS WEEK WILL BE ______ BECAUSE ______",
+  "pos": "left"
+ },
+ "month_year_strip|colour-coded strip": {
+  "k": "strip",
+  "dw": 27,
+  "dh": 3,
+  "mw": 14,
+  "mh": 3
+ },
+ "month_year_strip|plain strip": {
+  "k": "strip",
+  "dw": 27,
+  "dh": 3,
+  "mw": 14,
+  "mh": 3,
+  "plain": true
+ },
+ "quote_mantra|printed quote": {
+  "k": "quote",
+  "dw": 22,
+  "dh": 4,
+  "mw": 10,
+  "mh": 3
+ },
+ "quote_mantra|banner affirmation": {
+  "k": "pill",
+  "dw": 24,
+  "dh": 2,
+  "mw": 8,
+  "mh": 2,
+  "text": "I CHOOSE INTENTION OVER PERFECTION."
+ },
+ "week_header|printed date range + week number": {
+  "k": "headtext",
+  "dw": 25,
+  "dh": 2,
+  "mw": 12,
+  "mh": 2,
+  "text": "NOV 27 — DEC 3",
+  "right": "WEEK 49",
+  "rule": true
+ },
+ "week_header|title + write-in date": {
+  "k": "headtext",
+  "dw": 25,
+  "dh": 2,
+  "mw": 12,
+  "mh": 2,
+  "text": "WEEKLY OVERVIEW",
+  "right": "DATE: ______",
+  "rule": false
+ },
+ "week_header|title only": {
+  "k": "headtext",
+  "dw": 25,
+  "dh": 2,
+  "mw": 10,
+  "mh": 2,
+  "text": "WEEKLY REFLECTION & GOALS",
+  "rule": true
+ },
+ "weekday_circles|letters only": {
+  "k": "wkdays",
+  "dw": 8,
+  "dh": 2,
+  "mw": 7,
+  "mh": 2,
+  "circles": false
+ },
+ "weekday_circles|letters over circles": {
+  "k": "wkdays",
+  "dw": 8,
+  "dh": 3,
+  "mw": 7,
+  "mh": 3,
+  "circles": true
+ },
+ "top_priorities|3 numbered lines": {
+  "k": "lines",
+  "dw": 16,
+  "dh": 8,
+  "mw": 8,
+  "mh": 4,
+  "label": "TOP 3 PRIORITIES",
+  "bullet": "num"
+ },
+ "top_priorities|3 checkbox lines": {
+  "k": "lines",
+  "dw": 16,
+  "dh": 8,
+  "mw": 8,
+  "mh": 4,
+  "label": "TOP 3 PRIORITIES",
+  "bullet": "check"
+ },
+ "top_priorities|5+ numbered / bullet lines": {
+  "k": "lines",
+  "dw": 24,
+  "dh": 12,
+  "mw": 10,
+  "mh": 4,
+  "label": "IF I ONLY DID 5 THINGS THIS WEEK...",
+  "bullet": "num"
+ },
+ "top_priorities|two open columns": {
+  "k": "table",
+  "dw": 24,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "heads": [
+   "PRIORITY TASKS",
+   "PLAY ACTIVITIES"
+  ],
+  "cols": [
+   0.5,
+   0.5
+  ],
+  "open": true
+ },
+ "top_priorities|panel with rating icons + reward": {
+  "k": "lines",
+  "dw": 26,
+  "dh": 10,
+  "mw": 14,
+  "mh": 6,
+  "label": "PRIORITIES",
+  "bullet": "dot",
+  "rate": true,
+  "reward": true
+ },
+ "top_priorities|priority box with time": {
+  "k": "box",
+  "dw": 12,
+  "dh": 6,
+  "mw": 8,
+  "mh": 4,
+  "label": "DAILY PRIORITY TASK",
+  "time": true
+ },
+ "focus_box|single titled box": {
+  "k": "box",
+  "dw": 16,
+  "dh": 6,
+  "mw": 8,
+  "mh": 4,
+  "label": "TODAY'S FOCUS",
+  "fill": true
+ },
+ "focus_box|dotted goal lines": {
+  "k": "lines",
+  "dw": 14,
+  "dh": 6,
+  "mw": 8,
+  "mh": 4,
+  "label": "GOALS",
+  "bullet": "none",
+  "rule": "dotted"
+ },
+ "todo_list|bullet / numbered lines": {
+  "k": "lines",
+  "dw": 12,
+  "dh": 16,
+  "mw": 8,
+  "mh": 4,
+  "label": "TO DO",
+  "bullet": "dot",
+  "rule": "dotted",
+  "box": true
+ },
+ "todo_list|checkbox / circle lines": {
+  "k": "lines",
+  "dw": 14,
+  "dh": 12,
+  "mw": 8,
+  "mh": 4,
+  "label": "TO DO",
+  "bullet": "circle",
+  "rule": "dotted"
+ },
+ "todo_list|routine lines + completed boxes": {
+  "k": "lines",
+  "dw": 24,
+  "dh": 12,
+  "mw": 12,
+  "mh": 4,
+  "label": "MORNING ROUTINE",
+  "bullet": "num",
+  "end": "check"
+ },
+ "secondary_tasks|checkbox / dotted lines": {
+  "k": "lines",
+  "dw": 16,
+  "dh": 12,
+  "mw": 8,
+  "mh": 4,
+  "label": "OTHER TASKS",
+  "bullet": "check",
+  "rule": "dotted"
+ },
+ "secondary_tasks|optional numbered extras": {
+  "k": "lines",
+  "dw": 16,
+  "dh": 10,
+  "mw": 8,
+  "mh": 4,
+  "label": "GOT EXTRA TIME?",
+  "bullet": "num",
+  "start": 4
+ },
+ "secondary_tasks|tasks with sub-steps + icons": {
+  "k": "lines",
+  "dw": 26,
+  "dh": 14,
+  "mw": 14,
+  "mh": 6,
+  "label": "DO LATER",
+  "bullet": "check",
+  "sub": true,
+  "rate": true,
+  "reward": true
+ },
+ "weekly_goals|3 numbered lines": {
+  "k": "lines",
+  "dw": 14,
+  "dh": 9,
+  "mw": 8,
+  "mh": 4,
+  "label": "WEEKLY GOALS",
+  "bullet": "num",
+  "box": true
+ },
+ "focus_areas|titled column: header box + 8 circle-bullet lines (first 3 shaded)": {
+  "k": "lines",
+  "dw": 13,
+  "dh": 16,
+  "mw": 8,
+  "mh": 6,
+  "label": "",
+  "bullet": "circle",
+  "rule": "dotted",
+  "hbox": true,
+  "shade": 3
+ },
+ "not_to_do|4 grey checkbox lines": {
+  "k": "lines",
+  "dw": 10,
+  "dh": 10,
+  "mw": 6,
+  "mh": 4,
+  "label": "NOT TO DO",
+  "bullet": "check",
+  "rule": "dotted",
+  "box": true
+ },
+ "event_organizer|two-column event / date table": {
+  "k": "table",
+  "dw": 24,
+  "dh": 12,
+  "mw": 12,
+  "mh": 6,
+  "heads": [
+   "EVENT",
+   "DATE"
+  ],
+  "cols": [
+   0.7,
+   0.3
+  ],
+  "title": "IMPORTANT EVENTS / OCCASIONS"
+ },
+ "appointments|time + write-in lines": {
+  "k": "lines",
+  "dw": 14,
+  "dh": 10,
+  "mw": 8,
+  "mh": 4,
+  "label": "APPOINTMENTS",
+  "bullet": "time"
+ },
+ "to_buy|checkbox list": {
+  "k": "lines",
+  "dw": 12,
+  "dh": 12,
+  "mw": 8,
+  "mh": 4,
+  "label": "TO BUY",
+  "bullet": "check"
+ },
+ "people_to_connect|short list": {
+  "k": "lines",
+  "dw": 16,
+  "dh": 10,
+  "mw": 8,
+  "mh": 4,
+  "label": "PEOPLE TO CONNECT WITH",
+  "bullet": "circle"
+ },
+ "one_three_five|1 focus task": {
+  "k": "lines",
+  "dw": 24,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "label": "1 FOCUS TASK",
+  "bullet": "check",
+  "rate": true,
+  "reward": true
+ },
+ "one_three_five|3 support tasks": {
+  "k": "lines",
+  "dw": 24,
+  "dh": 14,
+  "mw": 12,
+  "mh": 6,
+  "label": "3 SUPPORT TASKS",
+  "bullet": "check",
+  "sub": true,
+  "rate": true,
+  "reward": true
+ },
+ "one_three_five|5 tiny wins": {
+  "k": "lines",
+  "dw": 24,
+  "dh": 12,
+  "mw": 12,
+  "mh": 4,
+  "label": "5 TINY WINS",
+  "bullet": "circle",
+  "rate": true
+ },
+ "sorted_task_hub|3x4 colour-coded zones of 5 checkbox lines each": {
+  "k": "cells",
+  "dw": 27,
+  "dh": 36,
+  "mw": 15,
+  "mh": 20,
+  "cols": 3,
+  "rows": 4,
+  "lines": true,
+  "labels": [
+   "I NEED TO CALL",
+   "I NEED TO EMAIL",
+   "I NEED TO TEXT",
+   "I NEED TO DO TODAY",
+   "APPOINTMENTS",
+   "I NEED TO FOLLOW UP ON",
+   "I NEED TO DO SOON",
+   "I NEED TO SCHEDULE",
+   "I NEED TO RESEARCH",
+   "TODAY'S WINS",
+   "I NEED TO BUY",
+   "RANDOM THOUGHTS"
+  ]
+ },
+ "week_at_a_glance|day boxes with header bars": {
+  "k": "daygrid",
+  "dw": 27,
+  "dh": 24,
+  "mw": 14,
+  "mh": 12
+ },
+ "week_at_a_glance|stacked day rows": {
+  "k": "dayrows",
+  "dw": 26,
+  "dh": 34,
+  "mw": 14,
+  "mh": 16
+ },
+ "week_at_a_glance|ruled day columns": {
+  "k": "daycols",
+  "dw": 54,
+  "dh": 24,
+  "mw": 24,
+  "mh": 12
+ },
+ "time_blocks|time | task | tick table": {
+  "k": "table",
+  "dw": 16,
+  "dh": 22,
+  "mw": 10,
+  "mh": 6,
+  "heads": [
+   "TIME",
+   "TASK",
+   ""
+  ],
+  "cols": [
+   0.22,
+   0.66,
+   0.12
+  ],
+  "rowH": 2,
+  "tick": true
+ },
+ "time_blocks|vertical checkbox column": {
+  "k": "lines",
+  "dw": 12,
+  "dh": 26,
+  "mw": 6,
+  "mh": 6,
+  "label": "",
+  "bullet": "check",
+  "rule": "dotted",
+  "rowH": 1,
+  "small": true,
+  "start_label": "START"
+ },
+ "time_blocks|hour-ruled lines": {
+  "k": "lines",
+  "dw": 11,
+  "dh": 24,
+  "mw": 6,
+  "mh": 6,
+  "label": "SCHEDULE",
+  "bullet": "hour",
+  "start": 7,
+  "rowH": 2
+ },
+ "time_blocks|flexible time column": {
+  "k": "axis",
+  "dw": 12,
+  "dh": 24,
+  "mw": 6,
+  "mh": 6,
+  "label": "DAILY PLAN",
+  "hours": false
+ },
+ "day_part_schedule|morning / afternoon / evening / night circle lines": {
+  "k": "sections",
+  "dw": 14,
+  "dh": 28,
+  "mw": 8,
+  "mh": 10,
+  "labels": [
+   "MORNING",
+   "AFTERNOON",
+   "EVENING",
+   "NIGHT"
+  ],
+  "split": [
+   3,
+   3,
+   2,
+   1
+  ]
+ },
+ "time_record|vertical 24h timeline coloured with highlighters": {
+  "k": "axis",
+  "dw": 8,
+  "dh": 26,
+  "mw": 6,
+  "mh": 12,
+  "label": "TIME RECORD",
+  "hours": true,
+  "from_h": 5
+ },
+ "monthly_calendar|stacked mini month grids (Mon start)": {
+  "k": "calendar",
+  "dw": 10,
+  "dh": 9,
+  "mw": 7,
+  "mh": 7
+ },
+ "clock_planner|12-hour clock face to shade": {
+  "k": "clock",
+  "dw": 8,
+  "dh": 8,
+  "mw": 6,
+  "mh": 6
+ },
+ "energy_tracker|segment bar to colour": {
+  "k": "segbar",
+  "dw": 16,
+  "dh": 3,
+  "mw": 8,
+  "mh": 3,
+  "segs": 5,
+  "label": "ENERGY"
+ },
+ "energy_tracker|notes by time of day": {
+  "k": "lines",
+  "dw": 12,
+  "dh": 10,
+  "mw": 8,
+  "mh": 6,
+  "label": "ENERGY & PATTERNS",
+  "bullet": "none",
+  "labels": [
+   "Morning:",
+   "Afternoon:",
+   "Evening:"
+  ]
+ },
+ "habit_tracker|named rows x 7-day checkboxes": {
+  "k": "grid",
+  "dw": 24,
+  "dh": 10,
+  "mw": 14,
+  "mh": 6,
+  "label": "HABIT TRACKER",
+  "cell": "box"
+ },
+ "habit_tracker|named rows x 7-day dots / circles": {
+  "k": "grid",
+  "dw": 24,
+  "dh": 10,
+  "mw": 14,
+  "mh": 6,
+  "label": "HABIT TRACKER",
+  "cell": "circle"
+ },
+ "habit_tracker|secondary habits + reflection line": {
+  "k": "lines",
+  "dw": 23,
+  "dh": 10,
+  "mw": 12,
+  "mh": 4,
+  "label": "SECONDARY HABITS",
+  "bullet": "check",
+  "labels": [
+   "Comfort zone",
+   "Play activity",
+   "Practice altruism",
+   "Nurture relationship"
+  ]
+ },
+ "habit_tracker|rows with tick column (no days)": {
+  "k": "lines",
+  "dw": 16,
+  "dh": 10,
+  "mw": 8,
+  "mh": 4,
+  "label": "HABIT TRACKER",
+  "bullet": "none",
+  "end": "check"
+ },
+ "health_fitness|short checkbox list": {
+  "k": "checkrow",
+  "dw": 18,
+  "dh": 3,
+  "mw": 10,
+  "mh": 2,
+  "label": "BODY CHECK",
+  "labels": [
+   "WATER",
+   "MEAL",
+   "MEDS",
+   "MOVE"
+  ]
+ },
+ "meals|per-meal fields": {
+  "k": "lines",
+  "dw": 16,
+  "dh": 10,
+  "mw": 8,
+  "mh": 4,
+  "label": "MEALS",
+  "bullet": "none",
+  "labels": [
+   "Breakfast:",
+   "Lunch:",
+   "Dinner:",
+   "Snacks:"
+  ]
+ },
+ "meals|single line": {
+  "k": "field",
+  "dw": 14,
+  "dh": 3,
+  "mw": 8,
+  "mh": 2,
+  "label": "MEALS",
+  "pos": "left"
+ },
+ "mood_tracker|circular wheel": {
+  "k": "wheel",
+  "dw": 14,
+  "dh": 14,
+  "mw": 10,
+  "mh": 10
+ },
+ "mood_tracker|colour boxes + faces": {
+  "k": "boxfaces",
+  "dw": 18,
+  "dh": 4,
+  "mw": 12,
+  "mh": 4,
+  "n": 6,
+  "label": "(COLOUR) SCALE"
+ },
+ "mood_tracker|single face": {
+  "k": "faces",
+  "dw": 10,
+  "dh": 3,
+  "mw": 4,
+  "mh": 2,
+  "n": 1,
+  "label": "MOOD"
+ },
+ "mood_tracker|open band": {
+  "k": "box",
+  "dw": 24,
+  "dh": 4,
+  "mw": 10,
+  "mh": 3,
+  "label": "MOOD & ENERGY CHECK-IN",
+  "fill": true
+ },
+ "productivity_rating|open score row": {
+  "k": "field",
+  "dw": 16,
+  "dh": 3,
+  "mw": 8,
+  "mh": 2,
+  "label": "PRODUCTIVITY",
+  "pos": "left"
+ },
+ "productivity_rating|total time": {
+  "k": "box",
+  "dw": 9,
+  "dh": 5,
+  "mw": 6,
+  "mh": 4,
+  "label": "TOTAL TIME",
+  "hint": "__ : __"
+ },
+ "self_care_grid|4x3 icon grid with corner checkboxes": {
+  "k": "iconcells",
+  "dw": 16,
+  "dh": 9,
+  "mw": 8,
+  "mh": 6,
+  "cols": 4,
+  "rows": 3
+ },
+ "sleep_times|slept / woke tinted boxes": {
+  "k": "boxfields",
+  "dw": 14,
+  "dh": 2,
+  "mw": 8,
+  "mh": 2,
+  "labels": [
+   "SLEPT",
+   "WOKE"
+  ]
+ },
+ "water_tracker|row of drops / circles": {
+  "k": "icons",
+  "dw": 12,
+  "dh": 3,
+  "mw": 6,
+  "mh": 2,
+  "icon": "drop",
+  "n": 8,
+  "label": "WATER"
+ },
+ "weather|row of 5 weather icons": {
+  "k": "icons",
+  "dw": 10,
+  "dh": 2,
+  "mw": 6,
+  "mh": 2,
+  "icon": "weather",
+  "n": 5
+ },
+ "challenge|tinted header + one-line challenge box": {
+  "k": "box",
+  "dw": 24,
+  "dh": 4,
+  "mw": 10,
+  "mh": 3,
+  "label": "INTENTIONAL CHALLENGE",
+  "fill": true,
+  "hint": "Say one kind thing to yourself every morning."
+ },
+ "challenge|small / big challenge lines": {
+  "k": "lines",
+  "dw": 24,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "label": "COMFORT ZONE CHALLENGES",
+  "bullet": "none",
+  "labels": [
+   "Small:",
+   "Big:"
+  ]
+ },
+ "challenge|4 secondary-habit options with circle + how line": {
+  "k": "lines",
+  "dw": 12,
+  "dh": 16,
+  "mw": 8,
+  "mh": 6,
+  "label": "TODAY, I AM GOING TO:",
+  "bullet": "circle",
+  "sub": true
+ },
+ "end_of_day_check|three kind options": {
+  "k": "lines",
+  "dw": 14,
+  "dh": 8,
+  "mw": 10,
+  "mh": 4,
+  "label": "END-OF-DAY",
+  "bullet": "check",
+  "labels": [
+   "ROCKED IT",
+   "SATISFACTORY",
+   "BETTER DAYS ARE COMING"
+  ]
+ },
+ "end_of_day_check|pre-sleep ritual line": {
+  "k": "field",
+  "dw": 23,
+  "dh": 3,
+  "mw": 10,
+  "mh": 2,
+  "label": "PRE-SLEEP RITUAL(S)",
+  "pos": "left",
+  "end": "DONE ☐"
+ },
+ "feelings_check|row of 5 emotion faces + other": {
+  "k": "faces",
+  "dw": 24,
+  "dh": 3,
+  "mw": 10,
+  "mh": 3,
+  "n": 5,
+  "label": "HOW I'M FEELING",
+  "labels": [
+   "HAPPY",
+   "EXCITED",
+   "LOVED",
+   "STRESSED",
+   "TIRED"
+  ]
+ },
+ "gratitude|boxed list": {
+  "k": "box",
+  "dw": 16,
+  "dh": 8,
+  "mw": 8,
+  "mh": 4,
+  "label": "I'M GRATEFUL FOR",
+  "dash": 3
+ },
+ "gratitude|tick-box checklist": {
+  "k": "lines",
+  "dw": 10,
+  "dh": 9,
+  "mw": 6,
+  "mh": 4,
+  "label": "GRATEFUL FOR",
+  "bullet": "check",
+  "labels": [
+   "Food",
+   "Water",
+   "Clothing",
+   "Bed",
+   "Shelter"
+  ],
+  "rowH": 1
+ },
+ "gratitude|numbered lines": {
+  "k": "lines",
+  "dw": 23,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "label": "THIS EVENING I FEEL GRATEFUL FOR...",
+  "bullet": "num"
+ },
+ "highlight_of_day|boxed": {
+  "k": "box",
+  "dw": 16,
+  "dh": 4,
+  "mw": 8,
+  "mh": 3,
+  "label": "HIGHLIGHT OF THE DAY:"
+ },
+ "highlight_of_day|one line": {
+  "k": "field",
+  "dw": 22,
+  "dh": 3,
+  "mw": 8,
+  "mh": 2,
+  "label": "TODAY'S HIGHLIGHT",
+  "pos": "above",
+  "hint": "big or small"
+ },
+ "identity_statement|prompted open box": {
+  "k": "box",
+  "dw": 14,
+  "dh": 7,
+  "mw": 8,
+  "mh": 4,
+  "label": "IDENTITY STATEMENT",
+  "hint": "I am the type of person that..."
+ },
+ "improve_next|ruled lines": {
+  "k": "lines",
+  "dw": 24,
+  "dh": 6,
+  "mw": 10,
+  "mh": 4,
+  "label": "WHAT WILL YOU CONTINUE OR CHANGE?",
+  "bullet": "none"
+ },
+ "improve_next|checkbox rows": {
+  "k": "lines",
+  "dw": 14,
+  "dh": 8,
+  "mw": 8,
+  "mh": 4,
+  "label": "HOW I'LL IMPROVE NEXT WEEK",
+  "bullet": "check"
+ },
+ "improve_next|open box": {
+  "k": "box",
+  "dw": 24,
+  "dh": 6,
+  "mw": 10,
+  "mh": 4,
+  "label": "WHAT ACTIONS CAN I TAKE TO MAKE NEXT WEEK BETTER?"
+ },
+ "improve_next|two-column went well | improve": {
+  "k": "table",
+  "dw": 24,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "heads": [
+   "WHAT WENT WELL TODAY?",
+   "HOW CAN I IMPROVE TOMORROW?"
+  ],
+  "cols": [
+   0.5,
+   0.5
+  ],
+  "open": true
+ },
+ "leave_behind|boxed dash list (leave behind)": {
+  "k": "box",
+  "dw": 12,
+  "dh": 8,
+  "mw": 8,
+  "mh": 4,
+  "label": "I WANT TO LEAVE BEHIND",
+  "dash": 3
+ },
+ "lessons_learned|checkbox / numbered lines": {
+  "k": "lines",
+  "dw": 14,
+  "dh": 8,
+  "mw": 8,
+  "mh": 4,
+  "label": "LESSONS LEARNED THIS WEEK",
+  "bullet": "check"
+ },
+ "lessons_learned|open box": {
+  "k": "box",
+  "dw": 24,
+  "dh": 7,
+  "mw": 10,
+  "mh": 4,
+  "label": "WEEKLY INSIGHTS",
+  "fill": true
+ },
+ "life_area_goals|6 shaded boxes in 2x3 (personal, career, ...)": {
+  "k": "cells",
+  "dw": 26,
+  "dh": 13,
+  "mw": 14,
+  "mh": 8,
+  "cols": 2,
+  "rows": 3,
+  "labels": [
+   "PERSONAL",
+   "CAREER",
+   "RELATIONSHIPS",
+   "HEALTH & FITNESS",
+   "SPIRITUAL",
+   "FINANCIAL"
+  ],
+  "fill": true
+ },
+ "mood_impact|3-column positive / neutral / negative box": {
+  "k": "table",
+  "dw": 22,
+  "dh": 16,
+  "mw": 14,
+  "mh": 8,
+  "heads": [
+   "POSITIVE",
+   "NEUTRAL",
+   "NEGATIVE"
+  ],
+  "cols": [
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "open": true,
+  "title": "WHAT IMPACTED YOUR MOOD?",
+  "faces": true
+ },
+ "priority_review|score / percent field": {
+  "k": "lines",
+  "dw": 24,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "label": "HOW FAR DID YOU GET ON YOUR WEEKLY PRIORITIES?",
+  "bullet": "none",
+  "end": "%"
+ },
+ "resistance_check|ANT / resistance prompts": {
+  "k": "lines",
+  "dw": 23,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "label": "WHAT ANT(S) SHOWED UP TODAY?",
+  "bullet": "none",
+  "labels": [
+   "",
+   "Replacement PET(s):"
+  ]
+ },
+ "review_prompts|prompt + open space": {
+  "k": "box",
+  "dw": 24,
+  "dh": 8,
+  "mw": 10,
+  "mh": 4,
+  "label": "PROMPT / QUESTION",
+  "hint": "write the question you want to answer",
+  "plain": true
+ },
+ "review_prompts|prompt + ruled lines": {
+  "k": "lines",
+  "dw": 24,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "label": "PROMPT / QUESTION",
+  "bullet": "none"
+ },
+ "review_prompts|two-column prompt": {
+  "k": "table",
+  "dw": 24,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "heads": [
+   "WHAT HABITS ARE GETTING EASIER?",
+   "WHAT DID I STRUGGLE WITH?"
+  ],
+  "cols": [
+   0.5,
+   0.5
+  ],
+  "open": true
+ },
+ "reward|weekly reward + when box": {
+  "k": "field",
+  "dw": 20,
+  "dh": 3,
+  "mw": 10,
+  "mh": 2,
+  "label": "WEEKLY REWARD",
+  "pos": "left",
+  "end": "WHEN ☐"
+ },
+ "tomorrow_first_step|labelled dotted line": {
+  "k": "field",
+  "dw": 24,
+  "dh": 2,
+  "mw": 10,
+  "mh": 2,
+  "label": "TOMORROW'S FIRST STEP:",
+  "pos": "left",
+  "dotted": true
+ },
+ "wins|numbered lines": {
+  "k": "lines",
+  "dw": 23,
+  "dh": 8,
+  "mw": 12,
+  "mh": 4,
+  "label": "MY TOP 3 WINS",
+  "bullet": "num"
+ },
+ "wins|checkbox rows": {
+  "k": "lines",
+  "dw": 14,
+  "dh": 8,
+  "mw": 8,
+  "mh": 4,
+  "label": "THIS WEEK'S WINS",
+  "bullet": "check"
+ },
+ "wins|open / tinted box": {
+  "k": "box",
+  "dw": 23,
+  "dh": 5,
+  "mw": 10,
+  "mh": 3,
+  "label": "TODAY'S WIN (BIG OR SMALL)",
+  "fill": true
+ },
+ "brain_dump|open box with label": {
+  "k": "box",
+  "dw": 16,
+  "dh": 8,
+  "mw": 8,
+  "mh": 4,
+  "label": "BRAIN DUMP",
+  "hint": "no sorting, no judging"
+ },
+ "brain_dump|ruled lines": {
+  "k": "lines",
+  "dw": 22,
+  "dh": 14,
+  "mw": 10,
+  "mh": 4,
+  "label": "NOTES / BRAIN RELEASE",
+  "bullet": "none"
+ },
+ "notes|boxed area": {
+  "k": "box",
+  "dw": 14,
+  "dh": 8,
+  "mw": 6,
+  "mh": 3,
+  "label": "NOTES"
+ },
+ "notes|ruled page / lines": {
+  "k": "lines",
+  "dw": 26,
+  "dh": 36,
+  "mw": 10,
+  "mh": 6,
+  "label": "NOTES",
+  "bullet": "none",
+  "rowH": 2
+ },
+ "notes|dotted free space": {
+  "k": "dots",
+  "dw": 20,
+  "dh": 10,
+  "mw": 6,
+  "mh": 4,
+  "label": "FREE SPACE"
+ },
+ "notes|unlined area": {
+  "k": "box",
+  "dw": 24,
+  "dh": 8,
+  "mw": 8,
+  "mh": 3,
+  "label": "",
+  "plain": true,
+  "dashed": true
+ },
+ "banner|colour label tab": {
+  "k": "pill",
+  "dw": 8,
+  "dh": 2,
+  "mw": 4,
+  "mh": 2,
+  "text": "LABEL"
+ },
+ "color_key|3-part colour key (priorities / appointments / to buy)": {
+  "k": "legend",
+  "dw": 26,
+  "dh": 2,
+  "mw": 14,
+  "mh": 2,
+  "items": [
+   "TOP PRIORITIES",
+   "APPOINTMENTS",
+   "TO BUY"
+  ]
+ }
+}
