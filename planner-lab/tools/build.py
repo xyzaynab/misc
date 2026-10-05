@@ -40,8 +40,7 @@ for n in sorted(ENTRIES):
         x0, y0, x1, y1 = box
         Image.open(f"{ROOT}/{info['path']}").convert('RGB').crop((max(0,x0),max(0,y0),min(im.width,x1),min(im.height,y1))).save(f"{ROOT}/{rel}")
         if el in T.VERIFIED_HOB: ho, hn = T.VERIFIED_HOB[el]; hob = (ho, hn + ' (verified from your Hobonichi photos)')
-        elif d['hobonichi_overlap'] == 'none': hob = ('none', 'Not seen on the daily or weekly spreads you supplied; other Hobonichi pages not checked.')
-        else: hob = (d['hobonichi_overlap'], d['hobonichi_note'] + ' (unverified: general knowledge)')
+        else: hob = ('none', 'Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.')
         vg, matched = VG.group(el, vname)
         if not matched: ungrouped.add((el, vname))
         v = dict(id=vid, source_image=info['path'], crop_path=rel, crop_box=list(box),
