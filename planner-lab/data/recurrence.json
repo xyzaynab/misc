@@ -1,0 +1,6019 @@
+{
+ "meta": {
+  "unit": "(product_group, page_type)",
+  "examples_counted": {
+   "weekly": 9,
+   "daily": 11
+  },
+  "examples_total": 20,
+  "tier_rule": "Core: in >=50% of that page type's examples; Common: 25-49%; Niche: <25%. Overall tier = best of the two page types.",
+  "caveat": "Many source images are marketing shots showing only part of a page, so every count is a floor.",
+  "units": {
+   "weekly": [
+    "dashboard-weekly [12.jpg, 15.jpg]",
+    "growth-journal [7.jpg]",
+    "habit-ant-journal [24.webp]",
+    "mood-planner-wk49 [2.jpg, 3.jpg]",
+    "standalone-14 [14.jpg]",
+    "standalone-4 [4.jpg]",
+    "standalone-6 [6.png]",
+    "standalone-9 [9.jpg]",
+    "threekin-weekly-pad [11.jpg]"
+   ],
+   "daily": [
+    "growth-journal [8.jpg]",
+    "habit-ant-journal [23.jpg]",
+    "one-three-five-daily-book [18.jpg, 19.jpg]",
+    "standalone-13 [13.jpg]",
+    "standalone-16 [16.jpg]",
+    "standalone-17 [17.jpg]",
+    "standalone-20 [20.jpg]",
+    "standalone-21 [21.png]",
+    "standalone-22 [22.jpg]",
+    "templatables-adhd-daily-pad [5.jpg]",
+    "threekin-daily-pad [10.jpg]"
+   ]
+  }
+ },
+ "elements": {
+  "date_header": {
+   "label": "Date header",
+   "zone": "header",
+   "counts": {
+    "weekly": {
+     "n": 2,
+     "of": 9,
+     "pct": 22,
+     "units": [
+      "growth-journal [7.jpg]",
+      "standalone-9 [9.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 7,
+     "of": 11,
+     "pct": 64,
+     "units": [
+      "growth-journal [8.jpg]",
+      "habit-ant-journal [23.jpg]",
+      "standalone-16 [16.jpg]",
+      "standalone-17 [17.jpg]",
+      "standalone-21 [21.png]",
+      "standalone-22 [22.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": "Core",
+    "overall": "Core"
+   },
+   "overall": {
+    "n": 9,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "date write-in line",
+     "example_variant_names": [
+      "\"Date: / / \" write-in",
+      "date + weekday letters write-in",
+      "date line with slashes",
+      "handwritten date + weekday in brackets",
+      "title left + date write-in",
+      "title left + date write-in with slashes",
+      "title left, date write-in, day circles right",
+      "weekday name left + date write-in with year right"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "growth-journal [7.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 7,
+       "of": 11,
+       "units": [
+        "growth-journal [8.jpg]",
+        "habit-ant-journal [23.jpg]",
+        "standalone-16 [16.jpg]",
+        "standalone-17 [17.jpg]",
+        "standalone-21 [21.png]",
+        "standalone-22 [22.jpg]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 8,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Core"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "stacked DD / MM / YY boxes",
+     "example_variant_names": [
+      "stacked DD / MM / YY boxes"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "standalone-9 [9.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "full",
+    "note": "Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": true,
+    "user_pages_variant_ids": [
+     "e26_04",
+     "e25_01",
+     "e25_07"
+    ]
+   },
+   "commentary": {
+    "purpose": "Says which day a page belongs to.",
+    "best": "date write-in line",
+    "pros": "One line; findable later.",
+    "cons": "Needs writing every page.",
+    "adhd": "Cheap anchor; no decision needed.",
+    "sensory": "Fixed, quiet position.",
+    "home": "either",
+    "home_note": "Hobonichi prints a full date box. In the notebook keep it to one small line, or skip it on daily pages that pair with the Hobonichi date."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "week_header": {
+   "label": "Week header (date range / week number)",
+   "zone": "header",
+   "counts": {
+    "weekly": {
+     "n": 6,
+     "of": 9,
+     "pct": 67,
+     "units": [
+      "dashboard-weekly [12.jpg, 15.jpg]",
+      "mood-planner-wk49 [2.jpg, 3.jpg]",
+      "standalone-14 [14.jpg]",
+      "standalone-4 [4.jpg]",
+      "standalone-9 [9.jpg]",
+      "threekin-weekly-pad [11.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Core",
+    "daily": null,
+    "overall": "Core"
+   },
+   "overall": {
+    "n": 6,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "title + write-in date",
+     "example_variant_names": [
+      "title left + date write-in right",
+      "week-of line + centred title",
+      "week-of write-in line"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 3,
+       "of": 9,
+       "units": [
+        "dashboard-weekly [12.jpg, 15.jpg]",
+        "standalone-4 [4.jpg]",
+        "threekin-weekly-pad [11.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": "Common",
+      "daily": null
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "title only",
+     "example_variant_names": [
+      "\"WEEK n PLANNING\" title with rule",
+      "title only, no date"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 2,
+       "of": 9,
+       "units": [
+        "standalone-14 [14.jpg]",
+        "standalone-9 [9.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "printed date range + week number",
+     "example_variant_names": [
+      "date range + week number + year, rule under",
+      "month/month + week number + year, no rule"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "full",
+    "note": "Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": true,
+    "user_pages_variant_ids": [
+     "e26_01"
+    ]
+   },
+   "commentary": {
+    "purpose": "Names the week (range and number).",
+    "best": "custom: printed-style date range + week number",
+    "pros": "Makes a spread findable; set once per week.",
+    "cons": "Weekly numbers are fiddly to track by hand.",
+    "adhd": "Once-a-week task, low load.",
+    "sensory": "Quiet.",
+    "home": "either",
+    "home_note": "Hobonichi prints the month banner and week number. Notebook needs only a date range line."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "focus_theme": {
+   "label": "Weekly/daily focus, theme or intention",
+   "zone": "header",
+   "counts": {
+    "weekly": {
+     "n": 3,
+     "of": 9,
+     "pct": 33,
+     "units": [
+      "dashboard-weekly [12.jpg, 15.jpg]",
+      "standalone-9 [9.jpg]",
+      "threekin-weekly-pad [11.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "habit-ant-journal [23.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Common",
+    "daily": "Niche",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 4,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "short write-in line",
+     "example_variant_names": [
+      "focus word line",
+      "weekly focus line",
+      "weekly intention: 2 ruled lines",
+      "weekly theme line"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 3,
+       "of": 9,
+       "units": [
+        "dashboard-weekly [12.jpg, 15.jpg]",
+        "standalone-9 [9.jpg]",
+        "threekin-weekly-pad [11.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": "Common",
+      "daily": null
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "sentence starter / frame",
+     "example_variant_names": [
+      "sentence frame: this week will be ___ because ___",
+      "sentence starter: today will be great because..."
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "dashboard-weekly [12.jpg, 15.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "boxed goal line",
+     "example_variant_names": [
+      "goal-for-the-week boxed line"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "threekin-weekly-pad [11.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "One short intention or theme for the week or day.",
+    "best": "short write-in line",
+    "pros": "One line, no layout, easy re-entry cue after a gap.",
+    "cons": "Can feel vague if left unprompted.",
+    "adhd": "Strong: one phrase, no sorting.",
+    "sensory": "Minimal.",
+    "home": "notebook",
+    "home_note": "Hobonichi has no field for it."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "quote_mantra": {
+   "label": "Quote or mantra",
+   "zone": "header",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "mood-planner-wk49 [2.jpg, 3.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 3,
+     "of": 11,
+     "pct": 27,
+     "units": [
+      "growth-journal [8.jpg]",
+      "habit-ant-journal [23.jpg]",
+      "standalone-16 [16.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 4,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "printed quote",
+     "example_variant_names": [
+      "grey quote band",
+      "quote between two rules"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "banner affirmation",
+     "example_variant_names": [
+      "pill banner with affirmation",
+      "tinted title bar + one-line mantra"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "growth-journal [8.jpg]",
+        "standalone-16 [16.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "full",
+    "note": "A printed quote sits at the foot of each daily page (not user-written). (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": true,
+    "user_pages_variant_ids": [
+     "e25_04"
+    ]
+   },
+   "commentary": {
+    "purpose": "A printed or written affirmation at the top.",
+    "best": "banner affirmation",
+    "pros": "Sets tone; optional.",
+    "cons": "Copying a quote daily becomes a chore.",
+    "adhd": "Optional only; fine to leave blank.",
+    "sensory": "Calm if short.",
+    "home": "either",
+    "home_note": "Hobonichi already prints a daily quote. Skip in the notebook unless you want your own mantra."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 2,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "month_year_strip": {
+   "label": "Month / day-of-month strip",
+   "zone": "header",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 3,
+     "of": 11,
+     "pct": 27,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "standalone-20 [20.jpg]",
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 3,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "colour-coded strip",
+     "example_variant_names": [
+      "colour months + 1-31 + mood face",
+      "colour-banded month names over 1-31 boxes"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]",
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "plain strip",
+     "example_variant_names": [
+      "plain thin month names + 1-31 (no colour)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-20 [20.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "partial",
+    "note": "Coloured month tabs on the page edge; no day-of-month strip. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": true,
+    "user_pages_variant_ids": [
+     "e25_06"
+    ]
+   },
+   "commentary": {
+    "purpose": "Month/day orientation strip.",
+    "best": "plain strip",
+    "pros": "Orients the page.",
+    "cons": "Fiddly to draw; the colour-coded versions are noisy.",
+    "adhd": "One mark a day; low value.",
+    "sensory": "Plain is calm; colour versions are busy.",
+    "home": "hobonichi",
+    "home_note": "Hobonichi has month tabs and calendars. Skip in the notebook."
+   },
+   "input_style": "color-in",
+   "draw_effort": 2,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "weekday_circles": {
+   "label": "Weekday circles (M T W T F S S)",
+   "zone": "header",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 3,
+     "of": 11,
+     "pct": 27,
+     "units": [
+      "standalone-16 [16.jpg]",
+      "standalone-17 [17.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 3,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "letters over circles",
+     "example_variant_names": [
+      "M T W T F S S with circles (tick today)",
+      "S M T W T F S with circles"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "standalone-16 [16.jpg]",
+        "standalone-17 [17.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "letters only",
+     "example_variant_names": [
+      "weekday letters row"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Row of day letters to tick the current day.",
+    "best": "letters over circles",
+    "pros": "Handy on undated pages.",
+    "cons": "Needless if you write the date.",
+    "adhd": "Easy one-tap marker.",
+    "sensory": "Tiny and regular.",
+    "home": "either",
+    "home_note": "Optional on daily pages; skip if the date is already written."
+   },
+   "input_style": "color-in",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "top_priorities": {
+   "label": "Top priorities (1-3)",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 5,
+     "of": 9,
+     "pct": 56,
+     "units": [
+      "dashboard-weekly [12.jpg, 15.jpg]",
+      "habit-ant-journal [24.webp]",
+      "standalone-14 [14.jpg]",
+      "standalone-4 [4.jpg]",
+      "standalone-9 [9.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 8,
+     "of": 11,
+     "pct": 73,
+     "units": [
+      "habit-ant-journal [23.jpg]",
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "standalone-13 [13.jpg]",
+      "standalone-16 [16.jpg]",
+      "standalone-20 [20.jpg]",
+      "standalone-22 [22.jpg]",
+      "templatables-adhd-daily-pad [5.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Core",
+    "daily": "Core",
+    "overall": "Core"
+   },
+   "overall": {
+    "n": 13,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "3 numbered lines",
+     "example_variant_names": [
+      "3 numbered dots + reward line",
+      "3 numbered inline write-in lines",
+      "3 numbered ruled lines",
+      "3 numbered tags + write-in lines (solid)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "dashboard-weekly [12.jpg, 15.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 4,
+       "of": 11,
+       "units": [
+        "standalone-13 [13.jpg]",
+        "standalone-20 [20.jpg]",
+        "standalone-22 [22.jpg]",
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 5,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Common"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "3 checkbox lines",
+     "example_variant_names": [
+      "3 checkbox lines (colour-tag label)",
+      "3 circle lines",
+      "next-week priorities: 3 checkbox rows (one starred)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "standalone-14 [14.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "standalone-16 [16.jpg]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "5+ numbered / bullet lines",
+     "example_variant_names": [
+      "5 numbered lines (non-negotiables)",
+      "6 bullet lines with tick-off"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 2,
+       "of": 9,
+       "units": [
+        "standalone-4 [4.jpg]",
+        "standalone-9 [9.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 3
+    },
+    {
+     "variant_group": "two open columns",
+     "example_variant_names": [
+      "two open columns: priority tasks | play activities"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 4
+    },
+    {
+     "variant_group": "panel with rating icons + reward",
+     "example_variant_names": [
+      "yellow panel: 3 lines + rating icons + reward"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 5
+    },
+    {
+     "variant_group": "priority box with time",
+     "example_variant_names": [
+      "daily priority task box with time field"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 6
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Caps the day or week to a few must-dos.",
+    "best": "3 numbered lines",
+    "pros": "Most common element; one tiny list; blank lines are neutral.",
+    "cons": "Three can still feel like three failures if all slip.",
+    "adhd": "Core ADHD tool: small cap limits overwhelm.",
+    "sensory": "Few lines, low density.",
+    "home": "notebook",
+    "home_note": "Hobonichi has no priority field."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 2,
+   "skip_tolerance": "high"
+  },
+  "focus_box": {
+   "label": "Single focus box",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 4,
+     "of": 11,
+     "pct": 36,
+     "units": [
+      "growth-journal [8.jpg]",
+      "standalone-16 [16.jpg]",
+      "standalone-21 [21.png]",
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 4,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "single titled box",
+     "example_variant_names": [
+      "memo box with goal for the day",
+      "single tinted focus box",
+      "tinted-title box (looking forward to)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 3,
+       "of": 11,
+       "units": [
+        "growth-journal [8.jpg]",
+        "standalone-21 [21.png]",
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": null,
+      "daily": "Common"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "dotted goal lines",
+     "example_variant_names": [
+      "goals: 2 dotted lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-16 [16.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "A single \"if only one thing\" box.",
+    "best": "single titled box",
+    "pros": "One box, one item.",
+    "cons": "Overlaps with top priorities.",
+    "adhd": "Very friendly: choose one thing.",
+    "sensory": "One open box with clear edge.",
+    "home": "notebook",
+    "home_note": "Use instead of, not as well as, top priorities if you want even less."
+   },
+   "input_style": "free space",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "todo_list": {
+   "label": "To-do list",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 3,
+     "of": 9,
+     "pct": 33,
+     "units": [
+      "mood-planner-wk49 [2.jpg, 3.jpg]",
+      "standalone-4 [4.jpg]",
+      "standalone-9 [9.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 5,
+     "of": 11,
+     "pct": 45,
+     "units": [
+      "habit-ant-journal [23.jpg]",
+      "standalone-16 [16.jpg]",
+      "standalone-20 [20.jpg]",
+      "standalone-21 [21.png]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Common",
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 8,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "bullet / numbered lines",
+     "example_variant_names": [
+      "\"lists\": circle bullets on ruled lines",
+      "10 bullet lines, dotted, in a tall box",
+      "10 numbered lines (stackables, after the top 5)",
+      "weekly to-do with circle bullets (7 rows)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 3,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]",
+        "standalone-4 [4.jpg]",
+        "standalone-9 [9.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-20 [20.jpg]"
+       ]
+      }
+     },
+     "total": 4,
+     "tier": {
+      "weekly": "Common",
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "checkbox / circle lines",
+     "example_variant_names": [
+      "2-column box checklist (8 rows)",
+      "8 checkbox lines (colour-tag label)",
+      "9 circle lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 3,
+       "of": 11,
+       "units": [
+        "standalone-16 [16.jpg]",
+        "standalone-21 [21.png]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": null,
+      "daily": "Common"
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "routine lines + completed boxes",
+     "example_variant_names": [
+      "numbered morning routine lines + completed boxes"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Open task list.",
+    "best": "checkbox / circle lines",
+    "pros": "Familiar; flexible length.",
+    "cons": "Long lists breed overwhelm; unticked boxes pile up.",
+    "adhd": "Keep to 5-6 lines so it never feels endless.",
+    "sensory": "Many repeated lines add noise; use fewer lines.",
+    "home": "notebook",
+    "home_note": "Hobonichi grid works for lists but has no printed boxes."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 2,
+   "daily_effort": 2,
+   "skip_tolerance": "medium"
+  },
+  "secondary_tasks": {
+   "label": "Secondary tasks (do later / other / everything else)",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 4,
+     "of": 11,
+     "pct": 36,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "standalone-13 [13.jpg]",
+      "standalone-22 [22.jpg]",
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 4,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "checkbox / dotted lines",
+     "example_variant_names": [
+      "5 checkbox lines (other tasks)",
+      "do later: 4 dotted lines + reward",
+      "everything else: 4 dotted lines + reward",
+      "purple \"everything else\": 5 checkboxes + reward"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 3,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]",
+        "standalone-22 [22.jpg]",
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": null,
+      "daily": "Common"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "optional numbered extras",
+     "example_variant_names": [
+      "optional extras 04-07 (outlined numbers)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-13 [13.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "tasks with sub-steps + icons",
+     "example_variant_names": [
+      "pink \"do later\": 3 tasks each with sub-steps + icons"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Parking spot for lower-priority tasks.",
+    "best": "checkbox / dotted lines",
+    "pros": "Keeps priorities short.",
+    "cons": "Easy to ignore.",
+    "adhd": "Helpful: lets you note it without committing.",
+    "sensory": "Clearly separate from priorities.",
+    "home": "notebook",
+    "home_note": "No Hobonichi equivalent."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 2,
+   "daily_effort": 2,
+   "skip_tolerance": "high"
+  },
+  "weekly_goals": {
+   "label": "Weekly goals",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 2,
+     "of": 9,
+     "pct": 22,
+     "units": [
+      "growth-journal [7.jpg]",
+      "mood-planner-wk49 [2.jpg, 3.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": null,
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "3 numbered lines",
+     "example_variant_names": [
+      "3 numbered goals, dotted lines in a box",
+      "3 numbered lines for next two weeks"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 2,
+       "of": 9,
+       "units": [
+        "growth-journal [7.jpg]",
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "A few goals for the week.",
+    "best": "3 numbered lines",
+    "pros": "Set once; short.",
+    "cons": "Overlaps top priorities.",
+    "adhd": "Low daily load.",
+    "sensory": "Few lines.",
+    "home": "notebook",
+    "home_note": "Use the weekly top-priorities list instead."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "focus_areas": {
+   "label": "Focus-area task lists",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "dashboard-weekly [12.jpg, 15.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": null,
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "titled column: header box + 8 circle-bullet lines (first 3 shaded)",
+     "example_variant_names": [
+      "titled column: header box + 8 circle-bullet lines (first 3 shaded)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "dashboard-weekly [12.jpg, 15.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Per-project or per-area task lists.",
+    "best": "titled column with circle lines",
+    "pros": "Good for projects.",
+    "cons": "Many columns to maintain; heavy to draw.",
+    "adhd": "Too much for most days.",
+    "sensory": "Dense grid.",
+    "home": "notebook",
+    "home_note": "Only if you run several projects; otherwise skip."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 3,
+   "daily_effort": 2,
+   "skip_tolerance": "medium"
+  },
+  "one_three_five": {
+   "label": "1-3-5 task ladder (1 focus, 3 support, 5 tiny)",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "1 focus task",
+     "example_variant_names": [
+      "1 focus task + 5 \"start with\" steps with timers"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "3 support tasks",
+     "example_variant_names": [
+      "3 support tasks with icon rating strips"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "5 tiny wins",
+     "example_variant_names": [
+      "5 tiny wins with icon strips"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Structured daily ladder: 1 big, 3 medium, 5 small.",
+    "best": "custom: a lighter version (1 focus + 3 + 5 plain lines, no icons)",
+    "pros": "Clear structure; tiny wins.",
+    "cons": "Heavy to draw and fill; empty looks like failure.",
+    "adhd": "Powerful if it fits you; high risk of guilt on skipped days.",
+    "sensory": "Icon strips are very busy.",
+    "home": "notebook",
+    "home_note": "Try a stripped-down version as an optional add-on."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 3,
+   "daily_effort": 3,
+   "skip_tolerance": "low"
+  },
+  "not_to_do": {
+   "label": "Not-to-do list",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "4 grey checkbox lines",
+     "example_variant_names": [
+      "4 grey checkbox lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "List of things to avoid today.",
+    "best": "4 grey checkbox lines",
+    "pros": "Optional guard-rail.",
+    "cons": "Rarely used.",
+    "adhd": "Optional.",
+    "sensory": "Small box.",
+    "home": "notebook",
+    "home_note": "Optional add-on."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "event_organizer": {
+   "label": "Event / date table",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "standalone-4 [4.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": null,
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "two-column event / date table",
+     "example_variant_names": [
+      "two-column event / date table"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "standalone-4 [4.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Event/date table for the week.",
+    "best": "custom: two-column event | date",
+    "pros": "Easy to scan.",
+    "cons": "Duplicates a calendar.",
+    "adhd": "Easy; only fills when needed.",
+    "sensory": "Clear grid.",
+    "home": "hobonichi",
+    "home_note": "Hobonichi week columns and calendar already carry events."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 2,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "appointments": {
+   "label": "Appointments (time + write-in)",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 3,
+     "of": 11,
+     "pct": 27,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "standalone-17 [17.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 3,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "time + write-in lines",
+     "example_variant_names": [
+      "4 lines with time colon marks",
+      "tinted panel: time column + write-in lines",
+      "tinted time + write-in (4 rows)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 3,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]",
+        "standalone-17 [17.jpg]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": null,
+      "daily": "Common"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "full",
+    "note": "Time axis covers timed appointments. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Timed appointments.",
+    "best": "time + write-in lines",
+    "pros": "Short, only when needed.",
+    "cons": "Duplicates the hour axis.",
+    "adhd": "Quick.",
+    "sensory": "Few lines.",
+    "home": "hobonichi",
+    "home_note": "The Hobonichi time axis covers it."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "to_buy": {
+   "label": "Shopping / to-buy list",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 3,
+     "of": 11,
+     "pct": 27,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "standalone-17 [17.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 3,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "checkbox list",
+     "example_variant_names": [
+      "8 checkbox lines (colour-tag label)",
+      "tinted panel with 5 checkboxes",
+      "tinted panel: checkbox lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 3,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]",
+        "standalone-17 [17.jpg]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": null,
+      "daily": "Common"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Shopping list.",
+    "best": "checkbox list",
+    "pros": "Handy capture list.",
+    "cons": "Needs its own space.",
+    "adhd": "Easy.",
+    "sensory": "Simple.",
+    "home": "notebook",
+    "home_note": "Good dotted-page filler if wanted."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "people_to_connect": {
+   "label": "People to connect with",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "habit-ant-journal [24.webp]"
+     ]
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "short list",
+     "example_variant_names": [
+      "3 numbered lines (nurture key relationships)",
+      "8 icon-bulleted lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "People to message or call.",
+    "best": "short list",
+    "pros": "Names lower the barrier to reaching out.",
+    "cons": "Icon bullets are fiddly.",
+    "adhd": "Nice optional prompt.",
+    "sensory": "Plain lines are enough.",
+    "home": "notebook",
+    "home_note": "Optional add-on."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 2,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "sorted_task_hub": {
+   "label": "Sorted task hub (call / email / text / do soon ...)",
+   "zone": "plan",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "standalone-17 [17.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "3x4 colour-coded zones of 5 checkbox lines each",
+     "example_variant_names": [
+      "3x4 colour-coded zones of 5 checkbox lines each"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-17 [17.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Twelve sorted zones (call, email, text, ...).",
+    "best": "custom: 4 zones max",
+    "pros": "Reduces \"what do I do next\".",
+    "cons": "Twelve zones is too much to draw or fill.",
+    "adhd": "High payoff but heavy; only if you like sorting.",
+    "sensory": "Colour grid is busy.",
+    "home": "notebook",
+    "home_note": "Optional; consider a 4-zone mini version."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 3,
+   "daily_effort": 3,
+   "skip_tolerance": "low"
+  },
+  "week_at_a_glance": {
+   "label": "Week at a glance (7-day layout)",
+   "zone": "schedule",
+   "counts": {
+    "weekly": {
+     "n": 4,
+     "of": 9,
+     "pct": 44,
+     "units": [
+      "dashboard-weekly [12.jpg, 15.jpg]",
+      "mood-planner-wk49 [2.jpg, 3.jpg]",
+      "standalone-9 [9.jpg]",
+      "threekin-weekly-pad [11.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Common",
+    "daily": null,
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 4,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "day boxes with header bars",
+     "example_variant_names": [
+      "3 + 4 day boxes with tinted header bars",
+      "7 equal day boxes with shaded header"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 2,
+       "of": 9,
+       "units": [
+        "dashboard-weekly [12.jpg, 15.jpg]",
+        "standalone-9 [9.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "stacked day rows",
+     "example_variant_names": [
+      "7 day rows (Mon-Fri full width, Sat/Sun split)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "ruled day columns",
+     "example_variant_names": [
+      "5 day columns + 2 weekend columns, ruled with date flag"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "threekin-weekly-pad [11.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "full",
+    "note": "Weekly spread is seven vertical day columns, each with a 24-hour axis. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": true,
+    "user_pages_variant_ids": [
+     "e26_06"
+    ]
+   },
+   "commentary": {
+    "purpose": "Whole week visible at once.",
+    "best": "day boxes with header bars",
+    "pros": "Clear day edges; whole week at a glance.",
+    "cons": "Seven boxes take much space.",
+    "adhd": "Blank days read as neutral if no hours are printed.",
+    "sensory": "Even boxes are calm.",
+    "home": "hobonichi",
+    "home_note": "Hobonichi weekly columns already do this with a 24-hour axis. Notebook could use only one-line day highlights."
+   },
+   "input_style": "free space",
+   "draw_effort": 2,
+   "daily_effort": 2,
+   "skip_tolerance": "medium"
+  },
+  "time_blocks": {
+   "label": "Time blocks / hourly schedule",
+   "zone": "schedule",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 4,
+     "of": 11,
+     "pct": 36,
+     "units": [
+      "standalone-13 [13.jpg]",
+      "standalone-20 [20.jpg]",
+      "standalone-22 [22.jpg]",
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 4,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "time | task | tick table",
+     "example_variant_names": [
+      "time | task | tick columns (~20 rows)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "vertical checkbox column",
+     "example_variant_names": [
+      "vertical checkbox column + dotted lines (start .. optional mid-break)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-13 [13.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "hour-ruled lines",
+     "example_variant_names": [
+      "hour labels (7-9) + ruled lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-20 [20.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 3
+    },
+    {
+     "variant_group": "flexible time column",
+     "example_variant_names": [
+      "flexible plan: time column left, tasks right"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-22 [22.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 4
+    }
+   ],
+   "hobonichi": {
+    "overlap": "full",
+    "note": "Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": true,
+    "user_pages_variant_ids": [
+     "e26_05",
+     "e25_02"
+    ]
+   },
+   "commentary": {
+    "purpose": "Plan or log the day by time.",
+    "best": "custom: hobonichi hour axis",
+    "pros": "Strong for time awareness.",
+    "cons": "Blank hours feel like failure; heavy daily upkeep.",
+    "adhd": "Risky for guilt when a day is skipped.",
+    "sensory": "Ruled lines calm; multi-column dense.",
+    "home": "hobonichi",
+    "home_note": "Verified: your Hobonichi has the hour axis. Do not redraw it."
+   },
+   "input_style": "time grid",
+   "draw_effort": 2,
+   "daily_effort": 3,
+   "skip_tolerance": "low"
+  },
+  "day_part_schedule": {
+   "label": "Day-part schedule (morning / afternoon / evening)",
+   "zone": "schedule",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "standalone-16 [16.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "morning / afternoon / evening / night circle lines",
+     "example_variant_names": [
+      "morning / afternoon / evening / night circle lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-16 [16.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Soft morning/afternoon/evening split.",
+    "best": "morning / afternoon / evening / night circle lines",
+    "pros": "Gentler than hourly.",
+    "cons": "Still a lot of lines.",
+    "adhd": "Better than hourly if you want some structure.",
+    "sensory": "Section rules help.",
+    "home": "either",
+    "home_note": "Optional in the notebook if you want a softer structure than the Hobonichi axis."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 2,
+   "daily_effort": 2,
+   "skip_tolerance": "medium"
+  },
+  "time_record": {
+   "label": "Time record (colour-in timeline)",
+   "zone": "schedule",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "standalone-21 [21.png]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "vertical 24h timeline coloured with highlighters",
+     "example_variant_names": [
+      "vertical 24h timeline coloured with highlighters"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-21 [21.png]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "full",
+    "note": "The same 24-hour axis over a grid works for colouring time after the fact. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Colour in what actually happened.",
+    "best": "vertical 24h timeline coloured with highlighters",
+    "pros": "No pre-planning pressure.",
+    "cons": "Needs highlighters.",
+    "adhd": "Reflective, can be skipped.",
+    "sensory": "Pastel bars; pen shading works.",
+    "home": "hobonichi",
+    "home_note": "Use the Hobonichi hour axis for this."
+   },
+   "input_style": "color-in",
+   "draw_effort": 2,
+   "daily_effort": 2,
+   "skip_tolerance": "medium"
+  },
+  "monthly_calendar": {
+   "label": "Mini monthly calendar",
+   "zone": "schedule",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "mood-planner-wk49 [2.jpg, 3.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": null,
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "stacked mini month grids (Mon start)",
+     "example_variant_names": [
+      "stacked mini month grids (Mon start)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "full",
+    "note": "Mini month grid with the current week/day circled on both the daily and weekly pages. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": true,
+    "user_pages_variant_ids": [
+     "e26_02",
+     "e25_05"
+    ]
+   },
+   "commentary": {
+    "purpose": "Mini month for reference.",
+    "best": "stacked mini month grids (Mon start)",
+    "pros": "Reference only.",
+    "cons": "Fiddly to draw.",
+    "adhd": "No daily load.",
+    "sensory": "Small text.",
+    "home": "hobonichi",
+    "home_note": "Hobonichi prints it. Skip."
+   },
+   "input_style": "free space",
+   "draw_effort": 3,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "clock_planner": {
+   "label": "Clock face planner",
+   "zone": "schedule",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "12-hour clock face to shade",
+     "example_variant_names": [
+      "12-hour clock face to shade"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Clock face to shade blocks.",
+    "best": "12-hour clock face to shade",
+    "pros": "Visual time awareness.",
+    "cons": "Round shape breaks the grid.",
+    "adhd": "Helps some, fiddly for others.",
+    "sensory": "Curved shape.",
+    "home": "notebook",
+    "home_note": "Optional curiosity."
+   },
+   "input_style": "color-in",
+   "draw_effort": 2,
+   "daily_effort": 2,
+   "skip_tolerance": "medium"
+  },
+  "habit_tracker": {
+   "label": "Habit tracker",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 6,
+     "of": 9,
+     "pct": 67,
+     "units": [
+      "dashboard-weekly [12.jpg, 15.jpg]",
+      "habit-ant-journal [24.webp]",
+      "standalone-14 [14.jpg]",
+      "standalone-4 [4.jpg]",
+      "standalone-9 [9.jpg]",
+      "threekin-weekly-pad [11.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "habit-ant-journal [23.jpg]",
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Core",
+    "daily": "Niche",
+    "overall": "Core"
+   },
+   "overall": {
+    "n": 8,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "named rows x 7-day checkboxes",
+     "example_variant_names": [
+      "habit lines x 3x7 rounded checkboxes",
+      "named habit rows x 7 day checkboxes",
+      "named rows x M-S boxes",
+      "numbered habit lines x M-S shaded cells (5 rows)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 4,
+       "of": 9,
+       "units": [
+        "dashboard-weekly [12.jpg, 15.jpg]",
+        "standalone-14 [14.jpg]",
+        "standalone-4 [4.jpg]",
+        "threekin-weekly-pad [11.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 4,
+     "tier": {
+      "weekly": "Common",
+      "daily": null
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "named rows x 7-day dots / circles",
+     "example_variant_names": [
+      "9 primary habits x 7 circles + total",
+      "habit lines x 7 dots in a tinted panel"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 2,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]",
+        "standalone-9 [9.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "secondary habits + reflection line",
+     "example_variant_names": [
+      "checklist: 9 primary + 4 secondary habits in tinted panels",
+      "secondary habits: 4 rows with reflection line"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 3
+    },
+    {
+     "variant_group": "rows with tick column (no days)",
+     "example_variant_names": [
+      "4 ruled rows + tick column"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 4
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Weekly habit grid.",
+    "best": "named rows x 7-day checkboxes",
+    "pros": "Most common tracker; weekly scope limits guilt.",
+    "cons": "Streak gaps can feel punishing; too many habits.",
+    "adhd": "Keep to 2-3 habits.",
+    "sensory": "Regular grid; fewer rows quieter.",
+    "home": "notebook",
+    "home_note": "Hobonichi has none printed."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 2,
+   "daily_effort": 2,
+   "skip_tolerance": "medium"
+  },
+  "mood_tracker": {
+   "label": "Mood tracker",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "mood-planner-wk49 [2.jpg, 3.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "standalone-22 [22.jpg]",
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 3,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "circular wheel",
+     "example_variant_names": [
+      "circular mood wheel, 7 days x AM/PM"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "colour boxes + faces",
+     "example_variant_names": [
+      "6 colour boxes with face scale"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "single face",
+     "example_variant_names": [
+      "single face to colour in"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 3
+    },
+    {
+     "variant_group": "open band",
+     "example_variant_names": [
+      "open tinted band (mood & energy check-in)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-22 [22.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 4
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Quick mood record.",
+    "best": "single face",
+    "pros": "One mark, no writing.",
+    "cons": "Wheel is heavy.",
+    "adhd": "Very friendly if one face.",
+    "sensory": "Faces are quiet.",
+    "home": "notebook",
+    "home_note": "Optional add-on."
+   },
+   "input_style": "scale/rating",
+   "draw_effort": 2,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "energy_tracker": {
+   "label": "Energy / battery tracker",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "segment bar to colour",
+     "example_variant_names": [
+      "5-segment bar to colour in"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "notes by time of day",
+     "example_variant_names": [
+      "energy & patterns: morning/afternoon/evening + timed notes"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Daily energy level.",
+    "best": "segment bar to colour",
+    "pros": "One quick shaded bar.",
+    "cons": "Needs a convention.",
+    "adhd": "Informs pacing.",
+    "sensory": "Simple.",
+    "home": "notebook",
+    "home_note": "Optional add-on."
+   },
+   "input_style": "scale/rating",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "productivity_rating": {
+   "label": "Productivity rating",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "standalone-21 [21.png]",
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "open score row",
+     "example_variant_names": [
+      "labelled open row"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "total time",
+     "example_variant_names": [
+      "total time (hh:mm) over a heart"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-21 [21.png]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Self-rating of the day.",
+    "best": "open score row",
+    "pros": "Fast.",
+    "cons": "Can feed guilt.",
+    "adhd": "Skip unless helpful.",
+    "sensory": "Simple.",
+    "home": "notebook",
+    "home_note": "Skip by default."
+   },
+   "input_style": "scale/rating",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "water_tracker": {
+   "label": "Water tracker",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "standalone-16 [16.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "row of drops / circles",
+     "example_variant_names": [
+      "row of 8 circles",
+      "row of 8 drops to colour"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "standalone-16 [16.jpg]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Water intake drops.",
+    "best": "row of drops / circles",
+    "pros": "Easy wins.",
+    "cons": "Takes a little drawing.",
+    "adhd": "Fun and fast.",
+    "sensory": "Quiet row.",
+    "home": "notebook",
+    "home_note": "Optional add-on."
+   },
+   "input_style": "color-in",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "meals": {
+   "label": "Meals",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 3,
+     "of": 11,
+     "pct": 27,
+     "units": [
+      "standalone-16 [16.jpg]",
+      "templatables-adhd-daily-pad [5.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 3,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "per-meal fields",
+     "example_variant_names": [
+      "4 labelled lines (breakfast to snacks)",
+      "4-column bordered meal box"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "templatables-adhd-daily-pad [5.jpg]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "single line",
+     "example_variant_names": [
+      "single dotted line"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-16 [16.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Meal log.",
+    "best": "per-meal fields",
+    "pros": "Handy for eating/med reminders.",
+    "cons": "Another upkeep item.",
+    "adhd": "Useful if meals slip; otherwise skip.",
+    "sensory": "Simple lines.",
+    "home": "notebook",
+    "home_note": "Optional."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 2,
+   "skip_tolerance": "high"
+  },
+  "weather": {
+   "label": "Weather",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "row of 5 weather icons",
+     "example_variant_names": [
+      "row of 5 weather icons"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Weather icon row.",
+    "best": "row of 5 weather icons",
+    "pros": "Trivial.",
+    "cons": "Low value.",
+    "adhd": "Skip.",
+    "sensory": "Quiet.",
+    "home": "notebook",
+    "home_note": "Skip."
+   },
+   "input_style": "scale/rating",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "self_care_grid": {
+   "label": "Self-care icon grid",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "4x3 icon grid with corner checkboxes",
+     "example_variant_names": [
+      "4x3 icon grid with corner checkboxes"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Icon grid of self-care checks.",
+    "best": "custom: 4 icons max",
+    "pros": "Quick ticks.",
+    "cons": "Drawing 12 icons is heavy.",
+    "adhd": "Strong prompt; too many icons overwhelm.",
+    "sensory": "Busy.",
+    "home": "notebook",
+    "home_note": "Optional; limit to 3-4 items."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 3,
+   "daily_effort": 2,
+   "skip_tolerance": "high"
+  },
+  "health_fitness": {
+   "label": "Health / fitness / body check",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "short checkbox list",
+     "example_variant_names": [
+      "2 checkboxes + steps line",
+      "body check: water / meal / meds / move"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Short health/meds checklist.",
+    "best": "short checkbox list",
+    "pros": "Visible reminder for meds, water, move.",
+    "cons": "Extra upkeep.",
+    "adhd": "Good if it includes meds.",
+    "sensory": "Small boxes.",
+    "home": "notebook",
+    "home_note": "Optional add-on."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 1,
+   "daily_effort": 2,
+   "skip_tolerance": "high"
+  },
+  "sleep_times": {
+   "label": "Sleep / wake times",
+   "zone": "track",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "habit-ant-journal [23.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "slept / woke tinted boxes",
+     "example_variant_names": [
+      "slept / woke tinted boxes"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Sleep and wake times.",
+    "best": "custom: two small boxes",
+    "pros": "Two numbers.",
+    "cons": "Another daily field.",
+    "adhd": "Optional.",
+    "sensory": "Tiny.",
+    "home": "either",
+    "home_note": "Hobonichi axis can show sleep; skip in notebook."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "gratitude": {
+   "label": "Gratitude",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "mood-planner-wk49 [2.jpg, 3.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "growth-journal [8.jpg]",
+      "habit-ant-journal [23.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 3,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "boxed list",
+     "example_variant_names": [
+      "boxed dash list (grateful for)",
+      "dotted box: grateful-for half"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "growth-journal [8.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "tick-box checklist",
+     "example_variant_names": [
+      "tick-box checklist (food, water, clothing, bed, shelter)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "numbered lines",
+     "example_variant_names": [
+      "3 numbered lines (this evening)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Gratitude prompt.",
+    "best": "boxed list",
+    "pros": "Fast positive.",
+    "cons": "Can feel forced.",
+    "adhd": "Optional.",
+    "sensory": "Open lines calm.",
+    "home": "notebook",
+    "home_note": "Optional."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "wins": {
+   "label": "Wins / small wins",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 4,
+     "of": 9,
+     "pct": 44,
+     "units": [
+      "growth-journal [7.jpg]",
+      "habit-ant-journal [24.webp]",
+      "standalone-14 [14.jpg]",
+      "standalone-6 [6.png]"
+     ]
+    },
+    "daily": {
+     "n": 3,
+     "of": 11,
+     "pct": 27,
+     "units": [
+      "growth-journal [8.jpg]",
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "standalone-17 [17.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Common",
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 7,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "numbered lines",
+     "example_variant_names": [
+      "3 numbered lines (proud of)",
+      "3 numbered ruled lines (proud of)",
+      "3 numbered ruled lines (top 3 wins)",
+      "3 ruled lines under a kind prompt"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 3,
+       "of": 9,
+       "units": [
+        "growth-journal [7.jpg]",
+        "habit-ant-journal [24.webp]",
+        "standalone-6 [6.png]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "growth-journal [8.jpg]"
+       ]
+      }
+     },
+     "total": 4,
+     "tier": {
+      "weekly": "Common",
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "open / tinted box",
+     "example_variant_names": [
+      "open box (today's wins)",
+      "tinted box (today's win, big or small)",
+      "tinted box (today's win; \"this proves my superpower of\")"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]",
+        "standalone-17 [17.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "checkbox rows",
+     "example_variant_names": [
+      "3 checkbox rows under pill label"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "standalone-14 [14.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Record small wins.",
+    "best": "numbered lines",
+    "pros": "Counters \"I did nothing\".",
+    "cons": "Hard when mood is low.",
+    "adhd": "Excellent anti-guilt tool; keep to 1-3.",
+    "sensory": "Few lines.",
+    "home": "notebook",
+    "home_note": "No Hobonichi field."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "highlight_of_day": {
+   "label": "Highlight / happy moment",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "mood-planner-wk49 [2.jpg, 3.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "standalone-16 [16.jpg]",
+      "standalone-22 [22.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 3,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "boxed",
+     "example_variant_names": [
+      "dotted box: happy-moment half",
+      "rounded box (highlight of the day)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-22 [22.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "one line",
+     "example_variant_names": [
+      "highlight: big or small, one line"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-16 [16.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "One highlight.",
+    "best": "boxed",
+    "pros": "One line.",
+    "cons": "Overlaps wins.",
+    "adhd": "Easy to finish.",
+    "sensory": "One box.",
+    "home": "notebook",
+    "home_note": "Pick either this or wins."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "lessons_learned": {
+   "label": "Lessons learned",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 3,
+     "of": 9,
+     "pct": 33,
+     "units": [
+      "growth-journal [7.jpg]",
+      "habit-ant-journal [24.webp]",
+      "standalone-14 [14.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "standalone-22 [22.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Common",
+    "daily": "Niche",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 5,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "open box",
+     "example_variant_names": [
+      "large open box (what did I learn about focus/energy)",
+      "rounded box (one lesson or insight)",
+      "weekly insights: tinted open box"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]"
+       ]
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]",
+        "standalone-22 [22.jpg]"
+       ]
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "checkbox / numbered lines",
+     "example_variant_names": [
+      "3 checkbox rows under pill label",
+      "3 numbered ruled lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 2,
+       "of": 9,
+       "units": [
+        "growth-journal [7.jpg]",
+        "standalone-14 [14.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Lessons from the week.",
+    "best": "open box",
+    "pros": "Reflective.",
+    "cons": "Can feel evaluative.",
+    "adhd": "Weekly only.",
+    "sensory": "Open box.",
+    "home": "notebook",
+    "home_note": "Weekly add-on."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "review_prompts": {
+   "label": "Review prompts (open questions)",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 4,
+     "of": 9,
+     "pct": 44,
+     "units": [
+      "growth-journal [7.jpg]",
+      "habit-ant-journal [24.webp]",
+      "mood-planner-wk49 [2.jpg, 3.jpg]",
+      "standalone-6 [6.png]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Common",
+    "daily": null,
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 4,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "prompt + open space",
+     "example_variant_names": [
+      "open prompt: what am I looking forward to",
+      "prompt + open ruled box (centred)",
+      "single open question over blank space"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 3,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]",
+        "mood-planner-wk49 [2.jpg, 3.jpg]",
+        "standalone-6 [6.png]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": "Common",
+      "daily": null
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "prompt + ruled lines",
+     "example_variant_names": [
+      "3 numbered ruled lines (challenges faced)",
+      "prompt + 3 ruled lines (time saved)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 2,
+       "of": 9,
+       "units": [
+        "growth-journal [7.jpg]",
+        "standalone-6 [6.png]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "two-column prompt",
+     "example_variant_names": [
+      "two-column: habits getting easier | what I struggled with"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Open reflection questions.",
+    "best": "prompt + open space",
+    "pros": "Flexible.",
+    "cons": "Many prompts = heavy.",
+    "adhd": "One prompt a week is plenty.",
+    "sensory": "Prompt text adds reading.",
+    "home": "notebook",
+    "home_note": "Weekly add-on."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 2,
+   "daily_effort": 2,
+   "skip_tolerance": "medium"
+  },
+  "priority_review": {
+   "label": "Priority progress review",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 2,
+     "of": 9,
+     "pct": 22,
+     "units": [
+      "habit-ant-journal [24.webp]",
+      "standalone-6 [6.png]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": null,
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "score / percent field",
+     "example_variant_names": [
+      "3 lines + % column",
+      "consistency score 0-5"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 2,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]",
+        "standalone-6 [6.png]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Score progress on priorities.",
+    "best": "score / percent field",
+    "pros": "Fast.",
+    "cons": "Can feel judgemental.",
+    "adhd": "Optional.",
+    "sensory": "Simple.",
+    "home": "notebook",
+    "home_note": "Optional."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "improve_next": {
+   "label": "Improve / continue-or-change next",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 3,
+     "of": 9,
+     "pct": 33,
+     "units": [
+      "habit-ant-journal [24.webp]",
+      "standalone-14 [14.jpg]",
+      "standalone-6 [6.png]"
+     ]
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "habit-ant-journal [23.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Common",
+    "daily": "Niche",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 4,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "ruled lines",
+     "example_variant_names": [
+      "continue / change: 2 ruled lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "standalone-6 [6.png]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "checkbox rows",
+     "example_variant_names": [
+      "3 checkbox rows under pill label"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "standalone-14 [14.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "open box",
+     "example_variant_names": [
+      "open box: actions to make next week better"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 3
+    },
+    {
+     "variant_group": "two-column went well | improve",
+     "example_variant_names": [
+      "two-column: went well | improve tomorrow"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 4
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "What to continue or change.",
+    "best": "ruled lines",
+    "pros": "Forward-looking.",
+    "cons": "Another prompt.",
+    "adhd": "Good if framed kindly.",
+    "sensory": "Few lines.",
+    "home": "notebook",
+    "home_note": "Weekly add-on."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "challenge": {
+   "label": "Intentional challenge",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 2,
+     "of": 9,
+     "pct": 22,
+     "units": [
+      "growth-journal [7.jpg]",
+      "habit-ant-journal [24.webp]"
+     ]
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "habit-ant-journal [23.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 3,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "tinted header + one-line challenge box",
+     "example_variant_names": [
+      "tinted header + one-line challenge box"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "growth-journal [7.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "small / big challenge lines",
+     "example_variant_names": [
+      "small / big challenge lines"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "4 secondary-habit options with circle + how line",
+     "example_variant_names": [
+      "4 secondary-habit options with circle + how line"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 3
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Optional challenge.",
+    "best": "single challenge box",
+    "pros": "Low load.",
+    "cons": "Optional.",
+    "adhd": "Optional.",
+    "sensory": "One box.",
+    "home": "notebook",
+    "home_note": "Optional add-on."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "end_of_day_check": {
+   "label": "End-of-day assessment",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "habit-ant-journal [23.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "three kind options",
+     "example_variant_names": [
+      "3 kind options (rocked it / satisfactory / better days are coming)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "pre-sleep ritual line",
+     "example_variant_names": [
+      "pre-sleep ritual line + done box"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Quick end-of-day check.",
+    "best": "three kind options",
+    "pros": "No failure option.",
+    "cons": "Extra field.",
+    "adhd": "Very friendly.",
+    "sensory": "Three boxes.",
+    "home": "notebook",
+    "home_note": "Optional add-on."
+   },
+   "input_style": "checkbox",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "reward": {
+   "label": "Reward",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "habit-ant-journal [24.webp]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": null,
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "weekly reward + when box",
+     "example_variant_names": [
+      "weekly reward + when box"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Pair a task with a reward.",
+    "best": "custom: one reward line",
+    "pros": "Motivation.",
+    "cons": "Easy to forget.",
+    "adhd": "Strong motivator if concrete.",
+    "sensory": "One line.",
+    "home": "notebook",
+    "home_note": "Good light add-on."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "tomorrow_first_step": {
+   "label": "Tomorrow's first step",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "labelled dotted line",
+     "example_variant_names": [
+      "labelled dotted line"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "One next step for tomorrow.",
+    "best": "labelled dotted line",
+    "pros": "Great restart cue after a gap.",
+    "cons": "Easy to forget.",
+    "adhd": "Strong re-entry help.",
+    "sensory": "One line.",
+    "home": "notebook",
+    "home_note": "Optional add-on."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "feelings_check": {
+   "label": "Feelings check-in",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "growth-journal [8.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "row of 5 emotion faces + other",
+     "example_variant_names": [
+      "row of 5 emotion faces + other"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "growth-journal [8.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Name an emotion.",
+    "best": "custom: row of 5 faces",
+    "pros": "One mark.",
+    "cons": "Needs faces.",
+    "adhd": "Quick.",
+    "sensory": "Quiet.",
+    "home": "notebook",
+    "home_note": "Optional."
+   },
+   "input_style": "scale/rating",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "leave_behind": {
+   "label": "Leave behind / release",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "growth-journal [8.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "boxed dash list (leave behind)",
+     "example_variant_names": [
+      "boxed dash list (leave behind)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "growth-journal [8.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Release a worry.",
+    "best": "boxed list",
+    "pros": "Vent space.",
+    "cons": "Optional.",
+    "adhd": "Optional.",
+    "sensory": "Small box.",
+    "home": "notebook",
+    "home_note": "Optional."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "identity_statement": {
+   "label": "Identity / intention statement",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "growth-journal [8.jpg]",
+      "habit-ant-journal [23.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "prompted open box",
+     "example_variant_names": [
+      "open prompt: I am the type of person that...",
+      "tinted-title box (how I want to show up)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "growth-journal [8.jpg]",
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Short statement of intent.",
+    "best": "prompted open box",
+    "pros": "Sets tone.",
+    "cons": "Abstract.",
+    "adhd": "Optional.",
+    "sensory": "Simple.",
+    "home": "notebook",
+    "home_note": "Optional."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "mood_impact": {
+   "label": "What impacted my mood",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "mood-planner-wk49 [2.jpg, 3.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": null,
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "3-column positive / neutral / negative box",
+     "example_variant_names": [
+      "3-column positive / neutral / negative box"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Sort what affected mood.",
+    "best": "3-column box",
+    "pros": "Pattern finding.",
+    "cons": "Needs weekly time.",
+    "adhd": "Weekly only.",
+    "sensory": "Clear edges.",
+    "home": "notebook",
+    "home_note": "Optional weekly."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 2,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "life_area_goals": {
+   "label": "Goals by life area",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "standalone-14 [14.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": null,
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "6 shaded boxes in 2x3 (personal, career, ...)",
+     "example_variant_names": [
+      "6 shaded boxes in 2x3 (personal, career, ...)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "standalone-14 [14.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Goals by life area.",
+    "best": "custom: 2-3 boxes",
+    "pros": "Balanced view.",
+    "cons": "Six areas overwhelm.",
+    "adhd": "Pick 2-3.",
+    "sensory": "Boxed layout.",
+    "home": "notebook",
+    "home_note": "Optional."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 2,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "resistance_check": {
+   "label": "Resistance / ANTs-and-PETs check",
+   "zone": "reflect",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "habit-ant-journal [24.webp]"
+     ]
+    },
+    "daily": {
+     "n": 1,
+     "of": 11,
+     "pct": 9,
+     "units": [
+      "habit-ant-journal [23.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "ANT / resistance prompts",
+     "example_variant_names": [
+      "resistance prompt + 0-5 scale + ANT/PET prompts",
+      "weekly ANTs prompt"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "habit-ant-journal [24.webp]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "habit-ant-journal [23.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Therapy-style prompts.",
+    "best": "ANT / resistance prompts",
+    "pros": "Insight.",
+    "cons": "Heavy.",
+    "adhd": "Too heavy for daily.",
+    "sensory": "Text-dense.",
+    "home": "notebook",
+    "home_note": "Skip unless you want it."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 2,
+   "daily_effort": 2,
+   "skip_tolerance": "medium"
+  },
+  "brain_dump": {
+   "label": "Brain dump",
+   "zone": "capture",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 4,
+     "of": 11,
+     "pct": 36,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "standalone-16 [16.jpg]",
+      "standalone-17 [17.jpg]",
+      "templatables-adhd-daily-pad [5.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Common",
+    "overall": "Common"
+   },
+   "overall": {
+    "n": 4,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "open box with label",
+     "example_variant_names": [
+      "bordered free box with header bar",
+      "labelled open box (dump everything, no judging)",
+      "large tinted box",
+      "random thoughts: open box"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 3,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]",
+        "standalone-17 [17.jpg]",
+        "templatables-adhd-daily-pad [5.jpg]"
+       ]
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": null,
+      "daily": "Common"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "ruled lines",
+     "example_variant_names": [
+      "ruled lines (notes / brain release)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-16 [16.jpg]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    }
+   ],
+   "hobonichi": {
+    "overlap": "partial",
+    "note": "The open grid doubles as a brain dump. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Unsorted dump space.",
+    "best": "open box with label",
+    "pros": "No sorting, forgiving.",
+    "cons": "Open space can feel empty.",
+    "adhd": "Great for racing thoughts.",
+    "sensory": "Open box.",
+    "home": "notebook",
+    "home_note": "Hobonichi grid also works, but dotted notebook is ideal."
+   },
+   "input_style": "free space",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "notes": {
+   "label": "Notes / free space",
+   "zone": "capture",
+   "counts": {
+    "weekly": {
+     "n": 4,
+     "of": 9,
+     "pct": 44,
+     "units": [
+      "dashboard-weekly [12.jpg, 15.jpg]",
+      "growth-journal [7.jpg]",
+      "mood-planner-wk49 [2.jpg, 3.jpg]",
+      "threekin-weekly-pad [11.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 6,
+     "of": 11,
+     "pct": 55,
+     "units": [
+      "one-three-five-daily-book [18.jpg, 19.jpg]",
+      "standalone-13 [13.jpg]",
+      "standalone-20 [20.jpg]",
+      "standalone-21 [21.png]",
+      "standalone-22 [22.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": "Common",
+    "daily": "Core",
+    "overall": "Core"
+   },
+   "overall": {
+    "n": 10,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "dotted free space",
+     "example_variant_names": [
+      "dotted free area with hour labels",
+      "dotted free space",
+      "dotted free space with prompt arrow",
+      "dotted free space with prompts"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 2,
+       "of": 9,
+       "units": [
+        "dashboard-weekly [12.jpg, 15.jpg]",
+        "threekin-weekly-pad [11.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "standalone-13 [13.jpg]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 4,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    },
+    {
+     "variant_group": "ruled page / lines",
+     "example_variant_names": [
+      "3 ruled lines",
+      "full ruled page",
+      "full ruled right page"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "growth-journal [7.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "standalone-20 [20.jpg]",
+        "standalone-22 [22.jpg]"
+       ]
+      }
+     },
+     "total": 3,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 2
+    },
+    {
+     "variant_group": "boxed area",
+     "example_variant_names": [
+      "boxed notes area",
+      "small boxed notes"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "mood-planner-wk49 [2.jpg, 3.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "one-three-five-daily-book [18.jpg, 19.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": "Niche",
+      "daily": "Niche"
+     },
+     "rank_in_element": 3
+    },
+    {
+     "variant_group": "unlined area",
+     "example_variant_names": [
+      "free handwriting reflection area"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 1,
+       "of": 11,
+       "units": [
+        "standalone-21 [21.png]"
+       ]
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 4
+    }
+   ],
+   "hobonichi": {
+    "overlap": "full",
+    "note": "Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)",
+    "on_users_hobonichi_pages": true,
+    "user_pages_variant_ids": [
+     "e26_03",
+     "e25_03"
+    ]
+   },
+   "commentary": {
+    "purpose": "Free space.",
+    "best": "dotted free space",
+    "pros": "Zero pressure; dots suit your notebook.",
+    "cons": "None.",
+    "adhd": "Excellent: no demands.",
+    "sensory": "Dots are calm.",
+    "home": "either",
+    "home_note": "Hobonichi has grid notes; the notebook dots are the natural free-write space."
+   },
+   "input_style": "free space",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "color_key": {
+   "label": "Colour key / legend",
+   "zone": "decorative",
+   "counts": {
+    "weekly": {
+     "n": 1,
+     "of": 9,
+     "pct": 11,
+     "units": [
+      "threekin-weekly-pad [11.jpg]"
+     ]
+    },
+    "daily": {
+     "n": 0,
+     "of": 11,
+     "pct": 0,
+     "units": []
+    }
+   },
+   "tier": {
+    "weekly": "Niche",
+    "daily": null,
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 1,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "3-part colour key (priorities / appointments / to buy)",
+     "example_variant_names": [
+      "3-part colour key (priorities / appointments / to buy)"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 1,
+       "of": 9,
+       "units": [
+        "threekin-weekly-pad [11.jpg]"
+       ]
+      },
+      "daily": {
+       "n": 0,
+       "of": 11,
+       "units": []
+      }
+     },
+     "total": 1,
+     "tier": {
+      "weekly": "Niche",
+      "daily": null
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Colour legend.",
+    "best": "custom: 3 colours max",
+    "pros": "Cuts decisions.",
+    "cons": "Needs pens.",
+    "adhd": "Good if pens are at hand.",
+    "sensory": "Keep to 2-3.",
+    "home": "notebook",
+    "home_note": "Optional."
+   },
+   "input_style": "color-in",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  },
+  "banner": {
+   "label": "Banner / ribbon label",
+   "zone": "decorative",
+   "counts": {
+    "weekly": {
+     "n": 0,
+     "of": 9,
+     "pct": 0,
+     "units": []
+    },
+    "daily": {
+     "n": 2,
+     "of": 11,
+     "pct": 18,
+     "units": [
+      "standalone-13 [13.jpg]",
+      "threekin-daily-pad [10.jpg]"
+     ]
+    }
+   },
+   "tier": {
+    "weekly": null,
+    "daily": "Niche",
+    "overall": "Niche"
+   },
+   "overall": {
+    "n": 2,
+    "of": 20
+   },
+   "variants": [
+    {
+     "variant_group": "colour label tab",
+     "example_variant_names": [
+      "rounded colour label tags",
+      "tinted title tab"
+     ],
+     "counts": {
+      "weekly": {
+       "n": 0,
+       "of": 9,
+       "units": []
+      },
+      "daily": {
+       "n": 2,
+       "of": 11,
+       "units": [
+        "standalone-13 [13.jpg]",
+        "threekin-daily-pad [10.jpg]"
+       ]
+      }
+     },
+     "total": 2,
+     "tier": {
+      "weekly": null,
+      "daily": "Niche"
+     },
+     "rank_in_element": 1
+    }
+   ],
+   "hobonichi": {
+    "overlap": "none",
+    "note": "Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.",
+    "on_users_hobonichi_pages": false,
+    "user_pages_variant_ids": []
+   },
+   "commentary": {
+    "purpose": "Label/ribbon style.",
+    "best": "colour label tab",
+    "pros": "Visual structure.",
+    "cons": "Cosmetic.",
+    "adhd": "Optional.",
+    "sensory": "Keep subtle.",
+    "home": "notebook",
+    "home_note": "Optional."
+   },
+   "input_style": "write-in line",
+   "draw_effort": 1,
+   "daily_effort": 1,
+   "skip_tolerance": "high"
+  }
+ }
+}

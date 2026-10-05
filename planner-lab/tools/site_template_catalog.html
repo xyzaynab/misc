@@ -1,0 +1,295 @@
+<title>Planner Element Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one calm column on warm near-black; summary bar and recurrence on top, then the collapsible page type > zone > element > variant tree. */
+:root{
+  --bg:#1b1917; --surface:#252220; --surface-2:#2e2a27; --line:#413b36;
+  --fg:#f0e9dc; --muted:#b9ae9e; --paper:#ece3d1; --paper-ink:#2a2622;
+  --lav:#b9a7e6; --lav-dim:#3a3351; --blue:#8fb4e3; --blue-dim:#2a3a50; --teal:#7cc4b8; --teal-dim:#25413d;
+  --ui:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--ui);font-size:17px;line-height:1.55;padding-inline:clamp(16px,4vw,40px);padding-block:28px 64px}
+.wrap{max-width:1240px;margin-inline:auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font-size:clamp(1.7rem,4vw,2.3rem);line-height:1.15}
+h2{font-size:1.35rem}
+p{margin:0}
+.lede{color:var(--muted);max-width:68ch}
+.mono{font-family:var(--mono)}
+.stats{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:14px}
+.stat{font-family:var(--mono);font-size:14px;border:1px solid var(--line);border-radius:8px;padding:5px 10px;color:var(--muted)}
+.stat b{color:var(--fg);font-weight:500}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+a{color:var(--blue)}
+/* summary bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-block:10px}
+.bar .count{font-family:var(--mono);font-size:15px;margin-right:auto}
+.btn{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:15px}
+.btn:hover{border-color:var(--lav)}
+/* filters */
+details.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details.panel>summary{padding:14px 16px;cursor:pointer;font-weight:700}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px 24px;padding:4px 16px 18px}
+.fgroup{min-width:0}
+.flabel{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{background:transparent;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:15px;cursor:pointer}
+.pill:hover{border-color:var(--lav)}
+.pill[aria-pressed="true"]{background:var(--lav-dim);border-color:var(--lav)}
+.search{width:100%;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;color:var(--fg);padding:8px 12px;font:inherit}
+.search::placeholder{color:var(--muted)}
+/* badges */
+.tier,.chip{font-family:var(--mono);font-size:13px;line-height:1.3;border-radius:6px;padding:2px 8px;white-space:nowrap;display:inline-block}
+.tier.core{background:var(--teal);color:#10201d;font-weight:500}
+.tier.common{border:1px solid var(--lav);color:var(--lav)}
+.tier.niche{border:1px solid var(--line);color:var(--muted)}
+.chip{border:1px solid var(--line);color:var(--muted)}
+.chip.full{border-color:var(--blue);color:var(--blue)}
+.chip.partial{border-color:var(--lav);color:var(--lav)}
+.chip.mine{background:var(--teal-dim);border-color:var(--teal);color:var(--teal)}
+/* most recurring */
+.rec{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px}
+.reccol{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+.reccol h3{font-size:1.1rem;margin-bottom:4px}
+.reccol .sub{color:var(--muted);font-size:15px;margin-bottom:12px}
+.tiertitle{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+.recrow{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(60px,1fr) auto;align-items:center;gap:10px;width:100%;text-align:left;background:transparent;border:0;border-radius:8px;padding:7px 8px;cursor:pointer}
+.recrow:hover{background:var(--surface-2)}
+.recname{min-width:0;overflow-wrap:anywhere}
+.track{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.fill{height:100%;background:var(--teal)}
+.common .fill{background:var(--lav)}
+.recnum{font-family:var(--mono);font-size:14px;color:var(--muted);white-space:nowrap}
+/* tree */
+details.lvl{border-left:2px solid var(--line);margin-left:0}
+details.l1{border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+details.l2{margin:6px 0 6px 12px;border-left:2px solid var(--lav-dim);padding-left:12px}
+details.l3{scroll-margin-top:84px;margin:4px 0 4px 8px;border-left:2px solid var(--blue-dim);padding-left:12px}
+summary.s{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:10px 12px;border-radius:8px}
+summary.s::-webkit-details-marker{display:none}
+summary.s::before{content:"";width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform .15s;flex:none;margin-right:4px}
+details[open]>summary.s::before{transform:rotate(45deg)}
+summary.s:hover{background:var(--surface-2)}
+.l1>summary.s{font-size:1.25rem;font-weight:700;padding:14px 16px}
+.l2>summary.s{font-size:1.1rem;font-weight:700}
+.l3>summary.s{font-size:1.02rem}
+.scount{font-family:var(--mono);font-size:14px;color:var(--muted);margin-left:auto}
+.inner{padding:2px 8px 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:14px;padding:6px 4px 10px}
+/* cards */
+.card{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.media{background:var(--paper);padding:8px;display:block;width:100%;border:0;cursor:zoom-in}
+.media img{display:block;margin-inline:auto;max-width:100%;max-height:190px;width:auto;height:auto;object-fit:contain}
+.card.zoom .media img{max-height:none;width:100%}
+.card.zoom{grid-column:1/-1}
+.cbody{padding:12px;display:flex;flex-direction:column;gap:9px;min-width:0}
+.cname{font-weight:700;line-height:1.3;overflow-wrap:anywhere}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-family:var(--mono);font-size:13.5px;margin:0}
+.meta dt{color:var(--muted)}
+.meta dd{margin:0;overflow-wrap:anywhere}
+.dots{letter-spacing:.12em;color:var(--teal)}
+details.notes>summary{cursor:pointer;color:var(--blue);font-size:15px}
+.notes p{margin-top:8px;font-size:15.5px}
+.notes b{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
+.foot{color:var(--muted);font-size:15px;max-width:76ch}
+@media (prefers-reduced-motion:reduce){summary.s::before{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Planner Element Catalog</h1>
+    <p class="lede">Every page element pulled from the example weekly and daily pages, grouped page type, zone, element, variant. Core elements come first. Your own Hobonichi pages are marked Mine.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <section aria-labelledby="rec-h">
+    <h2 id="rec-h">Most recurring</h2>
+    <p class="lede" style="margin-bottom:14px">How many example pages use each element. Core is half or more of that page type's examples, Common is a quarter to under half. Select a row to jump to its variants.</p>
+    <div class="rec" id="rec"></div>
+  </section>
+
+  <section aria-labelledby="browse-h" style="display:flex;flex-direction:column;gap:16px">
+    <h2 id="browse-h">Browse and filter</h2>
+    <details class="panel" open>
+      <summary>Filters</summary>
+      <div class="filters" id="filters"></div>
+    </details>
+    <div class="bar">
+      <span class="count" id="count" role="status" aria-live="polite"></span>
+      <button class="btn" id="expand" type="button">Expand all</button>
+      <button class="btn" id="collapse" type="button">Collapse all</button>
+      <button class="btn" id="clear" type="button">Clear filters</button>
+    </div>
+    <div id="tree" style="display:flex;flex-direction:column;gap:14px"></div>
+  </section>
+
+  <p class="foot">Efforts and notes are my judgement from the images. Footprints are approximate dots at a 5 mm pitch (portrait page 28 by 42 dots, spread 56 by 42). Hobonichi overlap is checked against your own daily and weekly spreads; anything not printed there is marked none.</p>
+</div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function(){
+const D=JSON.parse(document.getElementById('data').textContent);
+const V=D.variants, REC=D.rec, N=D.meta.n;
+const ZONES=D.meta.zones, PTS=['weekly','daily'];
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dots=n=>'●'.repeat(n)+'○'.repeat(3-n);
+const tierCls=t=>t?t.toLowerCase():'niche';
+const tierBadge=t=>'<span class="tier '+tierCls(t)+'">'+(t||'n/a')+'</span>';
+
+/* ---- stats */
+document.getElementById('stats').innerHTML=
+ '<span class="stat"><b>'+V.length+'</b> variants</span><span class="stat"><b>'+D.meta.elements+'</b> elements</span>'+
+ '<span class="stat"><b>'+N.weekly+'</b> weekly + <b>'+N.daily+'</b> daily examples</span><span class="stat"><b>'+V.filter(v=>v.own).length+'</b> from your Hobonichi</span>';
+
+/* ---- state */
+const F={pt:new Set(),zone:new Set(),tier:new Set(),input:new Set(),draw:new Set(),daily:new Set(),skip:new Set(),hob:new Set(),src:new Set(),q:''};
+const GROUPS=[{k:'pt',l:'Page type',o:PTS.map(x=>[x,cap(x)])},
+ {k:'zone',l:'Zone',o:ZONES.map(x=>[x,cap(x)])},
+ {k:'tier',l:'Tier',o:['Core','Common','Niche'].map(x=>[x,x])},
+ {k:'input',l:'Input style',o:D.meta.input_styles.map(x=>[x,x])},
+ {k:'draw',l:'Draw effort',o:[[1,'1 quick'],[2,'2'],[3,'3 slow']]},
+ {k:'daily',l:'Daily effort',o:[[1,'1 light'],[2,'2'],[3,'3 heavy']]},
+ {k:'skip',l:'Skip tolerance',o:[['high','High (forgiving)'],['medium','Medium'],['low','Low']]},
+ {k:'hob',l:'Hobonichi overlap',o:[['none','None'],['partial','Partial'],['full','Full']]},
+ {k:'src',l:'Source',o:[['example','Examples'],['mine','My Hobonichi']]}];
+const fEl=document.getElementById('filters');
+GROUPS.forEach(g=>{
+  const d=document.createElement('div');d.className='fgroup';
+  d.innerHTML='<span class="flabel" id="fl-'+g.k+'">'+g.l+'</span><div class="pills" role="group" aria-labelledby="fl-'+g.k+'"></div>';
+  const box=d.querySelector('.pills');
+  g.o.forEach(([val,lab])=>{
+    const b=document.createElement('button');b.type='button';b.className='pill';b.textContent=lab;b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',()=>{const s=F[g.k];if(s.has(val))s.delete(val);else s.add(val);b.setAttribute('aria-pressed',s.has(val));apply();});
+    b.dataset.k=g.k;b.dataset.v=val;box.appendChild(b);
+  });
+  fEl.appendChild(d);
+});
+const sd=document.createElement('div');sd.className='fgroup';
+sd.innerHTML='<label class="flabel" for="q">Search</label><input id="q" class="search" type="search" placeholder="e.g. habit, dotted, checkbox" autocomplete="off">';
+fEl.appendChild(sd);
+document.getElementById('q').addEventListener('input',e=>{F.q=e.target.value.trim().toLowerCase();apply();});
+
+/* ---- match */
+function match(v){
+  if(F.pt.size&&!F.pt.has(v.pt))return false;
+  if(F.zone.size&&!F.zone.has(v.zone))return false;
+  if(F.tier.size&&!F.tier.has(v.tier))return false;
+  if(F.input.size&&!F.input.has(v.input))return false;
+  if(F.draw.size&&!F.draw.has(v.draw))return false;
+  if(F.daily.size&&!F.daily.has(v.daily))return false;
+  if(F.skip.size&&!F.skip.has(v.skip))return false;
+  if(F.hob.size&&!F.hob.has(v.hob))return false;
+  if(F.src.size&&!F.src.has(v.own?'mine':'example'))return false;
+  if(F.q&&v.hay.indexOf(F.q)<0)return false;
+  return true;
+}
+function active(){return F.q||GROUPS.some(g=>F[g.k].size);}
+
+/* ---- card */
+function card(v){
+  const c=document.createElement('article');c.className='card';c.dataset.id=v.id;
+  const lab=(v.own?'<span class="chip mine">Mine</span>':'')+tierBadge(v.tier)+'<span class="chip '+v.hob+'">Hobonichi: '+v.hob+'</span>';
+  c.innerHTML=
+   '<button type="button" class="media" aria-label="Enlarge crop of '+esc(v.name)+'"><img alt="Crop: '+esc(v.name)+'" width="'+v.iw+'" height="'+v.ih+'" src="'+v.img+'"></button>'+
+   '<div class="cbody"><div class="cname">'+esc(v.name)+'</div><div class="badges">'+lab+'</div>'+
+   '<dl class="meta"><dt>Footprint</dt><dd>'+v.fp[0]+' × '+v.fp[1]+' dots</dd>'+
+   '<dt>Draw</dt><dd><span class="dots" aria-label="draw effort '+v.draw+' of 3">'+dots(v.draw)+'</span></dd>'+
+   '<dt>Daily</dt><dd><span class="dots" aria-label="daily effort '+v.daily+' of 3">'+dots(v.daily)+'</span></dd>'+
+   '<dt>Skip</dt><dd>'+esc(v.skip)+' tolerance</dd><dt>Input</dt><dd>'+esc(v.input)+'</dd></dl>'+
+   '<details class="notes"><summary>Notes</summary>'+
+   '<p><b>What it is</b>'+esc(v.desc)+'</p><p><b>ADHD</b>'+esc(v.adhd)+'</p><p><b>Sensory</b>'+esc(v.sens)+'</p>'+
+   '<p><b>Hobonichi</b>'+esc(v.hobnote)+'</p><p><b>Source</b>'+esc(v.src)+'</p></details></div>';
+  c.querySelector('.media').addEventListener('click',()=>c.classList.toggle('zoom'));
+  return c;
+}
+
+/* ---- tree */
+const tree=document.getElementById('tree');const groups=[];
+function mk(cls,title,extra,open){
+  const d=document.createElement('details');d.className='lvl '+cls;d.open=open;d.dataset.def=open?'1':'0';
+  d.innerHTML='<summary class="s"><span class="t">'+title+'</span>'+extra+'<span class="scount"></span></summary><div class="inner"></div>';
+  return d;
+}
+PTS.forEach(pt=>{
+  const pv=V.filter(v=>v.pt===pt);
+  const l1=mk('l1',cap(pt)+(pt==='weekly'?' spreads':' pages'),'',true);l1.dataset.pt=pt;
+  const in1=l1.querySelector('.inner');const g1={node:l1,kids:[],cards:[]};groups.push(g1);
+  ZONES.forEach(z=>{
+    const zv=pv.filter(v=>v.zone===z);if(!zv.length)return;
+    const l2=mk('l2',cap(z),'',true);const in2=l2.querySelector('.inner');const g2={node:l2,cards:[]};groups.push(g2);
+    const els=[...new Set(zv.map(v=>v.el))].sort((a,b)=>REC[b].c[pt].n-REC[a].c[pt].n||REC[a].label.localeCompare(REC[b].label));
+    els.forEach(e=>{
+      const r=REC[e], t=r.tier[pt], core=t==='Core';
+      const l3=mk('l3',esc(r.label),tierBadge(t)+'<span class="chip">in '+r.c[pt].n+' of '+r.c[pt].of+'</span>',core);
+      l3.id='el-'+pt+'-'+e;const in3=l3.querySelector('.inner');const g3={node:l3,cards:[]};groups.push(g3);
+      const grid=document.createElement('div');grid.className='grid';in3.appendChild(grid);
+      zv.filter(v=>v.el===e).sort((a,b)=>(a.own-b.own)||(a.rank-b.rank)||a.id.localeCompare(b.id)).forEach(v=>{
+        const c=card(v);grid.appendChild(c);const rec={v,node:c};g3.cards.push(rec);g2.cards.push(rec);g1.cards.push(rec);
+      });
+      in2.appendChild(l3);
+    });
+    in1.appendChild(l2);
+  });
+  tree.appendChild(l1);
+});
+const emptyMsg=document.createElement('div');emptyMsg.className='empty';emptyMsg.hidden=true;emptyMsg.textContent='No variants match these filters. Clear a filter to see more.';tree.appendChild(emptyMsg);
+
+function apply(){
+  let total=0;
+  groups.forEach(g=>{
+    let n=0;g.cards.forEach(c=>{const ok=match(c.v);c.node.hidden=!ok;if(ok)n++;});
+    g.node.hidden=n===0;
+    g.node.querySelector(':scope>summary .scount').textContent=n+(n===1?' variant':' variants');
+    if(active()){if(n>0)g.node.open=true;}else{g.node.open=g.node.dataset.def==='1';}
+  });
+  total=V.filter(match).length;
+  emptyMsg.hidden=total>0;
+  document.getElementById('count').textContent=total+' of '+V.length+' variants shown';
+}
+document.getElementById('expand').addEventListener('click',()=>groups.forEach(g=>{if(!g.node.hidden)g.node.open=true;}));
+document.getElementById('collapse').addEventListener('click',()=>groups.forEach(g=>{g.node.open=false;}));
+function clearAll(){
+  Object.keys(F).forEach(k=>{if(F[k] instanceof Set)F[k].clear();});F.q='';document.getElementById('q').value='';
+  document.querySelectorAll('.pill').forEach(b=>b.setAttribute('aria-pressed','false'));apply();
+}
+document.getElementById('clear').addEventListener('click',clearAll);
+
+/* ---- most recurring */
+const recEl=document.getElementById('rec');
+PTS.forEach(pt=>{
+  const col=document.createElement('div');col.className='reccol';
+  const list=(t)=>Object.keys(REC).filter(e=>REC[e].tier[pt]===t).sort((a,b)=>REC[b].c[pt].n-REC[a].c[pt].n||REC[a].label.localeCompare(REC[b].label));
+  let h='<h3>'+cap(pt)+'</h3><p class="sub">'+N[pt]+' example '+(pt==='weekly'?'spreads':'pages')+'</p>';
+  ['Core','Common'].forEach(t=>{
+    h+='<div class="tiertitle">'+t+'</div><div class="'+t.toLowerCase()+'">';
+    list(t).forEach(e=>{
+      const r=REC[e],n=r.c[pt].n;
+      h+='<button type="button" class="recrow" data-pt="'+pt+'" data-el="'+e+'"><span class="recname">'+esc(r.label)+(r.hob==='full'?' <span class="chip full">in Hobonichi</span>':'')+'</span>'+
+         '<span class="track" aria-hidden="true"><span class="fill" style="display:block;width:'+Math.round(100*n/N[pt])+'%"></span></span>'+
+         '<span class="recnum">'+n+' of '+N[pt]+'</span></button>';
+    });
+    h+='</div>';
+  });
+  col.innerHTML=h;recEl.appendChild(col);
+});
+recEl.addEventListener('click',e=>{
+  const b=e.target.closest('.recrow');if(!b)return;
+  if(active())clearAll();
+  const n=document.getElementById('el-'+b.dataset.pt+'-'+b.dataset.el);if(!n)return;
+  let p=n;while(p){if(p.tagName==='DETAILS')p.open=true;p=p.parentElement;}
+  n.scrollIntoView({behavior:'auto',block:'start'});
+  const s=n.querySelector('summary');if(s)s.focus({preventScroll:true});
+});
+apply();
+})();
+</script>

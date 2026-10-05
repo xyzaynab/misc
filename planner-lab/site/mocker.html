@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planner Page Mocker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: toolbar on top; element sidebar left; page canvas centre with status and inspector under it. Dark UI; the page itself can be dark or cream paper. */
+:root{
+  --bg:#1b1917; --surface:#252220; --surface-2:#2e2a27; --line:#413b36;
+  --fg:#f0e9dc; --muted:#b9ae9e;
+  --lav:#b9a7e6; --lav-dim:#3a3351; --blue:#8fb4e3; --blue-dim:#2a3a50; --teal:#7cc4b8; --teal-dim:#25413d;
+  --ui:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--ui);font-size:17px;line-height:1.5;padding-inline:clamp(12px,2.5vw,28px);padding-block:18px 56px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-size:1.5rem}
+h2{font-size:1.1rem}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.app{max-width:1500px;margin-inline:auto;display:flex;flex-direction:column;gap:14px}
+/* toolbar */
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.top h1{margin-right:auto}
+.tb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.tb .sep{width:1px;align-self:stretch;background:var(--line);margin-inline:2px}
+.btn{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:15px;white-space:nowrap}
+.btn:hover{border-color:var(--lav)}
+.btn[aria-pressed="true"],.btn.on{background:var(--lav-dim);border-color:var(--lav)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.go{background:var(--teal-dim);border-color:var(--teal)}
+.field{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:6px 10px;min-width:0}
+.lbl{font-family:var(--mono);font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.namebox{display:flex;align-items:center;gap:8px}
+.namebox input{width:min(240px,100%)}
+/* main grid */
+.main{display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:16px;align-items:start}
+.side{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;position:sticky;top:8px;max-height:calc(100vh - 16px);overflow:auto}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{background:transparent;border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:15px;cursor:pointer}
+.pill:hover{border-color:var(--lav)}
+.pill[aria-pressed="true"]{background:var(--lav-dim);border-color:var(--lav)}
+.search{width:100%;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:7px 11px}
+.tier,.chip{font-family:var(--mono);font-size:12.5px;line-height:1.3;border-radius:6px;padding:1px 7px;white-space:nowrap;display:inline-block;border:1px solid var(--line);color:var(--muted)}
+.tier.core{background:var(--teal);border-color:var(--teal);color:#10201d;font-weight:500}
+.tier.common{border-color:var(--lav);color:var(--lav)}
+.chip.full{border-color:var(--blue);color:var(--blue)}
+.chip.partial{border-color:var(--lav);color:var(--lav)}
+details.z>summary,details.e>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:6px 6px;border-radius:8px}
+details.z>summary::-webkit-details-marker,details.e>summary::-webkit-details-marker{display:none}
+details.z>summary::before,details.e>summary::before{content:"";width:7px;height:7px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);flex:none}
+details[open]>summary::before{transform:rotate(45deg)}
+details>summary:hover{background:var(--surface-2)}
+details.z>summary{font-weight:700}
+details.e{margin-left:10px}
+.ecount{margin-left:auto;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.vlist{display:flex;flex-direction:column;gap:8px;padding:4px 0 8px 10px}
+.vi{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;align-items:center;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:8px;cursor:grab;user-select:none}
+.vi:hover{border-color:var(--lav)}
+.vi .thumb{background:#ece3d1;border-radius:6px;padding:4px;display:flex;align-items:center;justify-content:center;min-height:44px}
+.vi .thumb svg{width:100%;height:auto;max-height:64px;display:block}
+.vi .nm{font-weight:700;font-size:15px;line-height:1.25;overflow-wrap:anywhere}
+.vi .meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.vi .add{margin-top:6px;padding:3px 10px;font-size:14px}
+.ghost{position:fixed;z-index:50;pointer-events:none;background:#ece3d1;border:2px solid var(--lav);border-radius:6px;padding:4px;width:120px;opacity:.92}
+.ghost svg{width:100%;height:auto;display:block}
+/* canvas column */
+.col{display:flex;flex-direction:column;gap:12px;min-width:0}
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tab{border:1px solid var(--line);background:var(--surface);border-radius:8px 8px 0 0;padding:6px 14px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--lav-dim);border-color:var(--lav)}
+.status{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.stat{font-family:var(--mono);font-size:14px;border:1px solid var(--line);border-radius:8px;padding:3px 9px}
+.stat b{font-weight:500;color:var(--fg)}
+.stat.warn{border-color:var(--lav);background:var(--lav-dim)}
+.stat.ok{border-color:var(--teal)}
+.notice{border:1px solid var(--lav);background:var(--lav-dim);border-radius:10px;padding:8px 12px;font-size:15.5px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;overflow:auto;display:flex;justify-content:center;min-height:300px}
+.stage svg.sheet{display:block;flex:none;touch-action:none}
+.stage:focus-visible{outline-offset:-2px}
+/* the sheet (SVG) */
+svg.sheet{--ink:#e9e1d1;--ink2:#8b8276;--tint:rgba(185,167,230,.2);--paper:#2a2623;--dot:#80776b;--edge:#4a443d;--spine:#4a443d}
+svg.sheet.th-paper{--ink:#2b2724;--ink2:#8e867a;--tint:rgba(110,100,170,.14);--paper:#f1e8d4;--dot:#bdb5a5;--edge:#c9bfa9;--spine:#c9bfa9}
+svg.sheet .pg{fill:var(--paper);stroke:var(--edge);stroke-width:.06}
+svg.sheet .dots{stroke:var(--dot);stroke-width:.14;stroke-linecap:round;fill:none}
+svg.sheet .ln{stroke:var(--ink);stroke-width:.07;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.sheet .fi{stroke:var(--ink2);stroke-width:.06;fill:none;stroke-linecap:round}
+svg.sheet .dt{stroke:var(--ink2);stroke-width:.1;stroke-dasharray:0 .22;stroke-linecap:round;fill:none}
+svg.sheet .dsh{stroke-dasharray:.28 .2}
+svg.sheet .fl{fill:var(--ink);stroke:none}
+svg.sheet .tint{fill:var(--tint);stroke:none}
+svg.sheet text{fill:var(--ink);font-family:var(--ui);letter-spacing:.4px}
+svg.sheet text.lab{font-weight:700}
+svg.sheet text.sm{fill:var(--ink2)}
+svg.sheet text.ghint{fill:var(--ink2);font-style:italic}
+svg.sheet text.head{font-weight:700}
+svg.sheet .hit{fill:transparent}
+svg.sheet .item{cursor:grab}
+svg.sheet .item.sel .selbox{stroke:var(--lav);stroke-width:.12;fill:rgba(185,167,230,.07);stroke-dasharray:.3 .2}
+svg.sheet .selbox{fill:none;stroke:none}
+svg.sheet .item:hover .selbox{stroke:var(--blue);stroke-width:.08;stroke-dasharray:.3 .2}
+svg.sheet .hnd{fill:var(--lav);stroke:var(--paper);stroke-width:.08;cursor:nwse-resize}
+svg.sheet .hnd.e{cursor:ew-resize}
+svg.sheet .hnd.s{cursor:ns-resize}
+svg.sheet .blocked{fill:rgba(143,180,227,.12);stroke:var(--blue);stroke-width:.1;stroke-dasharray:.3 .2}
+svg.sheet .badge circle{fill:var(--teal);stroke:none}
+svg.sheet .badge text{fill:#10201d;font-weight:700}
+svg.sheet .ovl{fill:none;stroke:var(--blue);stroke-width:.1;stroke-dasharray:.2 .2}
+/* inspector */
+.insp{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 16px}
+.insp .full{grid-column:1/-1}
+.insp label{display:flex;flex-direction:column;gap:4px}
+.insp input,.insp select{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:6px 9px;width:100%}
+.xywh{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.insp .acts{display:flex;flex-wrap:wrap;gap:8px}
+.dots-r{letter-spacing:.1em;color:var(--teal)}
+/* steps + layouts + compare panels */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.panel h2{margin-bottom:8px}
+ol.steps{margin:0;padding-left:1.4rem;display:flex;flex-direction:column;gap:8px}
+ol.steps li{padding-left:4px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.liblist{display:flex;flex-direction:column;gap:8px}
+.libitem{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.libitem .nm{margin-right:auto;font-weight:700}
+textarea.json{width:100%;min-height:120px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px;font-family:var(--mono);font-size:13px}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px}
+.cmp .cell{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cmp .stage{border:0;padding:0;background:transparent;min-height:0}
+.diff{font-size:15px}
+.diff b{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block}
+.hint{color:var(--muted);font-size:15px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--lav);border-radius:10px;padding:8px 16px;z-index:60}
+#printRoot{display:none}
+@media (max-width:980px){.main{grid-template-columns:1fr}.side{position:static;max-height:none}.col{order:-1}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* print: cream pages at 5.5 x 8.25 in, dark lines, soft grey dots */
+@page{size:5.5in 8.25in;margin:0}
+@media print{
+  html,body{background:#f1e8d4!important;padding:0!important;margin:0!important}
+  body>*:not(#printRoot){display:none!important}
+  #printRoot{display:block}
+  #printRoot .psheet{width:5.5in;height:8.25in;page-break-after:always;break-after:page;overflow:hidden;background:#f1e8d4}
+  #printRoot .psheet:last-child{page-break-after:auto;break-after:auto}
+  #printRoot svg{width:5.5in;height:8.25in;display:block}
+}
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+  <div class="top">
+    <h1>Planner Page Mocker</h1>
+    <span class="hint" id="pitchnote"></span>
+  </div>
+
+  <div class="tb" role="toolbar" aria-label="Layout tools">
+    <div class="namebox"><label class="lbl" for="docname">Layout</label><input id="docname" class="field" type="text" maxlength="60" autocomplete="off"></div>
+    <span class="sep"></span>
+    <button class="btn" id="newPage" type="button">New page</button>
+    <button class="btn" id="newSpread" type="button">New spread</button>
+    <button class="btn" id="newBundle" type="button">New week bundle</button>
+    <button class="btn" id="starter" type="button">Starter set</button>
+    <span class="sep"></span>
+    <button class="btn" id="undo" type="button">Undo</button>
+    <button class="btn" id="redo" type="button">Redo</button>
+    <span class="sep"></span>
+    <button class="btn go" id="save" type="button">Save</button>
+    <button class="btn" id="layouts" type="button" aria-pressed="false">Layouts</button>
+    <button class="btn" id="compare" type="button" aria-pressed="false">Compare</button>
+    <button class="btn" id="stepsBtn" type="button" aria-pressed="false">Build steps</button>
+    <button class="btn" id="printBtn" type="button">Print actual size</button>
+    <button class="btn" id="pngBtn" type="button">Save PNG (300 dpi)</button>
+    <button class="btn" id="svgBtn" type="button">Save SVG</button>
+  </div>
+  <div class="tb" aria-label="View settings">
+    <label class="lbl" for="pitch">Dot pitch</label>
+    <select id="pitch" class="field"><option value="4">4 mm</option><option value="5" selected>5 mm</option><option value="6">6 mm</option></select>
+    <label class="lbl" for="zoom">Zoom</label>
+    <input id="zoom" type="range" min="8" max="26" value="14" style="width:140px">
+    <button class="btn" id="fit" type="button" aria-pressed="true">Fit</button>
+    <button class="btn" id="theme" type="button" aria-pressed="false">Paper view</button>
+    <button class="btn" id="overlap" type="button" aria-pressed="false">Allow overlap</button>
+    <button class="btn" id="dotsPrint" type="button" aria-pressed="true">Print dots</button>
+    <span class="hint" id="printhint">Print works from the downloaded file. Anywhere else, save the PNG: at 300 dpi it prints exactly 5.5 × 8.25 in.</span>
+  </div>
+
+  <div id="panels" style="display:flex;flex-direction:column;gap:14px"></div>
+
+  <div class="main" id="mainView">
+    <aside class="side" aria-label="Elements">
+      <h2>Elements</h2>
+      <p class="hint">Drag onto the page, or use Add. Mix weekly and daily elements freely.</p>
+      <div>
+        <span class="lbl" id="fl-pt">Seen in</span>
+        <div class="pills" role="group" aria-labelledby="fl-pt" id="ptPills"></div>
+      </div>
+      <div>
+        <span class="lbl" id="fl-tier">Tier</span>
+        <div class="pills" role="group" aria-labelledby="fl-tier" id="tierPills"></div>
+      </div>
+      <div class="row"><button class="pill" id="hideHob" type="button" aria-pressed="false">Hide what the Hobonichi already prints</button></div>
+      <input id="q" class="search" type="search" placeholder="Search elements" aria-label="Search elements" autocomplete="off">
+      <div id="tree"></div>
+    </aside>
+    <section class="col" aria-label="Page canvas">
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+      <div class="stage" id="stage" tabindex="0" aria-label="Page canvas. Arrow keys move the selected element, Shift plus arrows resize it, Delete removes it."></div>
+      <div id="inspector"></div>
+    </section>
+  </div>
+  <p class="hint" style="max-width:80ch">Elements are drawn as simple line drawings at your dot pitch, with the wording used in the examples. Efforts are relative points from the catalog, not minutes. Everything snaps to the dot grid.</p>
+</div>
+<div id="printRoot" aria-hidden="true"></div>
+<div id="toast" class="toast" hidden></div>
+<input id="fileIn" type="file" accept="application/json,.json" hidden>
+
+<script id="data" type="application/json">{"groups":[{"id":"date_header|date write-in line","element":"date_header","el_label":"Date header","zone":"header","group":"date write-in line","names":["\"Date: / / \" write-in","date + weekday letters write-in","date line with slashes","handwritten date + weekday in brackets","title left + date write-in","title left + date write-in with slashes","title left, date write-in, day circles right","weekday name left + date write-in with year right"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":7,"of":11}},"tier":{"weekly":"Niche","daily":"Core","overall":"Core"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"full","hobnote":"Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)","adhd":"Cheap anchor; one line, no decision needed.","sens":"Predictable position; very low noise.","fp":[19,2],"home":"either","home_note":"Hobonichi prints a full date box. In the notebook keep it to one small line, or skip it on daily pages that pair with the Hobonichi date.","t":{"k":"field","dw":14,"dh":2,"mw":8,"mh":2,"label":"DATE","pos":"left","slashes":true}},{"id":"date_header|stacked DD / MM / YY boxes","element":"date_header","el_label":"Date header","zone":"header","group":"stacked DD / MM / YY boxes","names":["stacked DD / MM / YY boxes"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":"Core","overall":"Core"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"full","hobnote":"Printed date box on every day: month, big day number, weekday tab (Sunday in a colour block), moon phase and day-of-year. (verified from your Hobonichi photos)","adhd":"Cheap anchor; one line, no decision needed.","sens":"Predictable position; very low noise.","fp":[5,8],"home":"either","home_note":"Hobonichi prints a full date box. In the notebook keep it to one small line, or skip it on daily pages that pair with the Hobonichi date.","t":{"k":"stack","dw":6,"dh":6,"mw":5,"mh":6,"labels":["DD","MM","YY"]}},{"id":"focus_theme|boxed goal line","element":"focus_theme","el_label":"Weekly/daily focus, theme or intention","zone":"header","group":"boxed goal line","names":["goal-for-the-week boxed line"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Common","daily":"Niche","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One short phrase is a good re-entry cue after a skipped stretch.","sens":"Minimal.","fp":[53,3],"home":"notebook","home_note":"Hobonichi has no field for it.","t":{"k":"box","dw":26,"dh":3,"mw":10,"mh":3,"label":"GOAL FOR THE WEEK:","inline":true}},{"id":"focus_theme|sentence starter / frame","element":"focus_theme","el_label":"Weekly/daily focus, theme or intention","zone":"header","group":"sentence starter / frame","names":["sentence frame: this week will be ___ because ___","sentence starter: today will be great because..."],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Common","daily":"Niche","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One short phrase is a good re-entry cue after a skipped stretch.","sens":"Minimal.","fp":[24,5],"home":"notebook","home_note":"Hobonichi has no field for it.","t":{"k":"field","dw":26,"dh":2,"mw":12,"mh":2,"label":"THIS WEEK WILL BE ______ BECAUSE ______","pos":"left"}},{"id":"focus_theme|short write-in line","element":"focus_theme","el_label":"Weekly/daily focus, theme or intention","zone":"header","group":"short write-in line","names":["focus word line","weekly focus line","weekly intention: 2 ruled lines","weekly theme line"],"seen":{"weekly":{"n":3,"of":9}},"tier":{"weekly":"Common","daily":"Niche","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One short phrase is a good re-entry cue after a skipped stretch.","sens":"Minimal.","fp":[20,2],"home":"notebook","home_note":"Hobonichi has no field for it.","t":{"k":"field","dw":22,"dh":3,"mw":8,"mh":2,"label":"THIS WEEK I'M FOCUSING ON","pos":"above"}},{"id":"month_year_strip|colour-coded strip","element":"month_year_strip","el_label":"Month / day-of-month strip","zone":"header","group":"colour-coded strip","names":["colour months + 1-31 + mood face","colour-banded month names over 1-31 boxes"],"seen":{"daily":{"n":2,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":2,"daily":1,"skip":"high","input":"color-in","hob":"partial","hobnote":"Coloured month tabs on the page edge; no day-of-month strip. (verified from your Hobonichi photos)","adhd":"Orients you but is fiddly to draw; one mark per page.","sens":"Colour-coded versions add noise; plain is better. Colour-coded months add visual noise.","fp":[27,2],"home":"hobonichi","home_note":"Hobonichi has month tabs and calendars. Skip in the notebook.","t":{"k":"strip","dw":27,"dh":3,"mw":14,"mh":3}},{"id":"month_year_strip|plain strip","element":"month_year_strip","el_label":"Month / day-of-month strip","zone":"header","group":"plain strip","names":["plain thin month names + 1-31 (no colour)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":2,"daily":1,"skip":"high","input":"color-in","hob":"partial","hobnote":"Coloured month tabs on the page edge; no day-of-month strip. (verified from your Hobonichi photos)","adhd":"Orients you but is fiddly to draw; one mark per page.","sens":"Colour-coded versions add noise; plain is better. Colourless and quiet.","fp":[22,2],"home":"hobonichi","home_note":"Hobonichi has month tabs and calendars. Skip in the notebook.","t":{"k":"strip","dw":27,"dh":3,"mw":14,"mh":3,"plain":true}},{"id":"quote_mantra|banner affirmation","element":"quote_mantra","el_label":"Quote or mantra","zone":"header","group":"banner affirmation","names":["pill banner with affirmation","tinted title bar + one-line mantra"],"seen":{"daily":{"n":2,"of":11}},"tier":{"weekly":"Niche","daily":"Common","overall":"Common"},"draw":2,"daily":1,"skip":"high","input":"write-in line","hob":"full","hobnote":"A printed quote sits at the foot of each daily page (not user-written). (verified from your Hobonichi photos)","adhd":"Optional; copying a quote each day becomes a chore.","sens":"Calm if short; text-heavy if long.","fp":[24,2],"home":"either","home_note":"Hobonichi already prints a daily quote. Skip in the notebook unless you want your own mantra.","t":{"k":"pill","dw":24,"dh":2,"mw":8,"mh":2,"text":"I CHOOSE INTENTION OVER PERFECTION."}},{"id":"quote_mantra|printed quote","element":"quote_mantra","el_label":"Quote or mantra","zone":"header","group":"printed quote","names":["grey quote band","quote between two rules"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Common","overall":"Common"},"draw":2,"daily":1,"skip":"high","input":"write-in line","hob":"full","hobnote":"A printed quote sits at the foot of each daily page (not user-written). (verified from your Hobonichi photos)","adhd":"Optional; copying a quote each day becomes a chore.","sens":"Calm if short; text-heavy if long.","fp":[20,4],"home":"either","home_note":"Hobonichi already prints a daily quote. Skip in the notebook unless you want your own mantra.","t":{"k":"quote","dw":22,"dh":4,"mw":10,"mh":3}},{"id":"week_header|printed date range + week number","element":"week_header","el_label":"Week header (date range / week number)","zone":"header","group":"printed date range + week number","names":["date range + week number + year, rule under","month/month + week number + year, no rule"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Core","daily":null,"overall":"Core"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"full","hobnote":"Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)","adhd":"Set once per spread; makes the page findable later.","sens":"Quiet, fixed position.","fp":[22,2],"home":"either","home_note":"Hobonichi prints the month banner and week number. Notebook needs only a date range line.","t":{"k":"headtext","dw":25,"dh":2,"mw":12,"mh":2,"text":"NOV 27 — DEC 3","right":"WEEK 49","rule":true}},{"id":"week_header|title + write-in date","element":"week_header","el_label":"Week header (date range / week number)","zone":"header","group":"title + write-in date","names":["title left + date write-in right","week-of line + centred title","week-of write-in line"],"seen":{"weekly":{"n":3,"of":9}},"tier":{"weekly":"Core","daily":null,"overall":"Core"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"full","hobnote":"Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)","adhd":"Set once per spread; makes the page findable later.","sens":"Quiet, fixed position.","fp":[23,2],"home":"either","home_note":"Hobonichi prints the month banner and week number. Notebook needs only a date range line.","t":{"k":"headtext","dw":25,"dh":2,"mw":12,"mh":2,"text":"WEEKLY OVERVIEW","right":"DATE: ______","rule":false}},{"id":"week_header|title only","element":"week_header","el_label":"Week header (date range / week number)","zone":"header","group":"title only","names":["\"WEEK n PLANNING\" title with rule","title only, no date"],"seen":{"weekly":{"n":2,"of":9}},"tier":{"weekly":"Core","daily":null,"overall":"Core"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"full","hobnote":"Weekly spread prints a month banner (year, month, big month name) and the week number. (verified from your Hobonichi photos)","adhd":"Set once per spread; makes the page findable later.","sens":"Quiet, fixed position.","fp":[22,2],"home":"either","home_note":"Hobonichi prints the month banner and week number. Notebook needs only a date range line.","t":{"k":"headtext","dw":25,"dh":2,"mw":10,"mh":2,"text":"WEEKLY REFLECTION & GOALS","rule":true}},{"id":"weekday_circles|letters only","element":"weekday_circles","el_label":"Weekday circles (M T W T F S S)","zone":"header","group":"letters only","names":["weekday letters row"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"color-in","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One tap to say which day it is; useful for undated pages.","sens":"Tiny, regular, quiet.","fp":[5,2],"home":"either","home_note":"Optional on daily pages; skip if the date is already written.","t":{"k":"wkdays","dw":8,"dh":2,"mw":7,"mh":2,"circles":false}},{"id":"weekday_circles|letters over circles","element":"weekday_circles","el_label":"Weekday circles (M T W T F S S)","zone":"header","group":"letters over circles","names":["M T W T F S S with circles (tick today)","S M T W T F S with circles"],"seen":{"daily":{"n":2,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"color-in","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One tap to say which day it is; useful for undated pages.","sens":"Tiny, regular, quiet.","fp":[7,2],"home":"either","home_note":"Optional on daily pages; skip if the date is already written.","t":{"k":"wkdays","dw":8,"dh":3,"mw":7,"mh":3,"circles":true}},{"id":"appointments|time + write-in lines","element":"appointments","el_label":"Appointments (time + write-in)","zone":"plan","group":"time + write-in lines","names":["4 lines with time colon marks","tinted panel: time column + write-in lines","tinted time + write-in (4 rows)"],"seen":{"daily":{"n":3,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"full","hobnote":"Time axis covers timed appointments. (verified from your Hobonichi photos)","adhd":"Small list; only fills when needed.","sens":"Few lines.","fp":[8,6],"home":"hobonichi","home_note":"The Hobonichi time axis covers it.","t":{"k":"lines","dw":14,"dh":10,"mw":8,"mh":4,"label":"APPOINTMENTS","bullet":"time"}},{"id":"event_organizer|two-column event / date table","element":"event_organizer","el_label":"Event / date table","zone":"plan","group":"two-column event / date table","names":["two-column event / date table"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":null,"overall":"Niche"},"draw":2,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Writing each event once is easy; skipping is harmless.","sens":"Two-column table, clear grid.","fp":[23,11],"home":"hobonichi","home_note":"Hobonichi week columns and calendar already carry events.","t":{"k":"table","dw":24,"dh":12,"mw":12,"mh":6,"heads":["EVENT","DATE"],"cols":[0.7,0.3],"title":"IMPORTANT EVENTS / OCCASIONS"}},{"id":"focus_areas|titled column: header box + 8 circle-bullet lines (first 3 shaded)","element":"focus_areas","el_label":"Focus-area task lists","zone":"plan","group":"titled column: header box + 8 circle-bullet lines (first 3 shaded)","names":["titled column: header box + 8 circle-bullet lines (first 3 shaded)"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":null,"overall":"Niche"},"draw":3,"daily":2,"skip":"medium","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Good for project grouping but many lists to maintain.","sens":"Multi-column dense grid: high visual noise.","fp":[13,14],"home":"notebook","home_note":"Only if you run several projects; otherwise skip.","t":{"k":"lines","dw":13,"dh":16,"mw":8,"mh":6,"label":"","bullet":"circle","rule":"dotted","hbox":true,"shade":3}},{"id":"focus_box|dotted goal lines","element":"focus_box","el_label":"Single focus box","zone":"plan","group":"dotted goal lines","names":["goals: 2 dotted lines"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"free space","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One thing only; very ADHD-friendly if kept to one line.","sens":"One open box; clear edge.","fp":[12,3],"home":"notebook","home_note":"Use instead of, not as well as, top priorities if you want even less.","t":{"k":"lines","dw":14,"dh":6,"mw":8,"mh":4,"label":"GOALS","bullet":"none","rule":"dotted"}},{"id":"focus_box|single titled box","element":"focus_box","el_label":"Single focus box","zone":"plan","group":"single titled box","names":["memo box with goal for the day","single tinted focus box","tinted-title box (looking forward to)"],"seen":{"daily":{"n":3,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"free space","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One thing only; very ADHD-friendly if kept to one line.","sens":"One open box; clear edge.","fp":[16,8],"home":"notebook","home_note":"Use instead of, not as well as, top priorities if you want even less.","t":{"k":"box","dw":16,"dh":6,"mw":8,"mh":4,"label":"TODAY'S FOCUS","fill":true}},{"id":"not_to_do|4 grey checkbox lines","element":"not_to_do","el_label":"Not-to-do list","zone":"plan","group":"4 grey checkbox lines","names":["4 grey checkbox lines"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Optional guard-rail list; can be skipped.","sens":"Small box.","fp":[6,6],"home":"notebook","home_note":"Optional add-on.","t":{"k":"lines","dw":10,"dh":10,"mw":6,"mh":4,"label":"NOT TO DO","bullet":"check","rule":"dotted","box":true}},{"id":"one_three_five|1 focus task","element":"one_three_five","el_label":"1-3-5 task ladder (1 focus, 3 support, 5 tiny)","zone":"plan","group":"1 focus task","names":["1 focus task + 5 \"start with\" steps with timers"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":3,"daily":3,"skip":"low","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Strong structure but heavy daily asks; looks very empty if skipped.","sens":"Dense, many icons and zones.","fp":[23,8],"home":"notebook","home_note":"Try a stripped-down version as an optional add-on.","t":{"k":"lines","dw":24,"dh":8,"mw":12,"mh":4,"label":"1 FOCUS TASK","bullet":"check","rate":true,"reward":true}},{"id":"one_three_five|3 support tasks","element":"one_three_five","el_label":"1-3-5 task ladder (1 focus, 3 support, 5 tiny)","zone":"plan","group":"3 support tasks","names":["3 support tasks with icon rating strips"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":3,"daily":3,"skip":"low","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Strong structure but heavy daily asks; looks very empty if skipped.","sens":"Dense, many icons and zones.","fp":[23,10],"home":"notebook","home_note":"Try a stripped-down version as an optional add-on.","t":{"k":"lines","dw":24,"dh":14,"mw":12,"mh":6,"label":"3 SUPPORT TASKS","bullet":"check","sub":true,"rate":true,"reward":true}},{"id":"one_three_five|5 tiny wins","element":"one_three_five","el_label":"1-3-5 task ladder (1 focus, 3 support, 5 tiny)","zone":"plan","group":"5 tiny wins","names":["5 tiny wins with icon strips"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":3,"daily":3,"skip":"low","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Strong structure but heavy daily asks; looks very empty if skipped.","sens":"Dense, many icons and zones.","fp":[23,9],"home":"notebook","home_note":"Try a stripped-down version as an optional add-on.","t":{"k":"lines","dw":24,"dh":12,"mw":12,"mh":4,"label":"5 TINY WINS","bullet":"circle","rate":true}},{"id":"people_to_connect|short list","element":"people_to_connect","el_label":"People to connect with","zone":"plan","group":"short list","names":["3 numbered lines (nurture key relationships)","8 icon-bulleted lines"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":2,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Names rather than tasks lowers friction for reaching out; optional.","sens":"Small icons per row add noise; plain lines are enough.","fp":[17,5],"home":"notebook","home_note":"Optional add-on.","t":{"k":"lines","dw":16,"dh":10,"mw":8,"mh":4,"label":"PEOPLE TO CONNECT WITH","bullet":"circle"}},{"id":"secondary_tasks|checkbox / dotted lines","element":"secondary_tasks","el_label":"Secondary tasks (do later / other / everything else)","zone":"plan","group":"checkbox / dotted lines","names":["5 checkbox lines (other tasks)","do later: 4 dotted lines + reward","everything else: 4 dotted lines + reward","purple \"everything else\": 5 checkboxes + reward"],"seen":{"daily":{"n":3,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":2,"daily":2,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Gives a parking spot so the priority list stays short.","sens":"Boxes are clearly separate from priorities.","fp":[16,7],"home":"notebook","home_note":"No Hobonichi equivalent.","t":{"k":"lines","dw":16,"dh":12,"mw":8,"mh":4,"label":"OTHER TASKS","bullet":"check","rule":"dotted"}},{"id":"secondary_tasks|optional numbered extras","element":"secondary_tasks","el_label":"Secondary tasks (do later / other / everything else)","zone":"plan","group":"optional numbered extras","names":["optional extras 04-07 (outlined numbers)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":2,"daily":2,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Gives a parking spot so the priority list stays short.","sens":"Boxes are clearly separate from priorities.","fp":[14,8],"home":"notebook","home_note":"No Hobonichi equivalent.","t":{"k":"lines","dw":16,"dh":10,"mw":8,"mh":4,"label":"GOT EXTRA TIME?","bullet":"num","start":4}},{"id":"secondary_tasks|tasks with sub-steps + icons","element":"secondary_tasks","el_label":"Secondary tasks (do later / other / everything else)","zone":"plan","group":"tasks with sub-steps + icons","names":["pink \"do later\": 3 tasks each with sub-steps + icons"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":3,"daily":2,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Gives a parking spot so the priority list stays short.","sens":"Boxes are clearly separate from priorities.","fp":[27,11],"home":"notebook","home_note":"No Hobonichi equivalent.","t":{"k":"lines","dw":26,"dh":14,"mw":14,"mh":6,"label":"DO LATER","bullet":"check","sub":true,"rate":true,"reward":true}},{"id":"sorted_task_hub|3x4 colour-coded zones of 5 checkbox lines each","element":"sorted_task_hub","el_label":"Sorted task hub (call / email / text / do soon ...)","zone":"plan","group":"3x4 colour-coded zones of 5 checkbox lines each","names":["3x4 colour-coded zones of 5 checkbox lines each"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":3,"daily":3,"skip":"low","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Reduces what-do-I-do-next, but 12 zones is a lot to fill.","sens":"Colour-coded grid is high noise; plain version better. Colour blocks make zones clear but 12 zones is a lot.","fp":[24,35],"home":"notebook","home_note":"Optional; consider a 4-zone mini version.","t":{"k":"cells","dw":27,"dh":36,"mw":15,"mh":20,"cols":3,"rows":4,"lines":true,"labels":["I NEED TO CALL","I NEED TO EMAIL","I NEED TO TEXT","I NEED TO DO TODAY","APPOINTMENTS","I NEED TO FOLLOW UP ON","I NEED TO DO SOON","I NEED TO SCHEDULE","I NEED TO RESEARCH","TODAY'S WINS","I NEED TO BUY","RANDOM THOUGHTS"]}},{"id":"to_buy|checkbox list","element":"to_buy","el_label":"Shopping / to-buy list","zone":"plan","group":"checkbox list","names":["8 checkbox lines (colour-tag label)","tinted panel with 5 checkboxes","tinted panel: checkbox lines"],"seen":{"daily":{"n":3,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Capture list that doesn't need daily upkeep.","sens":"Simple box list.","fp":[8,8],"home":"notebook","home_note":"Good dotted-page filler if wanted.","t":{"k":"lines","dw":12,"dh":12,"mw":8,"mh":4,"label":"TO BUY","bullet":"check"}},{"id":"todo_list|bullet / numbered lines","element":"todo_list","el_label":"To-do list","zone":"plan","group":"bullet / numbered lines","names":["\"lists\": circle bullets on ruled lines","10 bullet lines, dotted, in a tall box","10 numbered lines (stackables, after the top 5)","weekly to-do with circle bullets (7 rows)"],"seen":{"weekly":{"n":3,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Common","daily":"Common","overall":"Common"},"draw":2,"daily":2,"skip":"medium","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Long lists breed overwhelm; unfilled checkboxes pile up guilt.","sens":"Many repeated lines/boxes add visual noise.","fp":[11,14],"home":"notebook","home_note":"Hobonichi grid works for lists but has no printed boxes.","t":{"k":"lines","dw":12,"dh":16,"mw":8,"mh":4,"label":"TO DO","bullet":"dot","rule":"dotted","box":true}},{"id":"todo_list|checkbox / circle lines","element":"todo_list","el_label":"To-do list","zone":"plan","group":"checkbox / circle lines","names":["2-column box checklist (8 rows)","8 checkbox lines (colour-tag label)","9 circle lines"],"seen":{"daily":{"n":3,"of":11}},"tier":{"weekly":"Common","daily":"Common","overall":"Common"},"draw":2,"daily":2,"skip":"medium","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Long lists breed overwhelm; unfilled checkboxes pile up guilt.","sens":"Many repeated lines/boxes add visual noise.","fp":[12,11],"home":"notebook","home_note":"Hobonichi grid works for lists but has no printed boxes.","t":{"k":"lines","dw":14,"dh":12,"mw":8,"mh":4,"label":"TO DO","bullet":"circle","rule":"dotted"}},{"id":"todo_list|routine lines + completed boxes","element":"todo_list","el_label":"To-do list","zone":"plan","group":"routine lines + completed boxes","names":["numbered morning routine lines + completed boxes"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Common","daily":"Common","overall":"Common"},"draw":2,"daily":2,"skip":"medium","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Long lists breed overwhelm; unfilled checkboxes pile up guilt.","sens":"Many repeated lines/boxes add visual noise.","fp":[23,6],"home":"notebook","home_note":"Hobonichi grid works for lists but has no printed boxes.","t":{"k":"lines","dw":24,"dh":12,"mw":12,"mh":4,"label":"MORNING ROUTINE","bullet":"num","end":"check"}},{"id":"top_priorities|3 checkbox lines","element":"top_priorities","el_label":"Top priorities (1-3)","zone":"plan","group":"3 checkbox lines","names":["3 checkbox lines (colour-tag label)","3 circle lines","next-week priorities: 3 checkbox rows (one starred)"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":2,"of":11}},"tier":{"weekly":"Core","daily":"Core","overall":"Core"},"draw":1,"daily":2,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Capping at 3 limits overwhelm; blank lines don't read as failure.","sens":"Few lines = low density.","fp":[13,4],"home":"notebook","home_note":"Hobonichi has no priority field.","t":{"k":"lines","dw":16,"dh":8,"mw":8,"mh":4,"label":"TOP 3 PRIORITIES","bullet":"check"}},{"id":"top_priorities|3 numbered lines","element":"top_priorities","el_label":"Top priorities (1-3)","zone":"plan","group":"3 numbered lines","names":["3 numbered dots + reward line","3 numbered inline write-in lines","3 numbered ruled lines","3 numbered tags + write-in lines (solid)"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":4,"of":11}},"tier":{"weekly":"Core","daily":"Core","overall":"Core"},"draw":1,"daily":2,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Capping at 3 limits overwhelm; blank lines don't read as failure.","sens":"Few lines = low density.","fp":[14,7],"home":"notebook","home_note":"Hobonichi has no priority field.","t":{"k":"lines","dw":16,"dh":8,"mw":8,"mh":4,"label":"TOP 3 PRIORITIES","bullet":"num"}},{"id":"top_priorities|5+ numbered / bullet lines","element":"top_priorities","el_label":"Top priorities (1-3)","zone":"plan","group":"5+ numbered / bullet lines","names":["5 numbered lines (non-negotiables)","6 bullet lines with tick-off"],"seen":{"weekly":{"n":2,"of":9}},"tier":{"weekly":"Core","daily":"Core","overall":"Core"},"draw":1,"daily":2,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Capping at 3 limits overwhelm; blank lines don't read as failure.","sens":"Few lines = low density.","fp":[24,9],"home":"notebook","home_note":"Hobonichi has no priority field.","t":{"k":"lines","dw":24,"dh":12,"mw":10,"mh":4,"label":"IF I ONLY DID 5 THINGS THIS WEEK...","bullet":"num"}},{"id":"top_priorities|panel with rating icons + reward","element":"top_priorities","el_label":"Top priorities (1-3)","zone":"plan","group":"panel with rating icons + reward","names":["yellow panel: 3 lines + rating icons + reward"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Core","daily":"Core","overall":"Core"},"draw":3,"daily":2,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Capping at 3 limits overwhelm; blank lines don't read as failure.","sens":"Few lines = low density. Icon strips add complexity.","fp":[27,7],"home":"notebook","home_note":"Hobonichi has no priority field.","t":{"k":"lines","dw":26,"dh":10,"mw":14,"mh":6,"label":"PRIORITIES","bullet":"dot","rate":true,"reward":true}},{"id":"top_priorities|priority box with time","element":"top_priorities","el_label":"Top priorities (1-3)","zone":"plan","group":"priority box with time","names":["daily priority task box with time field"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Core","daily":"Core","overall":"Core"},"draw":1,"daily":2,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Capping at 3 limits overwhelm; blank lines don't read as failure.","sens":"Few lines = low density.","fp":[11,6],"home":"notebook","home_note":"Hobonichi has no priority field.","t":{"k":"box","dw":12,"dh":6,"mw":8,"mh":4,"label":"DAILY PRIORITY TASK","time":true}},{"id":"top_priorities|two open columns","element":"top_priorities","el_label":"Top priorities (1-3)","zone":"plan","group":"two open columns","names":["two open columns: priority tasks | play activities"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Core","daily":"Core","overall":"Core"},"draw":1,"daily":2,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Capping at 3 limits overwhelm; blank lines don't read as failure.","sens":"Few lines = low density.","fp":[24,6],"home":"notebook","home_note":"Hobonichi has no priority field.","t":{"k":"table","dw":24,"dh":8,"mw":12,"mh":4,"heads":["PRIORITY TASKS","PLAY ACTIVITIES"],"cols":[0.5,0.5],"open":true}},{"id":"weekly_goals|3 numbered lines","element":"weekly_goals","el_label":"Weekly goals","zone":"plan","group":"3 numbered lines","names":["3 numbered goals, dotted lines in a box","3 numbered lines for next two weeks"],"seen":{"weekly":{"n":2,"of":9}},"tier":{"weekly":"Niche","daily":null,"overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Set once a week; low daily load.","sens":"Few lines.","fp":[15,7],"home":"notebook","home_note":"Use the weekly top-priorities list instead.","t":{"k":"lines","dw":14,"dh":9,"mw":8,"mh":4,"label":"WEEKLY GOALS","bullet":"num","box":true}},{"id":"clock_planner|12-hour clock face to shade","element":"clock_planner","el_label":"Clock face planner","zone":"schedule","group":"12-hour clock face to shade","names":["12-hour clock face to shade"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":2,"daily":2,"skip":"medium","input":"color-in","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Visual time awareness helps some; others find it fiddly.","sens":"Round shape breaks the grid.","fp":[6,6],"home":"notebook","home_note":"Optional curiosity.","t":{"k":"clock","dw":8,"dh":8,"mw":6,"mh":6}},{"id":"day_part_schedule|morning / afternoon / evening / night circle lines","element":"day_part_schedule","el_label":"Day-part schedule (morning / afternoon / evening)","zone":"schedule","group":"morning / afternoon / evening / night circle lines","names":["morning / afternoon / evening / night circle lines"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":2,"daily":2,"skip":"medium","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Softer than hourly blocks; fewer decisions.","sens":"Section rules give clear zones.","fp":[12,29],"home":"either","home_note":"Optional in the notebook if you want a softer structure than the Hobonichi axis.","t":{"k":"sections","dw":14,"dh":28,"mw":8,"mh":10,"labels":["MORNING","AFTERNOON","EVENING","NIGHT"],"split":[3,3,2,1]}},{"id":"monthly_calendar|stacked mini month grids (Mon start)","element":"monthly_calendar","el_label":"Mini monthly calendar","zone":"schedule","group":"stacked mini month grids (Mon start)","names":["stacked mini month grids (Mon start)"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":null,"overall":"Niche"},"draw":3,"daily":1,"skip":"high","input":"free space","hob":"full","hobnote":"Mini month grid with the current week/day circled on both the daily and weekly pages. (verified from your Hobonichi photos)","adhd":"Reference only; duplicate of Hobonichi.","sens":"Small grid text can be hard to read.","fp":[7,12],"home":"hobonichi","home_note":"Hobonichi prints it. Skip.","t":{"k":"calendar","dw":10,"dh":9,"mw":7,"mh":7}},{"id":"time_blocks|flexible time column","element":"time_blocks","el_label":"Time blocks / hourly schedule","zone":"schedule","group":"flexible time column","names":["flexible plan: time column left, tasks right"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":2,"daily":3,"skip":"low","input":"time grid","hob":"full","hobnote":"Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)","adhd":"Blank hours feel like failure; high daily upkeep. No printed hours: you choose what time means.","sens":"Ruled lines are calm; multiple columns less so.","fp":[12,24],"home":"hobonichi","home_note":"Verified: your Hobonichi has the hour axis. Do not redraw it.","t":{"k":"axis","dw":12,"dh":24,"mw":6,"mh":6,"label":"DAILY PLAN","hours":false}},{"id":"time_blocks|hour-ruled lines","element":"time_blocks","el_label":"Time blocks / hourly schedule","zone":"schedule","group":"hour-ruled lines","names":["hour labels (7-9) + ruled lines"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":2,"daily":3,"skip":"low","input":"time grid","hob":"full","hobnote":"Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)","adhd":"Blank hours feel like failure; high daily upkeep. Hour lines without boxes are easy to ignore.","sens":"Ruled lines are calm; multiple columns less so.","fp":[11,23],"home":"hobonichi","home_note":"Verified: your Hobonichi has the hour axis. Do not redraw it.","t":{"k":"lines","dw":11,"dh":24,"mw":6,"mh":6,"label":"SCHEDULE","bullet":"hour","start":7,"rowH":2}},{"id":"time_blocks|time | task | tick table","element":"time_blocks","el_label":"Time blocks / hourly schedule","zone":"schedule","group":"time | task | tick table","names":["time | task | tick columns (~20 rows)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":2,"daily":3,"skip":"low","input":"time grid","hob":"full","hobnote":"Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)","adhd":"Blank hours feel like failure; high daily upkeep.","sens":"Ruled lines are calm; multiple columns less so. Grid is regular but dense.","fp":[16,22],"home":"hobonichi","home_note":"Verified: your Hobonichi has the hour axis. Do not redraw it.","t":{"k":"table","dw":16,"dh":22,"mw":10,"mh":6,"heads":["TIME","TASK",""],"cols":[0.22,0.66,0.12],"rowH":2,"tick":true}},{"id":"time_blocks|vertical checkbox column","element":"time_blocks","el_label":"Time blocks / hourly schedule","zone":"schedule","group":"vertical checkbox column","names":["vertical checkbox column + dotted lines (start .. optional mid-break)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":3,"daily":3,"skip":"low","input":"time grid","hob":"full","hobnote":"Daily page has a vertical 24-hour axis (labelled every 3 h); weekly columns label every hour. Grid behind both. (verified from your Hobonichi photos)","adhd":"Blank hours feel like failure; high daily upkeep. Boxes become tiny wins as each block is done; an optional break is built in.","sens":"Ruled lines are calm; multiple columns less so. Two-colour code (blue/orange) is clear but busy.","fp":[11,27],"home":"hobonichi","home_note":"Verified: your Hobonichi has the hour axis. Do not redraw it.","t":{"k":"lines","dw":12,"dh":26,"mw":6,"mh":6,"label":"","bullet":"check","rule":"dotted","rowH":1,"small":true,"start_label":"START"}},{"id":"time_record|vertical 24h timeline coloured with highlighters","element":"time_record","el_label":"Time record (colour-in timeline)","zone":"schedule","group":"vertical 24h timeline coloured with highlighters","names":["vertical 24h timeline coloured with highlighters"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":2,"daily":2,"skip":"medium","input":"color-in","hob":"full","hobnote":"The same 24-hour axis over a grid works for colouring time after the fact. (verified from your Hobonichi photos)","adhd":"Done after the fact, so no planning pressure; can be skipped. Colouring afterwards avoids pre-planning; blank is fine.","sens":"Needs a colour palette; plain pen shading works. Needs highlighters; pen shading works too.","fp":[16,47],"home":"hobonichi","home_note":"Use the Hobonichi hour axis for this.","t":{"k":"axis","dw":8,"dh":26,"mw":6,"mh":12,"label":"TIME RECORD","hours":true,"from_h":5}},{"id":"week_at_a_glance|day boxes with header bars","element":"week_at_a_glance","el_label":"Week at a glance (7-day layout)","zone":"schedule","group":"day boxes with header bars","names":["3 + 4 day boxes with tinted header bars","7 equal day boxes with shaded header"],"seen":{"weekly":{"n":2,"of":9}},"tier":{"weekly":"Common","daily":null,"overall":"Common"},"draw":2,"daily":2,"skip":"medium","input":"free space","hob":"full","hobnote":"Weekly spread is seven vertical day columns, each with a 24-hour axis. (verified from your Hobonichi photos)","adhd":"Whole week visible at once; missing days leave blank boxes. Even boxes, no times: easy to leave blank.","sens":"Clear day edges are good; many boxes can be busy.","fp":[39,14],"home":"hobonichi","home_note":"Hobonichi weekly columns already do this with a 24-hour axis. Notebook could use only one-line day highlights.","t":{"k":"daygrid","dw":27,"dh":24,"mw":14,"mh":12}},{"id":"week_at_a_glance|ruled day columns","element":"week_at_a_glance","el_label":"Week at a glance (7-day layout)","zone":"schedule","group":"ruled day columns","names":["5 day columns + 2 weekend columns, ruled with date flag"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Common","daily":null,"overall":"Common"},"draw":2,"daily":2,"skip":"medium","input":"free space","hob":"full","hobnote":"Weekly spread is seven vertical day columns, each with a 24-hour axis. (verified from your Hobonichi photos)","adhd":"Whole week visible at once; missing days leave blank boxes. Margin column supports a simple check/time system; lines invite lists rather than blocks.","sens":"Clear day edges are good; many boxes can be busy.","fp":[54,24],"home":"hobonichi","home_note":"Hobonichi weekly columns already do this with a 24-hour axis. Notebook could use only one-line day highlights.","t":{"k":"daycols","dw":54,"dh":24,"mw":24,"mh":12}},{"id":"week_at_a_glance|stacked day rows","element":"week_at_a_glance","el_label":"Week at a glance (7-day layout)","zone":"schedule","group":"stacked day rows","names":["7 day rows (Mon-Fri full width, Sat/Sun split)"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Common","daily":null,"overall":"Common"},"draw":2,"daily":2,"skip":"medium","input":"free space","hob":"full","hobnote":"Weekly spread is seven vertical day columns, each with a 24-hour axis. (verified from your Hobonichi photos)","adhd":"Whole week visible at once; missing days leave blank boxes. Open rows have no prompts, so blank days read as neutral.","sens":"Clear day edges are good; many boxes can be busy.","fp":[22,32],"home":"hobonichi","home_note":"Hobonichi weekly columns already do this with a 24-hour axis. Notebook could use only one-line day highlights.","t":{"k":"dayrows","dw":26,"dh":34,"mw":14,"mh":16}},{"id":"energy_tracker|notes by time of day","element":"energy_tracker","el_label":"Energy / battery tracker","zone":"track","group":"notes by time of day","names":["energy & patterns: morning/afternoon/evening + timed notes"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":2,"daily":3,"skip":"low","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One quick shaded bar; informs pacing. Data-gathering about patterns, not a to-do; helpful but optional.","sens":"Simple.","fp":[12,18],"home":"notebook","home_note":"Optional add-on.","t":{"k":"lines","dw":12,"dh":10,"mw":8,"mh":6,"label":"ENERGY & PATTERNS","bullet":"none","labels":["Morning:","Afternoon:","Evening:"]}},{"id":"energy_tracker|segment bar to colour","element":"energy_tracker","el_label":"Energy / battery tracker","zone":"track","group":"segment bar to colour","names":["5-segment bar to colour in"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"scale/rating","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One quick shaded bar; informs pacing.","sens":"Simple.","fp":[16,3],"home":"notebook","home_note":"Optional add-on.","t":{"k":"segbar","dw":16,"dh":3,"mw":8,"mh":3,"segs":5,"label":"ENERGY"}},{"id":"habit_tracker|named rows x 7-day checkboxes","element":"habit_tracker","el_label":"Habit tracker","zone":"track","group":"named rows x 7-day checkboxes","names":["habit lines x 3x7 rounded checkboxes","named habit rows x 7 day checkboxes","named rows x M-S boxes","numbered habit lines x M-S shaded cells (5 rows)"],"seen":{"weekly":{"n":4,"of":9}},"tier":{"weekly":"Core","daily":"Niche","overall":"Core"},"draw":2,"daily":2,"skip":"medium","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Streak gaps feel punishing; weekly grids limit the damage.","sens":"Repeated boxes are regular but busy.","fp":[24,8],"home":"notebook","home_note":"Hobonichi has none printed.","t":{"k":"grid","dw":24,"dh":10,"mw":14,"mh":6,"label":"HABIT TRACKER","cell":"box"}},{"id":"habit_tracker|named rows x 7-day dots / circles","element":"habit_tracker","el_label":"Habit tracker","zone":"track","group":"named rows x 7-day dots / circles","names":["9 primary habits x 7 circles + total","habit lines x 7 dots in a tinted panel"],"seen":{"weekly":{"n":2,"of":9}},"tier":{"weekly":"Core","daily":"Niche","overall":"Core"},"draw":2,"daily":2,"skip":"medium","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Streak gaps feel punishing; weekly grids limit the damage. Dots are easy to colour in; 5 habits is a lot, pick 2-3.","sens":"Repeated boxes are regular but busy.","fp":[24,11],"home":"notebook","home_note":"Hobonichi has none printed.","t":{"k":"grid","dw":24,"dh":10,"mw":14,"mh":6,"label":"HABIT TRACKER","cell":"circle"}},{"id":"habit_tracker|rows with tick column (no days)","element":"habit_tracker","el_label":"Habit tracker","zone":"track","group":"rows with tick column (no days)","names":["4 ruled rows + tick column"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Core","daily":"Niche","overall":"Core"},"draw":2,"daily":2,"skip":"medium","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Streak gaps feel punishing; weekly grids limit the damage. Daily habits without day columns avoid streak guilt.","sens":"Repeated boxes are regular but busy.","fp":[16,6],"home":"notebook","home_note":"Hobonichi has none printed.","t":{"k":"lines","dw":16,"dh":10,"mw":8,"mh":4,"label":"HABIT TRACKER","bullet":"none","end":"check"}},{"id":"habit_tracker|secondary habits + reflection line","element":"habit_tracker","el_label":"Habit tracker","zone":"track","group":"secondary habits + reflection line","names":["checklist: 9 primary + 4 secondary habits in tinted panels","secondary habits: 4 rows with reflection line"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Core","daily":"Niche","overall":"Core"},"draw":2,"daily":2,"skip":"medium","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Streak gaps feel punishing; weekly grids limit the damage.","sens":"Repeated boxes are regular but busy.","fp":[23,6],"home":"notebook","home_note":"Hobonichi has none printed.","t":{"k":"lines","dw":23,"dh":10,"mw":12,"mh":4,"label":"SECONDARY HABITS","bullet":"check","labels":["Comfort zone","Play activity","Practice altruism","Nurture relationship"]}},{"id":"health_fitness|short checkbox list","element":"health_fitness","el_label":"Health / fitness / body check","zone":"track","group":"short checkbox list","names":["2 checkboxes + steps line","body check: water / meal / meds / move"],"seen":{"daily":{"n":2,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":2,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Short checklist (water, meds, move); good if kept to 3-4 items.","sens":"Small boxes.","fp":[9,3],"home":"notebook","home_note":"Optional add-on.","t":{"k":"checkrow","dw":18,"dh":3,"mw":10,"mh":2,"label":"BODY CHECK","labels":["WATER","MEAL","MEDS","MOVE"]}},{"id":"meals|per-meal fields","element":"meals","el_label":"Meals","zone":"track","group":"per-meal fields","names":["4 labelled lines (breakfast to snacks)","4-column bordered meal box"],"seen":{"daily":{"n":2,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":2,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Useful for medication/eating reminders; skip is fine.","sens":"Four lines, calm.","fp":[15,5],"home":"notebook","home_note":"Optional.","t":{"k":"lines","dw":16,"dh":10,"mw":8,"mh":4,"label":"MEALS","bullet":"none","labels":["Breakfast:","Lunch:","Dinner:","Snacks:"]}},{"id":"meals|single line","element":"meals","el_label":"Meals","zone":"track","group":"single line","names":["single dotted line"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":2,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Useful for medication/eating reminders; skip is fine.","sens":"Four lines, calm.","fp":[12,2],"home":"notebook","home_note":"Optional.","t":{"k":"field","dw":14,"dh":3,"mw":8,"mh":2,"label":"MEALS","pos":"left"}},{"id":"mood_tracker|circular wheel","element":"mood_tracker","el_label":"Mood tracker","zone":"track","group":"circular wheel","names":["circular mood wheel, 7 days x AM/PM"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":3,"daily":2,"skip":"medium","input":"scale/rating","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Fast single mark; emotional check-in without writing. Twice-daily marks are a heavy ask; circle is hard to draw by hand.","sens":"Faces are quick; wheel versions are heavy. Curved text and many segments are visually busy.","fp":[15,14],"home":"notebook","home_note":"Optional add-on.","t":{"k":"wheel","dw":14,"dh":14,"mw":10,"mh":10}},{"id":"mood_tracker|colour boxes + faces","element":"mood_tracker","el_label":"Mood tracker","zone":"track","group":"colour boxes + faces","names":["6 colour boxes with face scale"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"scale/rating","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Fast single mark; emotional check-in without writing. Quick colour-in; rules for what each colour means can be forgotten.","sens":"Faces are quick; wheel versions are heavy.","fp":[14,4],"home":"notebook","home_note":"Optional add-on.","t":{"k":"boxfaces","dw":18,"dh":4,"mw":12,"mh":4,"n":6,"label":"(COLOUR) SCALE"}},{"id":"mood_tracker|open band","element":"mood_tracker","el_label":"Mood tracker","zone":"track","group":"open band","names":["open tinted band (mood & energy check-in)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":2,"daily":1,"skip":"high","input":"free space","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Fast single mark; emotional check-in without writing.","sens":"Faces are quick; wheel versions are heavy.","fp":[24,4],"home":"notebook","home_note":"Optional add-on.","t":{"k":"box","dw":24,"dh":4,"mw":10,"mh":3,"label":"MOOD & ENERGY CHECK-IN","fill":true}},{"id":"mood_tracker|single face","element":"mood_tracker","el_label":"Mood tracker","zone":"track","group":"single face","names":["single face to colour in"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":2,"daily":1,"skip":"high","input":"scale/rating","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Fast single mark; emotional check-in without writing.","sens":"Faces are quick; wheel versions are heavy.","fp":[16,3],"home":"notebook","home_note":"Optional add-on.","t":{"k":"faces","dw":10,"dh":3,"mw":4,"mh":2,"n":1,"label":"MOOD"}},{"id":"productivity_rating|open score row","element":"productivity_rating","el_label":"Productivity rating","zone":"track","group":"open score row","names":["labelled open row"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"scale/rating","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Self-scoring productivity can feed guilt; keep optional.","sens":"Simple.","fp":[16,3],"home":"notebook","home_note":"Skip by default.","t":{"k":"field","dw":16,"dh":3,"mw":8,"mh":2,"label":"PRODUCTIVITY","pos":"left"}},{"id":"productivity_rating|total time","element":"productivity_rating","el_label":"Productivity rating","zone":"track","group":"total time","names":["total time (hh:mm) over a heart"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"scale/rating","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Self-scoring productivity can feed guilt; keep optional.","sens":"Simple.","fp":[9,9],"home":"notebook","home_note":"Skip by default.","t":{"k":"box","dw":9,"dh":5,"mw":6,"mh":4,"label":"TOTAL TIME","hint":"__ : __"}},{"id":"self_care_grid|4x3 icon grid with corner checkboxes","element":"self_care_grid","el_label":"Self-care icon grid","zone":"track","group":"4x3 icon grid with corner checkboxes","names":["4x3 icon grid with corner checkboxes"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":3,"daily":2,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Icons make it quick; drawing 12 icons is heavy.","sens":"Icon grid is busy; keep icons simple.","fp":[16,9],"home":"notebook","home_note":"Optional; limit to 3-4 items.","t":{"k":"iconcells","dw":16,"dh":9,"mw":8,"mh":6,"cols":4,"rows":3}},{"id":"sleep_times|slept / woke tinted boxes","element":"sleep_times","el_label":"Sleep / wake times","zone":"track","group":"slept / woke tinted boxes","names":["slept / woke tinted boxes"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Two numbers a day.","sens":"Tiny.","fp":[9,2],"home":"either","home_note":"Hobonichi axis can show sleep; skip in notebook.","t":{"k":"boxfields","dw":14,"dh":2,"mw":8,"mh":2,"labels":["SLEPT","WOKE"]}},{"id":"water_tracker|row of drops / circles","element":"water_tracker","el_label":"Water tracker","zone":"track","group":"row of drops / circles","names":["row of 8 circles","row of 8 drops to colour"],"seen":{"daily":{"n":2,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"color-in","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Visible, easy wins; drops fill as you drink.","sens":"Row of icons, quiet.","fp":[8,2],"home":"notebook","home_note":"Optional add-on.","t":{"k":"icons","dw":12,"dh":3,"mw":6,"mh":2,"icon":"drop","n":8,"label":"WATER"}},{"id":"weather|row of 5 weather icons","element":"weather","el_label":"Weather","zone":"track","group":"row of 5 weather icons","names":["row of 5 weather icons"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"scale/rating","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One circle; trivial.","sens":"Small icons, quiet.","fp":[6,2],"home":"notebook","home_note":"Skip.","t":{"k":"icons","dw":10,"dh":2,"mw":6,"mh":2,"icon":"weather","n":5}},{"id":"challenge|4 secondary-habit options with circle + how line","element":"challenge","el_label":"Intentional challenge","zone":"reflect","group":"4 secondary-habit options with circle + how line","names":["4 secondary-habit options with circle + how line"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One optional challenge a week; low load.","sens":"One box.","fp":[11,15],"home":"notebook","home_note":"Optional add-on.","t":{"k":"lines","dw":12,"dh":16,"mw":8,"mh":6,"label":"TODAY, I AM GOING TO:","bullet":"circle","sub":true}},{"id":"challenge|small / big challenge lines","element":"challenge","el_label":"Intentional challenge","zone":"reflect","group":"small / big challenge lines","names":["small / big challenge lines"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One optional challenge a week; low load.","sens":"One box.","fp":[24,4],"home":"notebook","home_note":"Optional add-on.","t":{"k":"lines","dw":24,"dh":8,"mw":12,"mh":4,"label":"COMFORT ZONE CHALLENGES","bullet":"none","labels":["Small:","Big:"]}},{"id":"challenge|tinted header + one-line challenge box","element":"challenge","el_label":"Intentional challenge","zone":"reflect","group":"tinted header + one-line challenge box","names":["tinted header + one-line challenge box"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One optional challenge a week; low load.","sens":"One box.","fp":[23,3],"home":"notebook","home_note":"Optional add-on.","t":{"k":"box","dw":24,"dh":4,"mw":10,"mh":3,"label":"INTENTIONAL CHALLENGE","fill":true,"hint":"Say one kind thing to yourself every morning."}},{"id":"end_of_day_check|pre-sleep ritual line","element":"end_of_day_check","el_label":"End-of-day assessment","zone":"reflect","group":"pre-sleep ritual line","names":["pre-sleep ritual line + done box"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Three kind options only (no 'failed'); safe if skipped.","sens":"Three boxes.","fp":[23,4],"home":"notebook","home_note":"Optional add-on.","t":{"k":"field","dw":23,"dh":3,"mw":10,"mh":2,"label":"PRE-SLEEP RITUAL(S)","pos":"left","end":"DONE ☐"}},{"id":"end_of_day_check|three kind options","element":"end_of_day_check","el_label":"End-of-day assessment","zone":"reflect","group":"three kind options","names":["3 kind options (rocked it / satisfactory / better days are coming)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"checkbox","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Three kind options only (no 'failed'); safe if skipped. No \"bad day\" option, so a rough day is not scored as failure.","sens":"Three boxes.","fp":[7,4],"home":"notebook","home_note":"Optional add-on.","t":{"k":"lines","dw":14,"dh":8,"mw":10,"mh":4,"label":"END-OF-DAY","bullet":"check","labels":["ROCKED IT","SATISFACTORY","BETTER DAYS ARE COMING"]}},{"id":"feelings_check|row of 5 emotion faces + other","element":"feelings_check","el_label":"Feelings check-in","zone":"reflect","group":"row of 5 emotion faces + other","names":["row of 5 emotion faces + other"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"scale/rating","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Name an emotion with one circle.","sens":"Faces/words in a row.","fp":[22,2],"home":"notebook","home_note":"Optional.","t":{"k":"faces","dw":24,"dh":3,"mw":10,"mh":3,"n":5,"label":"HOW I'M FEELING","labels":["HAPPY","EXCITED","LOVED","STRESSED","TIRED"]}},{"id":"gratitude|boxed list","element":"gratitude","el_label":"Gratitude","zone":"reflect","group":"boxed list","names":["boxed dash list (grateful for)","dotted box: grateful-for half"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Fast positive prompt; fine to skip.","sens":"Open lines are calm.","fp":[16,5],"home":"notebook","home_note":"Optional.","t":{"k":"box","dw":16,"dh":8,"mw":8,"mh":4,"label":"I'M GRATEFUL FOR","dash":3}},{"id":"gratitude|numbered lines","element":"gratitude","el_label":"Gratitude","zone":"reflect","group":"numbered lines","names":["3 numbered lines (this evening)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Fast positive prompt; fine to skip.","sens":"Open lines are calm.","fp":[23,4],"home":"notebook","home_note":"Optional.","t":{"k":"lines","dw":23,"dh":8,"mw":12,"mh":4,"label":"THIS EVENING I FEEL GRATEFUL FOR...","bullet":"num"}},{"id":"gratitude|tick-box checklist","element":"gratitude","el_label":"Gratitude","zone":"reflect","group":"tick-box checklist","names":["tick-box checklist (food, water, clothing, bed, shelter)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Fast positive prompt; fine to skip. Checking boxes needs no writing.","sens":"Open lines are calm.","fp":[9,7],"home":"notebook","home_note":"Optional.","t":{"k":"lines","dw":10,"dh":9,"mw":6,"mh":4,"label":"GRATEFUL FOR","bullet":"check","labels":["Food","Water","Clothing","Bed","Shelter"],"rowH":1}},{"id":"highlight_of_day|boxed","element":"highlight_of_day","el_label":"Highlight / happy moment","zone":"reflect","group":"boxed","names":["dotted box: happy-moment half","rounded box (highlight of the day)"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One line; easy to finish.","sens":"One box.","fp":[17,3],"home":"notebook","home_note":"Pick either this or wins.","t":{"k":"box","dw":16,"dh":4,"mw":8,"mh":3,"label":"HIGHLIGHT OF THE DAY:"}},{"id":"highlight_of_day|one line","element":"highlight_of_day","el_label":"Highlight / happy moment","zone":"reflect","group":"one line","names":["highlight: big or small, one line"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"One line; easy to finish.","sens":"One box.","fp":[12,3],"home":"notebook","home_note":"Pick either this or wins.","t":{"k":"field","dw":22,"dh":3,"mw":8,"mh":2,"label":"TODAY'S HIGHLIGHT","pos":"above","hint":"big or small"}},{"id":"identity_statement|prompted open box","element":"identity_statement","el_label":"Identity / intention statement","zone":"reflect","group":"prompted open box","names":["open prompt: I am the type of person that...","tinted-title box (how I want to show up)"],"seen":{"daily":{"n":2,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Short, set once and reused.","sens":"Simple.","fp":[12,7],"home":"notebook","home_note":"Optional.","t":{"k":"box","dw":14,"dh":7,"mw":8,"mh":4,"label":"IDENTITY STATEMENT","hint":"I am the type of person that..."}},{"id":"improve_next|checkbox rows","element":"improve_next","el_label":"Improve / continue-or-change next","zone":"reflect","group":"checkbox rows","names":["3 checkbox rows under pill label"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Common","daily":"Niche","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Forward-looking; avoids blame.","sens":"Few lines.","fp":[13,6],"home":"notebook","home_note":"Weekly add-on.","t":{"k":"lines","dw":14,"dh":8,"mw":8,"mh":4,"label":"HOW I'LL IMPROVE NEXT WEEK","bullet":"check"}},{"id":"improve_next|open box","element":"improve_next","el_label":"Improve / continue-or-change next","zone":"reflect","group":"open box","names":["open box: actions to make next week better"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Common","daily":"Niche","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Forward-looking; avoids blame.","sens":"Few lines.","fp":[24,4],"home":"notebook","home_note":"Weekly add-on.","t":{"k":"box","dw":24,"dh":6,"mw":10,"mh":4,"label":"WHAT ACTIONS CAN I TAKE TO MAKE NEXT WEEK BETTER?"}},{"id":"improve_next|ruled lines","element":"improve_next","el_label":"Improve / continue-or-change next","zone":"reflect","group":"ruled lines","names":["continue / change: 2 ruled lines"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Common","daily":"Niche","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Forward-looking; avoids blame.","sens":"Few lines.","fp":[26,4],"home":"notebook","home_note":"Weekly add-on.","t":{"k":"lines","dw":24,"dh":6,"mw":10,"mh":4,"label":"WHAT WILL YOU CONTINUE OR CHANGE?","bullet":"none"}},{"id":"improve_next|two-column went well | improve","element":"improve_next","el_label":"Improve / continue-or-change next","zone":"reflect","group":"two-column went well | improve","names":["two-column: went well | improve tomorrow"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Common","daily":"Niche","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Forward-looking; avoids blame.","sens":"Few lines.","fp":[23,6],"home":"notebook","home_note":"Weekly add-on.","t":{"k":"table","dw":24,"dh":8,"mw":12,"mh":4,"heads":["WHAT WENT WELL TODAY?","HOW CAN I IMPROVE TOMORROW?"],"cols":[0.5,0.5],"open":true}},{"id":"leave_behind|boxed dash list (leave behind)","element":"leave_behind","el_label":"Leave behind / release","zone":"reflect","group":"boxed dash list (leave behind)","names":["boxed dash list (leave behind)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Optional venting spot.","sens":"Small box.","fp":[11,7],"home":"notebook","home_note":"Optional.","t":{"k":"box","dw":12,"dh":8,"mw":8,"mh":4,"label":"I WANT TO LEAVE BEHIND","dash":3}},{"id":"lessons_learned|checkbox / numbered lines","element":"lessons_learned","el_label":"Lessons learned","zone":"reflect","group":"checkbox / numbered lines","names":["3 checkbox rows under pill label","3 numbered ruled lines"],"seen":{"weekly":{"n":2,"of":9}},"tier":{"weekly":"Common","daily":"Niche","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Can feel evaluative; keep optional.","sens":"Few lines.","fp":[18,6],"home":"notebook","home_note":"Weekly add-on.","t":{"k":"lines","dw":14,"dh":8,"mw":8,"mh":4,"label":"LESSONS LEARNED THIS WEEK","bullet":"check"}},{"id":"lessons_learned|open box","element":"lessons_learned","el_label":"Lessons learned","zone":"reflect","group":"open box","names":["large open box (what did I learn about focus/energy)","rounded box (one lesson or insight)","weekly insights: tinted open box"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":2,"of":11}},"tier":{"weekly":"Common","daily":"Niche","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Can feel evaluative; keep optional.","sens":"Few lines.","fp":[23,6],"home":"notebook","home_note":"Weekly add-on.","t":{"k":"box","dw":24,"dh":7,"mw":10,"mh":4,"label":"WEEKLY INSIGHTS","fill":true}},{"id":"life_area_goals|6 shaded boxes in 2x3 (personal, career, ...)","element":"life_area_goals","el_label":"Goals by life area","zone":"reflect","group":"6 shaded boxes in 2x3 (personal, career, ...)","names":["6 shaded boxes in 2x3 (personal, career, ...)"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":null,"overall":"Niche"},"draw":2,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Six boxes can overwhelm; pick 2-3. Six areas can overwhelm; use two or three.","sens":"Boxed layout, moderately busy.","fp":[27,13],"home":"notebook","home_note":"Optional.","t":{"k":"cells","dw":26,"dh":13,"mw":14,"mh":8,"cols":2,"rows":3,"labels":["PERSONAL","CAREER","RELATIONSHIPS","HEALTH & FITNESS","SPIRITUAL","FINANCIAL"],"fill":true}},{"id":"mood_impact|3-column positive / neutral / negative box","element":"mood_impact","el_label":"What impacted my mood","zone":"reflect","group":"3-column positive / neutral / negative box","names":["3-column positive / neutral / negative box"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":null,"overall":"Niche"},"draw":2,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Weekly sorting task; good pattern-finding, heavy if every day. Sorting into 3 columns is quick pattern-finding but needs weekly time.","sens":"Three columns, clear edges.","fp":[22,17],"home":"notebook","home_note":"Optional weekly.","t":{"k":"table","dw":22,"dh":16,"mw":14,"mh":8,"heads":["POSITIVE","NEUTRAL","NEGATIVE"],"cols":[0.3333333333333333,0.3333333333333333,0.3333333333333333],"open":true,"title":"WHAT IMPACTED YOUR MOOD?","faces":true}},{"id":"priority_review|score / percent field","element":"priority_review","el_label":"Priority progress review","zone":"reflect","group":"score / percent field","names":["3 lines + % column","consistency score 0-5"],"seen":{"weekly":{"n":2,"of":9}},"tier":{"weekly":"Niche","daily":null,"overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Fast % check-in.","sens":"Simple.","fp":[25,5],"home":"notebook","home_note":"Optional.","t":{"k":"lines","dw":24,"dh":8,"mw":12,"mh":4,"label":"HOW FAR DID YOU GET ON YOUR WEEKLY PRIORITIES?","bullet":"none","end":"%"}},{"id":"resistance_check|ANT / resistance prompts","element":"resistance_check","el_label":"Resistance / ANTs-and-PETs check","zone":"reflect","group":"ANT / resistance prompts","names":["resistance prompt + 0-5 scale + ANT/PET prompts","weekly ANTs prompt"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Niche","daily":"Niche","overall":"Niche"},"draw":2,"daily":2,"skip":"medium","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Therapy-style prompts; heavy daily asks.","sens":"Text-dense.","fp":[23,7],"home":"notebook","home_note":"Skip unless you want it.","t":{"k":"lines","dw":23,"dh":8,"mw":12,"mh":4,"label":"WHAT ANT(S) SHOWED UP TODAY?","bullet":"none","labels":["","Replacement PET(s):"]}},{"id":"review_prompts|prompt + open space","element":"review_prompts","el_label":"Review prompts (open questions)","zone":"reflect","group":"prompt + open space","names":["open prompt: what am I looking forward to","prompt + open ruled box (centred)","single open question over blank space"],"seen":{"weekly":{"n":3,"of":9}},"tier":{"weekly":"Common","daily":null,"overall":"Common"},"draw":2,"daily":2,"skip":"medium","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Many prompts = high effort; one prompt is manageable. Open blank space is easy to leave empty without it looking broken.","sens":"Prompt text adds reading load.","fp":[24,7],"home":"notebook","home_note":"Weekly add-on.","t":{"k":"box","dw":24,"dh":8,"mw":10,"mh":4,"label":"PROMPT / QUESTION","hint":"write the question you want to answer","plain":true}},{"id":"review_prompts|prompt + ruled lines","element":"review_prompts","el_label":"Review prompts (open questions)","zone":"reflect","group":"prompt + ruled lines","names":["3 numbered ruled lines (challenges faced)","prompt + 3 ruled lines (time saved)"],"seen":{"weekly":{"n":2,"of":9}},"tier":{"weekly":"Common","daily":null,"overall":"Common"},"draw":2,"daily":2,"skip":"medium","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Many prompts = high effort; one prompt is manageable.","sens":"Prompt text adds reading load.","fp":[24,6],"home":"notebook","home_note":"Weekly add-on.","t":{"k":"lines","dw":24,"dh":8,"mw":12,"mh":4,"label":"PROMPT / QUESTION","bullet":"none"}},{"id":"review_prompts|two-column prompt","element":"review_prompts","el_label":"Review prompts (open questions)","zone":"reflect","group":"two-column prompt","names":["two-column: habits getting easier | what I struggled with"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Common","daily":null,"overall":"Common"},"draw":2,"daily":2,"skip":"medium","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Many prompts = high effort; one prompt is manageable.","sens":"Prompt text adds reading load.","fp":[24,5],"home":"notebook","home_note":"Weekly add-on.","t":{"k":"table","dw":24,"dh":8,"mw":12,"mh":4,"heads":["WHAT HABITS ARE GETTING EASIER?","WHAT DID I STRUGGLE WITH?"],"cols":[0.5,0.5],"open":true}},{"id":"reward|weekly reward + when box","element":"reward","el_label":"Reward","zone":"reflect","group":"weekly reward + when box","names":["weekly reward + when box"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":null,"overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Pairs effort with a payoff; strong for ADHD motivation if the reward is concrete.","sens":"One line.","fp":[24,3],"home":"notebook","home_note":"Good light add-on.","t":{"k":"field","dw":20,"dh":3,"mw":10,"mh":2,"label":"WEEKLY REWARD","pos":"left","end":"WHEN ☐"}},{"id":"tomorrow_first_step|labelled dotted line","element":"tomorrow_first_step","el_label":"Tomorrow's first step","zone":"reflect","group":"labelled dotted line","names":["labelled dotted line"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Great for starting again after a gap.","sens":"Single line.","fp":[25,2],"home":"notebook","home_note":"Optional add-on.","t":{"k":"field","dw":24,"dh":2,"mw":10,"mh":2,"label":"TOMORROW'S FIRST STEP:","pos":"left","dotted":true}},{"id":"wins|checkbox rows","element":"wins","el_label":"Wins / small wins","zone":"reflect","group":"checkbox rows","names":["3 checkbox rows under pill label"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Common","daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Reward-focused; counters 'I did nothing'.","sens":"Few lines.","fp":[13,6],"home":"notebook","home_note":"No Hobonichi field.","t":{"k":"lines","dw":14,"dh":8,"mw":8,"mh":4,"label":"THIS WEEK'S WINS","bullet":"check"}},{"id":"wins|numbered lines","element":"wins","el_label":"Wins / small wins","zone":"reflect","group":"numbered lines","names":["3 numbered lines (proud of)","3 numbered ruled lines (proud of)","3 numbered ruled lines (top 3 wins)","3 ruled lines under a kind prompt"],"seen":{"weekly":{"n":3,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Common","daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Reward-focused; counters 'I did nothing'.","sens":"Few lines.","fp":[23,6],"home":"notebook","home_note":"No Hobonichi field.","t":{"k":"lines","dw":23,"dh":8,"mw":12,"mh":4,"label":"MY TOP 3 WINS","bullet":"num"}},{"id":"wins|open / tinted box","element":"wins","el_label":"Wins / small wins","zone":"reflect","group":"open / tinted box","names":["open box (today's wins)","tinted box (today's win, big or small)","tinted box (today's win; \"this proves my superpower of\")"],"seen":{"daily":{"n":2,"of":11}},"tier":{"weekly":"Common","daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Reward-focused; counters 'I did nothing'.","sens":"Few lines.","fp":[23,5],"home":"notebook","home_note":"No Hobonichi field.","t":{"k":"box","dw":23,"dh":5,"mw":10,"mh":3,"label":"TODAY'S WIN (BIG OR SMALL)","fill":true}},{"id":"brain_dump|open box with label","element":"brain_dump","el_label":"Brain dump","zone":"capture","group":"open box with label","names":["bordered free box with header bar","labelled open box (dump everything, no judging)","large tinted box","random thoughts: open box"],"seen":{"daily":{"n":3,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"free space","hob":"partial","hobnote":"The open grid doubles as a brain dump. (verified from your Hobonichi photos)","adhd":"Fast, no sorting; forgiving.","sens":"Open box, quiet.","fp":[16,7],"home":"notebook","home_note":"Hobonichi grid also works, but dotted notebook is ideal.","t":{"k":"box","dw":16,"dh":8,"mw":8,"mh":4,"label":"BRAIN DUMP","hint":"no sorting, no judging"}},{"id":"brain_dump|ruled lines","element":"brain_dump","el_label":"Brain dump","zone":"capture","group":"ruled lines","names":["ruled lines (notes / brain release)"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":null,"daily":"Common","overall":"Common"},"draw":1,"daily":1,"skip":"high","input":"free space","hob":"partial","hobnote":"The open grid doubles as a brain dump. (verified from your Hobonichi photos)","adhd":"Fast, no sorting; forgiving.","sens":"Open box, quiet.","fp":[12,10],"home":"notebook","home_note":"Hobonichi grid also works, but dotted notebook is ideal.","t":{"k":"lines","dw":22,"dh":14,"mw":10,"mh":4,"label":"NOTES / BRAIN RELEASE","bullet":"none"}},{"id":"notes|boxed area","element":"notes","el_label":"Notes / free space","zone":"capture","group":"boxed area","names":["boxed notes area","small boxed notes"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":1,"of":11}},"tier":{"weekly":"Common","daily":"Core","overall":"Core"},"draw":1,"daily":1,"skip":"high","input":"free space","hob":"full","hobnote":"Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)","adhd":"Catch-all; reduces pressure on other zones.","sens":"Ruled or dotted = calm.","fp":[12,8],"home":"either","home_note":"Hobonichi has grid notes; the notebook dots are the natural free-write space.","t":{"k":"box","dw":14,"dh":8,"mw":6,"mh":3,"label":"NOTES"}},{"id":"notes|dotted free space","element":"notes","el_label":"Notes / free space","zone":"capture","group":"dotted free space","names":["dotted free area with hour labels","dotted free space","dotted free space with prompt arrow","dotted free space with prompts"],"seen":{"weekly":{"n":2,"of":9},"daily":{"n":2,"of":11}},"tier":{"weekly":"Common","daily":"Core","overall":"Core"},"draw":1,"daily":1,"skip":"high","input":"free space","hob":"full","hobnote":"Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)","adhd":"Catch-all; reduces pressure on other zones.","sens":"Ruled or dotted = calm.","fp":[21,10],"home":"either","home_note":"Hobonichi has grid notes; the notebook dots are the natural free-write space.","t":{"k":"dots","dw":20,"dh":10,"mw":6,"mh":4,"label":"FREE SPACE"}},{"id":"notes|ruled page / lines","element":"notes","el_label":"Notes / free space","zone":"capture","group":"ruled page / lines","names":["3 ruled lines","full ruled page","full ruled right page"],"seen":{"weekly":{"n":1,"of":9},"daily":{"n":2,"of":11}},"tier":{"weekly":"Common","daily":"Core","overall":"Core"},"draw":1,"daily":1,"skip":"high","input":"free space","hob":"full","hobnote":"Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)","adhd":"Catch-all; reduces pressure on other zones.","sens":"Ruled or dotted = calm.","fp":[23,29],"home":"either","home_note":"Hobonichi has grid notes; the notebook dots are the natural free-write space.","t":{"k":"lines","dw":26,"dh":36,"mw":10,"mh":6,"label":"NOTES","bullet":"none","rowH":2}},{"id":"notes|unlined area","element":"notes","el_label":"Notes / free space","zone":"capture","group":"unlined area","names":["free handwriting reflection area"],"seen":{"daily":{"n":1,"of":11}},"tier":{"weekly":"Common","daily":"Core","overall":"Core"},"draw":1,"daily":1,"skip":"high","input":"free space","hob":"full","hobnote":"Whole writing area is a fine grid; free-write space is the default. (verified from your Hobonichi photos)","adhd":"Catch-all; reduces pressure on other zones.","sens":"Ruled or dotted = calm.","fp":[33,9],"home":"either","home_note":"Hobonichi has grid notes; the notebook dots are the natural free-write space.","t":{"k":"box","dw":24,"dh":8,"mw":8,"mh":3,"label":"","plain":true,"dashed":true}},{"id":"banner|colour label tab","element":"banner","el_label":"Banner / ribbon label","zone":"decorative","group":"colour label tab","names":["rounded colour label tags","tinted title tab"],"seen":{"daily":{"n":2,"of":11}},"tier":{"weekly":null,"daily":"Niche","overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"write-in line","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Decorative; purely cosmetic.","sens":"Keep subtle.","fp":[5,2],"home":"notebook","home_note":"Optional.","t":{"k":"pill","dw":8,"dh":2,"mw":4,"mh":2,"text":"LABEL"}},{"id":"color_key|3-part colour key (priorities / appointments / to buy)","element":"color_key","el_label":"Colour key / legend","zone":"decorative","group":"3-part colour key (priorities / appointments / to buy)","names":["3-part colour key (priorities / appointments / to buy)"],"seen":{"weekly":{"n":1,"of":9}},"tier":{"weekly":"Niche","daily":null,"overall":"Niche"},"draw":1,"daily":1,"skip":"high","input":"color-in","hob":"none","hobnote":"Not printed on the daily or weekly spreads you supplied (you can still write it into the open grid); other Hobonichi pages not checked.","adhd":"Cuts decisions by pre-assigning meaning; needs 3 pens. Pre-assigned colours cut decisions; stick to 3.","sens":"Adds colour; keep to 2-3.","fp":[54,2],"home":"notebook","home_note":"Optional.","t":{"k":"legend","dw":26,"dh":2,"mw":14,"mh":2,"items":["TOP PRIORITIES","APPOINTMENTS","TO BUY"]}}],"meta":{"zones":["header","plan","schedule","track","reflect","capture","decorative"],"n":{"weekly":9,"daily":11}}}</script>
+<script>
+(function(){
+'use strict';
+const DATA=JSON.parse(document.getElementById('data').textContent);
+const GROUPS=DATA.groups,G={};GROUPS.forEach(g=>G[g.id]=g);
+const ZONES=DATA.meta.zones,N=DATA.meta.n;
+const PW=139.7,PH=209.55;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const f=n=>Math.round(n*100)/100;
+const dots=n=>'●'.repeat(n)+'○'.repeat(3-n);
+
+/* ================= state ================= */
+const S={pitch:5,zoom:14,fit:true,paper:false,overlap:false,steps:false,printDots:true,pt:'all',tier:'all',hideHob:false,q:'',view:'edit'};
+let doc=null,tabIdx=0,selId=null,uid=1,hist=[],fut=[],lib={},cmp={a:null,b:null},showLayouts=false;
+const LS='plannerlab.mocker.v1';
+function loadLib(){try{const j=JSON.parse(localStorage.getItem(LS)||'{}');lib=j.docs||{};}catch(e){lib={};}}
+function persist(){try{localStorage.setItem(LS,JSON.stringify({docs:lib}));return true;}catch(e){return false;}}
+function toast(m){const t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>{t.hidden=true;},2600);}
+
+/* ================= geometry ================= */
+function geom(canvas){
+  const P=S.pitch,Wd=PW/P,Hd=PH/P,cols=Math.floor(Wd),rows=Math.floor(Hd);
+  const spread=canvas==='spread';
+  return{P,Wd,Hd,cols,rows,ox:(Wd-cols)/2,oy:(Hd-rows)/2,spread,maxX:spread?2*cols+1:cols,W:spread?2*Wd:Wd};
+}
+const dxOf=(g,i)=>i<=g.cols?g.ox+i:g.Wd+g.ox+(i-g.cols-1);
+
+/* ================= drawing primitives ================= */
+const T=(s,x,y,c,anchor,size)=>'<text transform="translate('+f(x)+' '+f(y)+') scale(.1)" font-size="'+f((size||6.2)*1.12)+'" class="'+(c||'')+'"'+(anchor?' text-anchor="'+anchor+'"':'')+'>'+esc(s)+'</text>';
+const LN=(x1,y1,x2,y2,c)=>'<line x1="'+f(x1)+'" y1="'+f(y1)+'" x2="'+f(x2)+'" y2="'+f(y2)+'" class="'+(c||'ln')+'"/>';
+const RC=(x,y,w,h,c,r)=>'<rect x="'+f(x)+'" y="'+f(y)+'" width="'+f(Math.max(w,0))+'" height="'+f(Math.max(h,0))+'"'+(r?' rx="'+r+'"':'')+' class="'+(c||'ln')+'"/>';
+const CI=(x,y,r,c)=>'<circle cx="'+f(x)+'" cy="'+f(y)+'" r="'+f(r)+'" class="'+(c||'ln')+'"/>';
+const PA=(d,c)=>'<path d="'+d+'" class="'+(c||'ln')+'"/>';
+const lw=s=>s.length*.52+.5;
+function face(cx,cy,r,type){
+  let s=CI(cx,cy,r)+CI(cx-r*.38,cy-r*.2,.07,'fl')+CI(cx+r*.38,cy-r*.2,.07,'fl');
+  const m={happy:'M'+f(cx-r*.5)+' '+f(cy+r*.2)+' Q'+f(cx)+' '+f(cy+r*.8)+' '+f(cx+r*.5)+' '+f(cy+r*.2),
+           sad:'M'+f(cx-r*.5)+' '+f(cy+r*.6)+' Q'+f(cx)+' '+f(cy+r*.1)+' '+f(cx+r*.5)+' '+f(cy+r*.6),
+           neutral:'M'+f(cx-r*.45)+' '+f(cy+r*.4)+' L'+f(cx+r*.45)+' '+f(cy+r*.4),
+           content:'M'+f(cx-r*.5)+' '+f(cy+r*.25)+' Q'+f(cx)+' '+f(cy+r*.55)+' '+f(cx+r*.5)+' '+f(cy+r*.25),
+           sleepy:'M'+f(cx-r*.3)+' '+f(cy+r*.45)+' L'+f(cx+r*.3)+' '+f(cy+r*.45)};
+  return s+PA(m[type]||m.neutral);
+}
+const FACES=['happy','content','neutral','sad','sleepy'];
+function bullet(type,x,yc,i,p){
+  const sm=p.small?.7:.9;
+  switch(type){
+    case'check':return RC(x,yc-sm/2,sm,sm,'ln');
+    case'circle':return CI(x+.45,yc,.42);
+    case'dot':return CI(x+.3,yc,.14,'fl');
+    case'num':return T(String((p.start||1)+i),x+.1,yc+.25,'sm');
+    case'dash':return T('–',x+.1,yc+.25,'sm');
+    case'time':return T(':',x+1,yc+.25,'sm')+LN(x,yc+.5,x+.8,yc+.5,'fi')+LN(x+1.3,yc+.5,x+2.1,yc+.5,'fi');
+    case'hour':return T(String(((p.start||7)+i)%24),x+.1,yc+.25,'sm');
+  }return'';
+}
+const BX={none:0,check:1.5,circle:1.4,dot:1,num:1.1,dash:1,time:2.4,hour:1.3};
+
+/* ================= kind renderers: (w,h,p) -> svg markup in local dot units ================= */
+const R={};
+R.lines=(w,h,p)=>{
+  const rowH=p.rowH||2,hh=p.hbox?2.2:(p.label?1.8:0),lx=p.box?.6:0,bt=p.bullet||'none',bx=BX[bt];
+  let s='';
+  if(p.box)s+=RC(0,0,w,h,'ln',.3);
+  if(p.hbox)s+=RC(0,0,w,2,'ln');
+  if(p.label&&!p.hbox)s+=T(p.label,lx,1.15,'lab');
+  const stride=p.sub?rowH+1:rowH,rem=h-hh-(p.reward?2:0);
+  const n=Math.max(1,Math.floor(rem/stride));
+  const endw=(p.end==='check'?1.6:p.end==='%'?1.6:p.end?3:0)+(p.rate?3:0);
+  if(p.start_label)s+=T(p.start_label,lx,hh+.5,'sm');
+  for(let i=0;i<n;i++){
+    const y0=hh+i*stride+rowH,yc=y0-rowH/2-(rowH>1?.1:0);
+    if(i<(p.shade||0))s+=RC(lx,y0-rowH,w-2*lx,rowH,'tint');
+    s+=bullet(bt,lx,yc,i,p);
+    if(p.rule!=='none')s+=LN(lx+bx,y0,w-lx-endw,y0,p.rule==='dotted'?'dt':'fi');
+    if(p.labels&&p.labels[i])s+=T(p.labels[i],lx+bx+.1,y0-.3,'sm',null,5);
+    if(p.end==='check')s+=RC(w-lx-1.1,yc-.45,.9,.9,'ln');
+    else if(p.end==='%')s+=T('%',w-lx-1.2,y0-.3,'sm');
+    else if(p.end)s+=T(p.end,w-lx-2.8,y0-.3,'sm',null,5);
+    if(p.rate)for(let j=0;j<3;j++)s+=CI(w-lx-2.5+j*.9,yc,.3,'ln');
+    if(p.sub){s+=T('»',lx+bx,y0+.85,'sm');s+=LN(lx+bx+.9,y0+1,w-lx-endw,y0+1,'dt');}
+  }
+  if(p.vrule)s+=LN(lx+bx-.1,hh,lx+bx-.1,hh+n*stride,'fi');
+  if(p.reward){s+=T('REWARD:',lx,h-.6,'sm',null,5);s+=LN(lx+3.2,h-.5,w-lx,h-.5,'dt');}
+  return s;
+};
+R.box=(w,h,p)=>{
+  let s=RC(0,0,w,h,'ln'+(p.dashed?' dsh':''),.3);
+  if(p.fill){s+=p.label&&!p.inline?RC(0,0,w,Math.min(h,1.8),'tint',.3):RC(0,0,w,h,'tint',.3);}
+  if(p.label){s+=p.inline?T(p.label,.6,h/2+.25,'lab'):T(p.label,.6,1.2,'lab');}
+  if(p.hint){const x=p.inline?lw(p.label||'')+.8:w/2;s+=T(p.hint,p.inline?x:w/2,h/2+(p.label&&!p.inline?.9:.25),'ghint',p.inline?null:'middle',5.4);}
+  if(p.dash)for(let i=0;i<p.dash;i++){const y=2.8+i*1.6;if(y<h-.4){s+=T('–',.6,y,'sm');s+=LN(1.5,y+.2,w-.6,y+.2,'dt');}}
+  if(p.time){s+=T('TIME',w-4.2,h-.5,'sm',null,5);s+=LN(w-2.8,h-.4,w-.5,h-.4,'fi');}
+  return s;
+};
+R.field=(w,h,p)=>{
+  const pos=p.pos||(h>=3?'above':'left'),y=h-.35;let s='';
+  const endw=p.end?lw(p.end)+.4:0;
+  if(pos==='left'){const l=lw(p.label||'')+.3;s+=T(p.label||'',0,y-.05,'lab');s+=LN(l,y,w-endw,y,p.dotted?'dt':'ln');if(p.end)s+=T(p.end,w-endw+.2,y-.05,'sm',null,5);}
+  else{s+=T(p.label||'',0,.9,'lab');s+=LN(0,y,w-endw,y,p.dotted?'dt':'ln');if(p.hint)s+=T(p.hint,.1,y-.3,'ghint',null,5);if(p.end)s+=T(p.end,w-endw+.2,y-.05,'sm',null,5);}
+  if(p.slashes){const a=w*.45;s+=T('/',a,y-.1,'sm');s+=T('/',a+(w-a)*.45,y-.1,'sm');}
+  return s;
+};
+R.grid=(w,h,p)=>{
+  const hh=p.label?1.8:0,chh=1.4,cw=1.2,cols=7,lab=Math.max(5,w-cols*cw-.4),x0=w-cols*cw;
+  let s='';
+  if(p.label)s+=T(p.label,0,1.15,'lab');
+  for(let j=0;j<cols;j++)s+=T('MTWTFSS'[j],x0+j*cw+cw/2,hh+.95,'sm','middle',5);
+  const n=Math.max(1,Math.floor((h-hh-chh)/2));
+  for(let i=0;i<n;i++){
+    const y=hh+chh+i*2+2;s+=LN(0,y,lab,y,'fi');
+    for(let j=0;j<cols;j++){const cx=x0+j*cw+cw/2,cy=y-.7;
+      s+=p.cell==='circle'?CI(cx,cy,.4):p.cell==='dot'?CI(cx,cy,.4,'tint'):RC(cx-.4,cy-.4,.8,.8,'ln');}
+  }
+  return s;
+};
+const DAYS=['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY'];
+R.daygrid=(w,h)=>{
+  const rh=(h-1)/2;let s='';
+  [[0,3],[3,7]].forEach(([a,b],r)=>{const n=b-a,cw=w/n;
+    for(let i=0;i<n;i++){const x=i*cw,y=r*(rh+1);
+      s+=RC(x,y,cw,rh,'ln')+RC(x,y,cw,1.8,'tint')+LN(x,y+1.8,x+cw,y+1.8,'ln')+T(DAYS[a+i],x+cw/2,y+1.2,'lab','middle',5);}});
+  return s;
+};
+R.dayrows=(w,h)=>{
+  const rh=h/6;let s=RC(0,0,w,h,'ln');
+  for(let r=0;r<6;r++){
+    const y=r*rh;if(r)s+=LN(0,y,w,y,'ln');
+    if(r<5){s+=T(String(27+r),.5,y+1.3,'sm',null,8)+LN(2.1,y+.4,2.1,y+1.4,'fi',null)+T(DAYS[r],2.6,y+1.05,'lab',null,5);}
+    else{s+=LN(w/2,y,w/2,h,'ln')+T('SATURDAY',2.6,y+1.05,'lab',null,5)+T('SUNDAY',w/2+2.6,y+1.05,'lab',null,5)+T('2',.5,y+1.3,'sm',null,8)+T('3',w/2+.5,y+1.3,'sm',null,8);}
+  }
+  return s;
+};
+R.daycols=(w,h)=>{
+  const th=h*.62,bh=h-th-1;let s='';
+  for(let i=0;i<5;i++){const cw=w/5,x=i*cw;
+    s+=RC(x,0,cw,th,'ln')+RC(x,0,cw,1.8,'tint')+T(DAYS[i],x+cw/2,1.2,'lab','middle',5);
+    for(let y=3.8;y<th-.2;y+=2)s+=LN(x+.3,y,x+cw-.3,y,'fi');}
+  const cw=w/5;
+  for(let i=0;i<2;i++){const x=i*cw;s+=RC(x,th+1,cw,bh,'ln')+RC(x,th+1,cw,1.8,'tint')+T(DAYS[5+i],x+cw/2,th+2.2,'lab','middle',5);
+    for(let y=th+4.8;y<th+1+bh-.2;y+=2)s+=LN(x+.3,y,x+cw-.3,y,'fi');}
+  s+=RC(2*cw+1,th+1,w-2*cw-1,bh,'ln dsh')+T('SPACE FOR ANYTHING',2*cw+1.6,th+2.2,'ghint',null,5);
+  return s;
+};
+R.table=(w,h,p)=>{
+  const cols=p.cols||[1],heads=p.heads||[],tt=p.title?1.8:0,hasH=heads.some(Boolean),hh=hasH?2:0,rowH=p.rowH||2;
+  let s='';
+  if(p.title)s+=T(p.title,0,1.15,'lab');
+  s+=RC(0,tt,w,h-tt,'ln');
+  let x=0;const xs=[];
+  cols.forEach((c,i)=>{xs.push(x);if(heads[i])s+=T(heads[i],x+.5,tt+1.3,'sm','',5);x+=c*w;if(i<cols.length-1)s+=LN(x,tt+(p.open&&!hasH?0:0),x,h,'ln');});
+  if(hasH)s+=LN(0,tt+hh,w,tt+hh,'ln');
+  if(!p.open){for(let y=tt+hh+rowH;y<h-.01;y+=rowH)s+=LN(0,y,w,y,'dt');}
+  if(p.tick){const cx=xs[cols.length-1]+cols[cols.length-1]*w/2;for(let y=tt+hh+rowH;y<=h+.01;y+=rowH)s+=RC(cx-.35,y-rowH/2-.35,.7,.7,'ln');}
+  if(p.faces){cols.forEach((c,i)=>{const fx=xs[i]+c*w;s+=face(xs[i]+.9,h-.9,.45,'happy')+LN(xs[i]+1.7,h-.9,fx-1.7,h-.9,'dt')+face(fx-.9,h-.9,.45,i===0?'content':i===1?'neutral':'sad');});}
+  return s;
+};
+const MON=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+R.strip=(w,h,p)=>{
+  let s=RC(0,0,w,h,'ln'),mh=h*.5,cw=w/12;
+  for(let i=0;i<12;i++){if(!p.plain)s+=RC(i*cw,0,cw,mh,'tint');s+=T(MON[i],i*cw+cw/2,mh-.55,'sm','middle',w<20?3.6:4.6);if(i)s+=LN(i*cw,0,i*cw,mh,'fi');}
+  s+=LN(0,mh,w,mh,'ln');const dw=w/31;
+  for(let i=0;i<31;i++){if(i)s+=LN(i*dw,mh,i*dw,h,'fi');if(i%5===0||i===30)s+=T(String(i+1),i*dw+dw/2,h-.4,'sm','middle',3.4);}
+  return s;
+};
+R.headtext=(w,h,p)=>{
+  let s=T(p.text||'',0,h-.6,'head',null,9);
+  if(p.right)s+=T(p.right,w,h-.6,'lab','end',6);
+  if(p.rule)s+=LN(0,h-.2,w,h-.2,'ln');
+  return s;
+};
+R.wkdays=(w,h,p)=>{let s='';const cw=w/7;for(let j=0;j<7;j++){s+=T('MTWTFSS'[j],j*cw+cw/2,.9,'lab','middle',5.4);if(p.circles)s+=CI(j*cw+cw/2,h-.8,.42);}return s;};
+R.pill=(w,h,p)=>RC(0,0,w,h,'ln',h/2)+RC(0,0,w,h,'tint',h/2)+T(p.text||'',w/2,h/2+.25,'lab','middle',5.4);
+R.quote=(w,h)=>{
+  let s=LN(0,.2,w,.2,'ln')+LN(0,h-.2,w,h-.2,'ln')+T('“',.1,1.8,'sm','',12);
+  const rows=Math.max(1,Math.floor((h-1.4)/1.1));
+  for(let i=0;i<rows;i++){const y=1.1+i*1.1;s+=LN(1.2,y,w-(i===rows-1?w*.4:1),y,'dt');}
+  s+=T('— AUTHOR',w,h-.5,'sm','end',4.6);
+  return s;
+};
+R.faces=(w,h,p)=>{
+  const n=p.n||1;let s='';const lx=p.label?lw(p.label)+.3:0;
+  if(p.label)s+=T(p.label,0,1.1,'lab');
+  const span=n===1?3:(w-lx),cw=span/n,y=h>=3?(p.label&&n>1?1.2:1.5)+((p.labels&&n>1)?.6:0):h/2;
+  for(let i=0;i<n;i++){
+    const cx=(n===1?lx+1.2:lx+i*cw+cw/2),cy=p.label&&n>1?h-(p.labels?1.9:1):h/2+(p.label&&n===1?0:0);
+    s+=face(cx,Math.max(.7,cy),.55,n===1?'neutral':FACES[i%5]);
+    if(p.labels)s+=T(p.labels[i],cx,h-.3,'sm','middle',3.9);
+  }
+  return s;
+};
+R.segbar=(w,h,p)=>{
+  const l=lw(p.label||'')+.4,n=p.segs||5,bw=w-l,sw=bw/n,y=h/2-.6;
+  let s=T(p.label||'',0,h/2+.25,'lab')+RC(l,y,bw,1.2,'ln',.6);
+  for(let i=1;i<n;i++)s+=LN(l+i*sw,y,l+i*sw,y+1.2,'ln');
+  return s;
+};
+R.boxfaces=(w,h,p)=>{
+  const n=p.n||6;let s=T(p.label||'',0,.9,'lab');const bw=(w-(n-1)*.5)/n;
+  for(let i=0;i<n;i++){const x=i*(bw+.5);s+=RC(x,1.3,bw,Math.max(1,h-3.1),'ln')+face(x+bw/2,h-.8,.5,FACES[i%5]);}
+  return s;
+};
+const WEATH=[(x,y)=>CI(x,y,.35)+[0,1,2,3,4,5,6,7].map(k=>{const a=k*Math.PI/4;return LN(x+Math.cos(a)*.55,y+Math.sin(a)*.55,x+Math.cos(a)*.8,y+Math.sin(a)*.8);}).join(''),
+  (x,y)=>PA('M'+f(x-.6)+' '+f(y+.1)+' Q'+f(x-.6)+' '+f(y-.5)+' '+f(x)+' '+f(y-.4)+' Q'+f(x+.3)+' '+f(y-.8)+' '+f(x+.6)+' '+f(y-.2)+' L'+f(x+.6)+' '+f(y+.1)+'Z')+LN(x-.3,y+.3,x-.4,y+.7)+LN(x+.1,y+.3,x,y+.7)+LN(x+.5,y+.3,x+.4,y+.7),
+  (x,y)=>PA('M'+f(x-.6)+' '+f(y)+' Q'+f(x-.6)+' '+f(y-.6)+' '+f(x)+' '+f(y-.5)+' Q'+f(x+.3)+' '+f(y-.9)+' '+f(x+.6)+' '+f(y-.3)+' L'+f(x+.6)+' '+f(y)+'Z')+PA('M'+f(x)+' '+f(y+.1)+' L'+f(x-.2)+' '+f(y+.5)+' L'+f(x+.1)+' '+f(y+.5)+' L'+f(x-.1)+' '+f(y+.9)),
+  (x,y)=>LN(x-.7,y-.2,x+.5,y-.2)+LN(x-.5,y+.1,x+.7,y+.1)+LN(x-.7,y+.4,x+.3,y+.4),
+  (x,y)=>[0,1,2].map(k=>{const a=k*Math.PI/3;return LN(x+Math.cos(a)*.6,y+Math.sin(a)*.6,x-Math.cos(a)*.6,y-Math.sin(a)*.6);}).join('')];
+R.icons=(w,h,p)=>{
+  const l=p.label?lw(p.label)+.3:0,n=p.n||5,cw=(w-l)/n;let s=p.label?T(p.label,0,h/2+.25,'lab'):'';
+  for(let i=0;i<n;i++){const x=l+i*cw+cw/2,y=h/2;
+    if(p.icon==='drop')s+=PA('M'+f(x)+' '+f(y-.7)+' C'+f(x+.5)+' '+f(y-.1)+' '+f(x+.55)+' '+f(y+.45)+' '+f(x)+' '+f(y+.55)+' C'+f(x-.55)+' '+f(y+.45)+' '+f(x-.5)+' '+f(y-.1)+' '+f(x)+' '+f(y-.7)+'Z');
+    else if(p.icon==='weather')s+=WEATH[i%5](x,y);else s+=CI(x,y,.45);}
+  return s;
+};
+R.iconcells=(w,h,p)=>{
+  const c=p.cols||4,r=p.rows||3,cw=w/c,ch=h/r;let s='';
+  for(let i=0;i<r;i++)for(let j=0;j<c;j++){const x=j*cw,y=i*ch;s+=RC(x,y,cw,ch,'ln')+RC(x+.2,y+.2,.7,.7,'ln')+CI(x+cw/2,y+ch/2+.1,Math.min(cw,ch)*.25,'fi');}
+  return s;
+};
+R.cells=(w,h,p)=>{
+  const c=p.cols||2,r=p.rows||2,gap=.5,cw=(w-(c-1)*gap)/c,ch=(h-(r-1)*gap)/r;let s='';
+  for(let i=0;i<r;i++)for(let j=0;j<c;j++){const x=j*(cw+gap),y=i*(ch+gap),k=i*c+j;
+    s+=RC(x,y,cw,ch,'ln');
+    if(p.fill)s+=RC(x,y,cw,ch,'tint');
+    s+=T((p.labels&&p.labels[k])||'',x+.4,y+1,'lab',null,cw<8?3.6:4.8);
+    if(p.lines){s+=RC(x,y,cw,1.5,'tint');for(let yy=y+2.4,m=0;yy<y+ch-.2&&m<5;yy+=1.8,m++){s+=RC(x+.4,yy-.6,.6,.6,'ln')+LN(x+1.3,yy,x+cw-.4,yy,'fi');}}}
+  return s;
+};
+R.calendar=(w,h)=>{
+  const hh=1.6,cw=w/7,rh=(h-hh-1.2)/6;let s=RC(0,0,w,h,'ln')+RC(0,0,w,1.2,'tint');
+  s+=T('MONTH',.4,.85,'lab',null,4);
+  for(let j=0;j<7;j++)s+=T('MTWTFSS'[j],j*cw+cw/2,hh+.8,'sm','middle',3.6);
+  for(let i=0;i<6;i++)s+=LN(0,1.2+hh*0+.5+hh+i*rh-.5+.0,w,1.2+hh*0+.5+hh+i*rh-.5,'fi');
+  for(let j=1;j<7;j++)s+=LN(j*cw,1.2,j*cw,h,'fi');
+  for(let d=0;d<31;d++){const k=d+3,r=Math.floor(k/7),c=k%7;if(r<6)s+=T(String(d+1),c*cw+cw/2,hh+1.2+r*rh+rh*.7,'sm','middle',w/7<1.4?2.8:3.4);}
+  return s;
+};
+R.wheel=(w,h)=>{
+  const r=Math.min(w,h)/2-.3,cx=w/2,cy=h/2;let s=CI(cx,cy,r)+CI(cx,cy,r*.55);
+  for(let i=0;i<14;i++){const a=i*2*Math.PI/14-Math.PI/2;s+=LN(cx+Math.cos(a)*r*.55,cy+Math.sin(a)*r*.55,cx+Math.cos(a)*r,cy+Math.sin(a)*r,'fi');}
+  s+=T('TRACK YOUR',cx,cy-.1,'sm','middle',3.8)+T('MOOD',cx,cy+.9,'lab','middle',6);
+  return s;
+};
+R.clock=(w,h)=>{
+  const r=Math.min(w,h)/2-.2,cx=w/2,cy=h/2;let s=CI(cx,cy,r)+CI(cx,cy,.1,'fl');
+  for(let i=1;i<=12;i++){const a=i*Math.PI/6-Math.PI/2;s+=T(String(i),cx+Math.cos(a)*(r-.8),cy+Math.sin(a)*(r-.8)+.2,'sm','middle',w<7?3.2:4);}
+  return s;
+};
+R.axis=(w,h,p)=>{
+  const hh=p.label?1.8:0,ax=p.hours?2.2:1.2;let s=p.label?T(p.label,0,1.15,'lab'):'';
+  s+=LN(ax,hh,ax,h,'ln');
+  const rowH=p.hours?1:2,n=Math.floor((h-hh)/rowH);
+  for(let i=0;i<=n;i++){const y=hh+i*rowH;s+=LN(ax-.2,y,ax,y,'fi');
+    if(p.hours&&i<n&&i%1===0)s+=T(String(((p.from_h||5)+i)%24),ax-.4,y+.65,'sm','end',3.8);
+    if(!p.hours&&i>0&&i<=n)s+=LN(ax+.2,y,w,y,'dt');}
+  if(p.hours)for(let i=0;i<n;i+=3)s+=LN(ax,hh+i*rowH,w,hh+i*rowH,'fi');
+  return s;
+};
+R.sections=(w,h,p)=>{
+  const labs=p.labels||[],sp=p.split||[1,1,1,1],tot=sp.reduce((a,b)=>a+b,0);let s='',y=0;
+  const avail=h-labs.length*1.4;
+  labs.forEach((l,i)=>{const rows=Math.max(1,Math.round(avail*sp[i]/tot/2));
+    s+=T(l,0,y+.95,'sm',null,4.8);y+=1.4;
+    for(let r=0;r<rows;r++){y+=2;s+=CI(.45,y-.9,.42)+LN(1.4,y,w,y,'dt');}
+    if(i<labs.length-1)s+=LN(0,y+.1,w,y+.1,'ln');});
+  return s;
+};
+R.dots=(w,h,p)=>RC(0,0,w,h,'fi dsh',.3)+(p.label?T(p.label,.5,1.15,'ghint',null,5):'');
+R.legend=(w,h,p)=>{
+  const it=p.items||[],cw=w/it.length;let s=RC(0,0,w,h,'ln',.3);
+  it.forEach((t,i)=>{const x=i*cw;if(i)s+=LN(x,0,x,h,'fi');s+=RC(x+.5,h/2-.45,.9,.9,'tint')+RC(x+.5,h/2-.45,.9,.9,'ln')+T(t,x+1.8,h/2+.25,'sm',null,5);});
+  return s;
+};
+R.checkrow=(w,h,p)=>{
+  const l=lw(p.label||'')+.4,it=p.labels||[],cw=(w-l)/it.length;let s=T(p.label||'',0,h/2+.25,'lab');
+  it.forEach((t,i)=>{const x=l+i*cw;s+=RC(x,h/2-.45,.9,.9,'ln')+T(t,x+1.2,h/2+.25,'sm',null,4.6);});
+  return s;
+};
+R.boxfields=(w,h,p)=>{
+  const it=p.labels||[],cw=w/it.length;let s='';
+  it.forEach((t,i)=>{const x=i*cw;s+=T(t,x,h/2+.25,'lab',null,5);const l=lw(t)-.4;s+=RC(x+l,.3,cw-l-.5,h-.6,'ln',.2)+RC(x+l,.3,cw-l-.5,h-.6,'tint',.2);});
+  return s;
+};
+R.stack=(w,h,p)=>{
+  const it=p.labels||[],rh=h/it.length,lwd=Math.min(2.2,w*.4);let s='';
+  it.forEach((t,i)=>{const y=i*rh;s+=RC(0,y,lwd,rh,'ln')+RC(0,y,lwd,rh,'tint')+RC(lwd,y,w-lwd,rh,'ln')+T(t,lwd/2,y+rh/2+.2,'lab','middle',4.6);});
+  return s;
+};
+
+/* ================= item model ================= */
+function params(it){const g=G[it.g],p=Object.assign({},g.t);if(it.label!==undefined&&it.label!==null)p.label=it.label;if(it.rowH)p.rowH=it.rowH;return p;}
+function drawItem(it,pre){
+  const g=G[it.g],p=params(it);
+  const inner=(R[p.k]||R.box)(it.w,it.h,p);
+  return inner;
+}
+function newItem(gid,x,y,w,h){const t=G[gid].t;return{id:'i'+(uid++),g:gid,x,y,w:w||t.dw,h:h||t.dh};}
+function bounds(it,gm){
+  const t=G[it.g].t;it.w=Math.max(t.mw||3,Math.min(it.w,gm.maxX));it.h=Math.max(t.mh||2,Math.min(it.h,gm.rows));
+  it.x=Math.max(0,Math.min(it.x,gm.maxX-it.w));it.y=Math.max(0,Math.min(it.y,gm.rows-it.h));
+}
+const hit=(a,b)=>a.x<b.x+b.w&&b.x<a.x+a.w&&a.y<b.y+b.h&&b.y<a.y+a.h;
+function collides(tab,it,skipId){return tab.items.some(o=>o.id!==skipId&&hit(it,o));}
+function freeSpot(tab,w,h,gm,sx,sy){
+  const cand=[];
+  for(let y=0;y<=gm.rows-h;y++)for(let x=0;x<=gm.maxX-w;x++)cand.push([x,y]);
+  const ax=sx==null?0:sx,ay=sy==null?0:sy;
+  cand.sort((a,b)=>(Math.abs(a[0]-ax)+Math.abs(a[1]-ay)*1.5)-(Math.abs(b[0]-ax)+Math.abs(b[1]-ay)*1.5));
+  for(const [x,y] of cand){const r={x,y,w,h};if(!collides(tab,r))return r;}
+  return null;
+}
+
+/* ================= sheet svg ================= */
+const dotCache={};
+function dotPath(gm){
+  const k=gm.P+gm.spread;if(dotCache[k])return dotCache[k];
+  let d='';const pages=gm.spread?2:1;
+  for(let pg=0;pg<pages;pg++){const bx=pg*gm.Wd;for(let i=0;i<=gm.cols;i++)for(let j=0;j<=gm.rows;j++)d+='M'+f(bx+gm.ox+i)+' '+f(gm.oy+j)+'h0';}
+  return dotCache[k]=d;
+}
+function sheetSVG(tab,o){
+  o=o||{};const gm=geom(tab.canvas),th=o.paper?'th-paper':'th-dark',px=o.px||S.zoom;
+  const vb=o.page!=null?[o.page*gm.Wd,0,gm.Wd,gm.Hd]:[0,0,gm.W,gm.Hd];
+  let s='<svg class="sheet '+th+'" xmlns="http://www.w3.org/2000/svg" viewBox="'+vb.map(f).join(' ')+'"'+(o.px||o.fixed?' width="'+f(vb[2]*px)+'" height="'+f(vb[3]*px)+'"':'')+(o.fixed?'':'')+'>';
+  if(o.page==null){s+='<rect class="pg" x="0" y="0" width="'+f(gm.W)+'" height="'+f(gm.Hd)+'"/>';if(gm.spread)s+='<line x1="'+f(gm.Wd)+'" y1="0" x2="'+f(gm.Wd)+'" y2="'+f(gm.Hd)+'" stroke="var(--spine)" stroke-width=".12"/>';}
+  else s+='<rect class="pg" x="'+f(vb[0])+'" y="0" width="'+f(vb[2])+'" height="'+f(vb[3])+'" style="stroke:none"/>';
+  if(o.dots!==false)s+='<path class="dots" d="'+dotPath(gm)+'"/>';
+  const order=stepOrder(tab);
+  tab.items.forEach(it=>{
+    const x=dxOf(gm,it.x),y=gm.oy+it.y;
+    s+='<g class="item'+(it.id===selId&&o.interactive?' sel':'')+'" data-id="'+it.id+'" transform="translate('+f(x)+' '+f(y)+')">';
+    if(o.interactive)s+='<rect class="hit" width="'+it.w+'" height="'+it.h+'"/>';
+    s+=drawItem(it)+'<rect class="selbox" width="'+it.w+'" height="'+it.h+'"/></g>';
+  });
+  if(o.interactive){
+    const ov=tab.items.filter(a=>tab.items.some(b=>b!==a&&hit(a,b)));
+    ov.forEach(a=>{s+='<rect class="ovl" x="'+f(dxOf(gm,a.x))+'" y="'+f(gm.oy+a.y)+'" width="'+a.w+'" height="'+a.h+'"/>';});
+    if(drag&&drag.blocked){const r=drag.ghost;s+='<rect class="blocked" x="'+f(dxOf(gm,r.x))+'" y="'+f(gm.oy+r.y)+'" width="'+r.w+'" height="'+r.h+'"/>';}
+    const it=tab.items.find(i=>i.id===selId);
+    if(it){const x=dxOf(gm,it.x),y=gm.oy+it.y;
+      s+='<rect class="hnd e" data-h="e" x="'+f(x+it.w-.35)+'" y="'+f(y+it.h/2-.45)+'" width=".7" height=".9" rx=".2"/>';
+      s+='<rect class="hnd s" data-h="s" x="'+f(x+it.w/2-.45)+'" y="'+f(y+it.h-.35)+'" width=".9" height=".7" rx=".2"/>';
+      s+='<rect class="hnd" data-h="se" x="'+f(x+it.w-.45)+'" y="'+f(y+it.h-.45)+'" width=".9" height=".9" rx=".25"/>';}
+  }
+  if(o.steps)order.forEach((id,n)=>{const it=tab.items.find(i=>i.id===id);if(!it)return;
+    s+='<g class="badge" transform="translate('+f(dxOf(gm,it.x)+.1)+' '+f(gm.oy+it.y+.1)+')"><circle r=".75"/><text transform="scale(.1)" font-size="7" text-anchor="middle" y="2.4">'+(n+1)+'</text></g>';});
+  return s+'</svg>';
+}
+function stepOrder(tab){
+  const base=tab.items.slice().sort((a,b)=>a.y-b.y||a.x-b.x).map(i=>i.id);
+  if(!tab.order)return base;
+  const have=tab.order.filter(id=>tab.items.some(i=>i.id===id)),rest=base.filter(id=>!have.includes(id));
+  return have.concat(rest);
+}
+
+/* ================= stats ================= */
+function stats(tab){
+  const gm=geom(tab.canvas);let draw=0,daily=0;
+  tab.items.forEach(i=>{draw+=G[i.g].draw;daily+=G[i.g].daily;});
+  const cells=new Uint8Array((gm.maxX)*gm.rows);
+  tab.items.forEach(i=>{for(let y=i.y;y<i.y+i.h&&y<gm.rows;y++)for(let x=i.x;x<i.x+i.w&&x<gm.maxX;x++)cells[y*gm.maxX+x]=1;});
+  const cover=(x0,x1)=>{let c=0,t=0;for(let y=0;y<gm.rows;y++)for(let x=x0;x<x1;x++){t++;if(cells[y*gm.maxX+x])c++;}return t?1-c/t:1;};
+  const open=cover(0,gm.maxX);
+  const pages=gm.spread?[cover(0,gm.cols),cover(gm.cols+1,gm.maxX)]:[open];
+  const tags=new Set();tab.items.forEach(i=>tags.add(i.g));
+  return{draw,daily,open,pages,n:tab.items.length,gm};
+}
+const pct=x=>Math.round(x*100)+'%';
+function statusHTML(){
+  const tab=doc.tabs[tabIdx],s=stats(tab);let h='';
+  h+='<span class="stat">Draw effort <b>'+s.draw+'</b></span><span class="stat">Daily effort <b>'+s.daily+'</b></span>';
+  const cls=s.open<.15?'warn':s.open<.25?'':'ok';
+  h+='<span class="stat '+cls+'">Open space <b>'+pct(s.open)+'</b>'+(s.pages.length>1?' (left '+pct(s.pages[0])+', right '+pct(s.pages[1])+')':'')+'</span>';
+  h+='<span class="stat">Elements <b>'+s.n+'</b></span>';
+  if(doc.kind==='bundle'&&doc.tabs.length>1){
+    const w=stats(doc.tabs[0]),d=stats(doc.tabs[1]);
+    h+='<span class="stat" title="One weekly spread plus seven daily pages, effort points">Week: draw <b>'+(w.draw+7*d.draw)+'</b> · daily fill <b>'+(Math.round((d.daily+w.daily/7)*10)/10)+'</b>/day</span>';
+  }
+  if(s.open<.15)h+='<div class="notice" style="flex-basis:100%">This page is crowded: only '+pct(s.open)+' is open. Consider dropping an element or making one smaller.</div>';
+  else if(s.open<.25)h+='<div class="notice" style="flex-basis:100%;border-color:var(--line);background:var(--surface-2)">Getting full: '+pct(s.open)+' open.</div>';
+  const crossing=tab.items.filter(it=>tab.canvas==='spread'&&it.x<=s.gm.cols&&it.x+it.w>s.gm.cols+1).length;
+  if(crossing)h+='<div class="hint" style="flex-basis:100%">'+crossing+' element'+(crossing>1?'s cross':' crosses')+' the fold. That is fine for a hand-drawn spread, but lines at the spine are harder to rule.</div>';
+  return h;
+}
+
+/* ================= history ================= */
+function snap(){return JSON.stringify(doc.tabs.map(t=>({items:t.items,order:t.order})));}
+function push(){hist.push(snap());if(hist.length>60)hist.shift();fut=[];}
+function restore(js){const a=JSON.parse(js);a.forEach((t,i)=>{if(doc.tabs[i]){doc.tabs[i].items=t.items;doc.tabs[i].order=t.order;}});}
+$('undo').addEventListener('click',()=>{if(!hist.length)return;fut.push(snap());restore(hist.pop());paint();});
+$('redo').addEventListener('click',()=>{if(!fut.length)return;hist.push(snap());restore(fut.pop());paint();});
+
+/* ================= docs ================= */
+function mkTab(label,canvas){return{label,canvas,items:[],order:null};}
+function newDoc(kind,name){
+  const d={name:name||'Untitled',kind,pitch:S.pitch,tabs:[]};
+  if(kind==='bundle'){d.tabs=[mkTab('Weekly spread','spread'),mkTab('Daily page','single')];}
+  else d.tabs=[mkTab(kind==='spread'?'Spread':'Page',kind==='spread'?'spread':'single')];
+  return d;
+}
+function useDoc(d){doc=d;tabIdx=0;selId=null;hist=[];fut=[];if(d.pitch){S.pitch=d.pitch;$('pitch').value=String(d.pitch);}
+  uid=1+Math.max(0,...d.tabs.flatMap(t=>t.items.map(i=>+String(i.id).replace(/\D/g,'')||0)));paint();}
+function addByKey(tab,key,x,y,w,h){const it=newItem(key,x,y,w,h);tab.items.push(it);return it;}
+function starterDoc(){
+  const d=newDoc('bundle','Starter set (suggestion)');const W=d.tabs[0],D=d.tabs[1];
+  const A=(tab,k,x,y,w,h)=>addByKey(tab,k,x,y,w,h);
+  A(W,'week_header|title + write-in date',1,1,25,2);
+  A(W,'focus_theme|short write-in line',1,4,25,3);
+  A(W,'top_priorities|3 numbered lines',1,8,25,8);
+  A(W,'todo_list|checkbox / circle lines',1,17,25,17);
+  A(W,'habit_tracker|named rows x 7-day checkboxes',29,1,25,10);
+  A(W,'wins|numbered lines',29,12,25,8);
+  A(W,'improve_next|ruled lines',29,21,25,6);
+  A(W,'notes|dotted free space',29,28,25,12);
+  A(D,'date_header|date write-in line',1,1,25,2);
+  A(D,'top_priorities|3 numbered lines',1,4,25,8);
+  A(D,'secondary_tasks|checkbox / dotted lines',1,13,25,10);
+  A(D,'brain_dump|open box with label',1,24,25,11);
+  A(D,'highlight_of_day|one line',1,36,25,3);
+  A(D,'tomorrow_first_step|labelled dotted line',1,39,25,2);
+  return d;
+}
+
+/* ================= canvas painting + interaction ================= */
+let drag=null;
+function fitPx(tab){const gm=geom(tab.canvas),w=$('stage').clientWidth-34,hh=Math.max(420,window.innerHeight-190);return Math.max(8,Math.min(26,Math.floor(Math.min(w/gm.W,hh/gm.Hd))));}
+function paintCanvas(){
+  const tab=doc.tabs[tabIdx];
+  if(S.fit){S.zoom=fitPx(tab);$('zoom').value=S.zoom;}
+  $('stage').innerHTML=sheetSVG(tab,{interactive:true,paper:S.paper,steps:S.steps,px:S.zoom});
+  $('status').innerHTML=statusHTML();
+}
+function paint(){
+  $('docname').value=doc.name;
+  $('pitchnote').textContent='Page 5.5 × 8.25 in · '+(geom('single').cols+1)+' × '+(geom('single').rows+1)+' dots at '+S.pitch+' mm';
+  $('tabs').innerHTML=doc.tabs.length>1?doc.tabs.map((t,i)=>'<button class="tab" role="tab" aria-selected="'+(i===tabIdx)+'" data-i="'+i+'" type="button">'+esc(t.label)+'</button>').join(''):'';
+  $('undo').disabled=!hist.length;$('redo').disabled=!fut.length;
+  paintCanvas();paintInspector();paintPanels();
+}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;tabIdx=+b.dataset.i;selId=null;paint();});
+
+function svgPoint(svg,cx,cy){const pt=svg.createSVGPoint();pt.x=cx;pt.y=cy;return pt.matrixTransform(svg.getScreenCTM().inverse());}
+function dotAt(gm,X,Y){
+  let i;if(!gm.spread||X<gm.Wd)i=Math.round(X-gm.ox);else i=gm.cols+1+Math.round(X-(gm.Wd+gm.ox));
+  return{x:Math.max(0,Math.min(gm.maxX,i)),y:Math.max(0,Math.min(gm.rows,Math.round(Y-gm.oy)))};
+}
+$('stage').addEventListener('pointerdown',e=>{
+  const svg=$('stage').querySelector('svg');if(!svg)return;
+  const tab=doc.tabs[tabIdx],gm=geom(tab.canvas);
+  const h=e.target.closest('[data-h]'),g=e.target.closest('.item');
+  if(h&&selId){const it=tab.items.find(i=>i.id===selId);drag={mode:'resize',h:h.dataset.h,id:it.id,start:{x:it.x,y:it.y,w:it.w,h:it.h},changed:false,svg,gm};e.preventDefault();startDrag();return;}
+  if(g){selId=g.dataset.id;const it=tab.items.find(i=>i.id===selId);const p=svgPoint(svg,e.clientX,e.clientY),d=dotAt(gm,p.x,p.y);
+    drag={mode:'move',id:it.id,off:{x:d.x-it.x,y:d.y-it.y},start:{x:it.x,y:it.y,w:it.w,h:it.h},changed:false,svg,gm};e.preventDefault();$('stage').focus();paintCanvas();paintInspector();startDrag();return;}
+  if(selId){selId=null;paintCanvas();paintInspector();}
+});
+function startDrag(){window.addEventListener('pointermove',onMove);window.addEventListener('pointerup',onUp,{once:true});window.addEventListener('pointercancel',onUp,{once:true});}
+function onMove(e){
+  if(!drag)return;const tab=doc.tabs[tabIdx],gm=drag.gm,it=tab.items.find(i=>i.id===drag.id);if(!it)return;
+  const svg=$('stage').querySelector('svg')||drag.svg,p=svgPoint(svg,e.clientX,e.clientY),d=dotAt(gm,p.x,p.y);
+  const t=G[it.g].t,r={x:it.x,y:it.y,w:it.w,h:it.h};
+  if(drag.mode==='move'){r.x=d.x-drag.off.x;r.y=d.y-drag.off.y;}
+  else{
+    if(drag.h==='e'||drag.h==='se')r.w=d.x-it.x;
+    if(drag.h==='s'||drag.h==='se')r.h=d.y-it.y;
+  }
+  r.w=Math.max(t.mw||3,Math.min(r.w,gm.maxX));r.h=Math.max(t.mh||2,Math.min(r.h,gm.rows));
+  r.x=Math.max(0,Math.min(r.x,gm.maxX-r.w));r.y=Math.max(0,Math.min(r.y,gm.rows-r.h));
+  const bad=!S.overlap&&collides(tab,r,it.id);
+  drag.blocked=bad;drag.ghost=r;
+  if(!bad&&(r.x!==it.x||r.y!==it.y||r.w!==it.w||r.h!==it.h)){if(!drag.changed){push();drag.changed=true;}Object.assign(it,r);}
+  paintCanvas();
+}
+function onUp(){window.removeEventListener('pointermove',onMove);if(drag){const c=drag.changed;drag=null;paintCanvas();if(c)paintInspector();}}
+$('stage').addEventListener('keydown',e=>{
+  const tab=doc.tabs[tabIdx],it=tab.items.find(i=>i.id===selId),gm=geom(tab.canvas);
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();$((e.shiftKey)?'redo':'undo').click();return;}
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();$('redo').click();return;}
+  if(!it)return;
+  if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();push();tab.items=tab.items.filter(i=>i!==it);selId=null;paint();return;}
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='d'){e.preventDefault();dupe(it);return;}
+  const dm={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];if(!dm)return;e.preventDefault();
+  const t=G[it.g].t,r={x:it.x,y:it.y,w:it.w,h:it.h};
+  if(e.shiftKey){r.w+=dm[0];r.h+=dm[1];}else{r.x+=dm[0];r.y+=dm[1];}
+  r.w=Math.max(t.mw||3,Math.min(r.w,gm.maxX));r.h=Math.max(t.mh||2,Math.min(r.h,gm.rows));r.x=Math.max(0,Math.min(r.x,gm.maxX-r.w));r.y=Math.max(0,Math.min(r.y,gm.rows-r.h));
+  if(!S.overlap&&collides(tab,r,it.id)){toast('Something is in the way');return;}
+  push();Object.assign(it,r);paintCanvas();paintInspector();
+});
+function dupe(it){const tab=doc.tabs[tabIdx],gm=geom(tab.canvas);const sp=freeSpot(tab,it.w,it.h,gm,it.x+1,it.y+1);if(!sp){toast('No room for a copy');return;}
+  push();const c=Object.assign({},it,{id:'i'+(uid++),x:sp.x,y:sp.y});tab.items.push(c);selId=c.id;paint();}
+
+/* ================= inspector ================= */
+function paintInspector(){
+  const tab=doc.tabs[tabIdx],it=tab.items.find(i=>i.id===selId),el=$('inspector');
+  if(!it){el.innerHTML='<div class="insp"><p class="hint full">Select an element on the page, or from this list, to move, resize, relabel or swap its variant. Arrow keys nudge it by one dot; Shift plus arrows resize.</p>'+
+    (tab.items.length?'<div class="full row">'+tab.items.map(i=>'<button class="btn" type="button" data-pick="'+i.id+'">'+esc(G[i.g].el_label)+'</button>').join('')+'</div>':'')+'</div>';
+    el.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>{selId=b.dataset.pick;paintCanvas();paintInspector();}));return;}
+  const g=G[it.g],p=params(it),gm=geom(tab.canvas);
+  const alts=GROUPS.filter(x=>x.element===g.element);
+  el.innerHTML='<div class="insp">'+
+   '<div class="full"><h2>'+esc(g.el_label)+'</h2><p class="hint">'+esc(g.group)+' · draw <span class="dots-r">'+dots(g.draw)+'</span> daily <span class="dots-r">'+dots(g.daily)+'</span> · skip '+esc(g.skip)+' · Hobonichi: '+esc(g.hob)+'</p></div>'+
+   '<label>Variant<select id="iv">'+alts.map(a=>'<option value="'+esc(a.id)+'"'+(a.id===it.g?' selected':'')+'>'+esc(a.group)+'</option>').join('')+'</select></label>'+
+   '<label>Wording<input id="il" type="text" value="'+esc(p.label||'')+'"'+(('label' in g.t||p.k==='box'||p.k==='lines'||p.k==='field')?'':' disabled')+'></label>'+
+   (p.k==='lines'?'<label>Line spacing<select id="ir"><option value="1"'+((p.rowH||2)===1?' selected':'')+'>1 dot (5 mm)</option><option value="2"'+((p.rowH||2)===2?' selected':'')+'>2 dots (10 mm)</option></select></label>':'')+
+   '<div class="full"><span class="lbl">Position and size (dots)</span><div class="xywh">'+
+   ['x','y','w','h'].map(k=>'<label><span class="hint">'+k+'</span><input type="number" id="n-'+k+'" value="'+it[k]+'" min="0" step="1"></label>').join('')+'</div></div>'+
+   '<div class="full acts"><button class="btn" id="idup" type="button">Duplicate</button><button class="btn" id="idel" type="button">Delete</button></div>'+
+   '<div class="full"><p class="hint"><b>Belongs in:</b> '+esc(cap(g.home))+'. '+esc(g.home_note)+'</p><p class="hint"><b>ADHD:</b> '+esc(g.adhd)+'</p><p class="hint"><b>Sensory:</b> '+esc(g.sens)+'</p></div></div>';
+  $('iv').addEventListener('change',e=>{push();it.g=e.target.value;it.label=null;const t=G[it.g].t;it.w=Math.max(t.mw||3,Math.min(it.w,gm.maxX));it.h=Math.max(t.mh||2,it.h);bounds(it,gm);paint();});
+  $('il').addEventListener('change',e=>{push();it.label=e.target.value;paintCanvas();});
+  if($('ir'))$('ir').addEventListener('change',e=>{push();it.rowH=+e.target.value;paintCanvas();});
+  ['x','y','w','h'].forEach(k=>$('n-'+k).addEventListener('change',e=>{
+    const r={x:it.x,y:it.y,w:it.w,h:it.h};r[k]=Math.max(0,Math.round(+e.target.value||0));const t=G[it.g].t;
+    r.w=Math.max(t.mw||3,Math.min(r.w,gm.maxX));r.h=Math.max(t.mh||2,Math.min(r.h,gm.rows));r.x=Math.min(r.x,gm.maxX-r.w);r.y=Math.min(r.y,gm.rows-r.h);
+    if(!S.overlap&&collides(tab,r,it.id)){toast('Something is in the way');paintInspector();return;}
+    push();Object.assign(it,r);paintCanvas();paintInspector();}));
+  $('idup').addEventListener('click',()=>dupe(it));
+  $('idel').addEventListener('click',()=>{push();tab.items=tab.items.filter(i=>i!==it);selId=null;paint();});
+}
+
+/* ================= sidebar ================= */
+function thumb(g){const t=g.t,gw=Math.min(t.dw,30),gh=Math.min(t.dh,30),it={g:g.id,x:0,y:0,w:gw,h:gh};
+  const inner=drawItem(it);
+  return '<svg class="sheet th-paper" viewBox="-.4 -.4 '+(gw+.8)+' '+(gh+.8)+'" xmlns="http://www.w3.org/2000/svg">'+inner+'</svg>';}
+function sideMatch(g){
+  if(S.pt!=='all'&&!(g.seen[S.pt]))return false;
+  if(S.tier!=='all'){const ok=['weekly','daily'].some(pt=>g.seen[pt]&&(S.pt==='all'||S.pt===pt)&&g.tier[pt]===S.tier);if(!ok)return false;}
+  if(S.hideHob&&g.hob==='full')return false;
+  if(S.q&&(g.el_label+' '+g.group+' '+g.names.join(' ')+' '+g.input).toLowerCase().indexOf(S.q)<0)return false;
+  return true;
+}
+function paintTree(){
+  let h='';
+  ZONES.forEach(z=>{
+    const gs=GROUPS.filter(g=>g.zone===z&&sideMatch(g));if(!gs.length)return;
+    const els=[...new Set(gs.map(g=>g.element))];
+    h+='<details class="z" '+((S.q||z==='plan'||z==='header')?'open':'')+'><summary>'+cap(z)+'<span class="ecount">'+gs.length+'</span></summary>';
+    els.forEach(e=>{const eg=gs.filter(g=>g.element===e);
+      h+='<details class="e" '+(S.q?'open':'')+'><summary>'+esc(eg[0].el_label)+'<span class="ecount">'+eg.length+'</span></summary><div class="vlist">';
+      eg.forEach(g=>{
+        const seen=['weekly','daily'].filter(pt=>g.seen[pt]).map(pt=>'<span class="tier '+(g.tier[pt]||'').toLowerCase()+'">'+pt[0].toUpperCase()+' '+(g.tier[pt]||'')+'</span>').join('');
+        h+='<div class="vi" data-g="'+esc(g.id)+'"><div class="thumb">'+thumb(g)+'</div><div><div class="nm">'+esc(g.group)+'</div><div class="meta">'+seen+(g.hob==='full'?'<span class="chip full">in Hobonichi</span>':'')+'</div>'+
+           '<div class="meta"><span class="chip">draw '+dots(g.draw)+'</span><span class="chip">daily '+dots(g.daily)+'</span></div><button class="btn add" type="button" data-add="'+esc(g.id)+'">Add</button></div></div>';});
+      h+='</div></details>';});
+    h+='</details>';
+  });
+  $('tree').innerHTML=h||'<p class="hint">Nothing matches. Clear a filter.</p>';
+}
+function pillRow(id,opts,key){
+  $(id).innerHTML=opts.map(([v,l])=>'<button type="button" class="pill" aria-pressed="'+(S[key]===v)+'" data-v="'+v+'">'+l+'</button>').join('');
+  $(id).onclick=e=>{const b=e.target.closest('.pill');if(!b)return;S[key]=b.dataset.v;pillRow(id,opts,key);paintTree();};
+}
+pillRow('ptPills',[['all','Both'],['weekly','Weekly'],['daily','Daily']],'pt');
+pillRow('tierPills',[['all','Any'],['Core','Core'],['Common','Common'],['Niche','Niche']],'tier');
+$('hideHob').addEventListener('click',e=>{S.hideHob=!S.hideHob;e.currentTarget.setAttribute('aria-pressed',S.hideHob);paintTree();});
+$('q').addEventListener('input',e=>{S.q=e.target.value.trim().toLowerCase();paintTree();});
+
+function addToPage(gid,at){
+  const tab=doc.tabs[tabIdx],gm=geom(tab.canvas),t=G[gid].t;
+  let w=Math.min(t.dw,gm.maxX),h=Math.min(t.dh,gm.rows);
+  const want=at?{x:at.x-Math.floor(w/2),y:at.y-Math.floor(h/2)}:{x:1,y:1};
+  want.x=Math.max(0,Math.min(want.x,gm.maxX-w));want.y=Math.max(0,Math.min(want.y,gm.rows-h));
+  let r={x:want.x,y:want.y,w,h};
+  if(!S.overlap&&collides(tab,r)){const sp=freeSpot(tab,w,h,gm,want.x,want.y);
+    if(!sp){const sw=Math.max(t.mw||3,Math.floor(w*.6)),sh=Math.max(t.mh||2,Math.floor(h*.6));const sp2=freeSpot(tab,sw,sh,gm,want.x,want.y);if(!sp2){toast('No room left on this page');return;}r=sp2;toast('Added smaller to fit');}
+    else r=sp;}
+  push();const it={id:'i'+(uid++),g:gid,x:r.x,y:r.y,w:r.w,h:r.h};tab.items.push(it);selId=it.id;paint();
+}
+$('tree').addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(!b)return;addToPage(b.dataset.add,null);});
+/* drag from sidebar */
+let gh=null;
+$('tree').addEventListener('pointerdown',e=>{
+  if(e.target.closest('[data-add]')||e.pointerType==='touch')return;const v=e.target.closest('.vi');if(!v||e.button>0)return;
+  const gid=v.dataset.g,sx=e.clientX,sy=e.clientY;let started=false;
+  const mv=ev=>{
+    if(!started&&Math.hypot(ev.clientX-sx,ev.clientY-sy)<6)return;
+    if(!started){started=true;gh=document.createElement('div');gh.className='ghost';gh.innerHTML=v.querySelector('.thumb').innerHTML;document.body.appendChild(gh);}
+    gh.style.left=(ev.clientX+12)+'px';gh.style.top=(ev.clientY+12)+'px';
+  };
+  const up=ev=>{
+    window.removeEventListener('pointermove',mv);if(gh){gh.remove();gh=null;}
+    if(!started)return;
+    const st=$('stage'),svg=st.querySelector('svg'),r=svg.getBoundingClientRect();
+    if(ev.clientX>=r.left&&ev.clientX<=r.right&&ev.clientY>=r.top&&ev.clientY<=r.bottom){
+      const gm=geom(doc.tabs[tabIdx].canvas),p=svgPoint(svg,ev.clientX,ev.clientY);addToPage(gid,dotAt(gm,p.x,p.y));
+    }
+  };
+  window.addEventListener('pointermove',mv);window.addEventListener('pointerup',up,{once:true});window.addEventListener('pointercancel',up,{once:true});
+});
+
+/* ================= toolbar ================= */
+$('docname').addEventListener('input',e=>{doc.name=e.target.value;});
+function startNew(kind){useDoc(newDoc(kind,kind==='bundle'?'Week bundle':kind==='spread'?'Spread':'Page'));toast('New '+(kind==='bundle'?'week bundle':kind)+' started');}
+$('newPage').addEventListener('click',()=>startNew('single'));
+$('newSpread').addEventListener('click',()=>startNew('spread'));
+$('newBundle').addEventListener('click',()=>startNew('bundle'));
+$('starter').addEventListener('click',()=>{useDoc(starterDoc());toast('Loaded the starter set');});
+$('pitch').addEventListener('change',e=>{S.pitch=+e.target.value;doc.pitch=S.pitch;doc.tabs.forEach(t=>{const gm=geom(t.canvas);t.items.forEach(i=>bounds(i,gm));});paint();});
+$('zoom').addEventListener('input',e=>{S.fit=false;$('fit').setAttribute('aria-pressed','false');S.zoom=+e.target.value;paintCanvas();});
+$('fit').addEventListener('click',e=>{S.fit=!S.fit;e.currentTarget.setAttribute('aria-pressed',S.fit);paintCanvas();});
+window.addEventListener('resize',()=>{if(S.fit&&doc)paintCanvas();});
+$('theme').addEventListener('click',e=>{S.paper=!S.paper;e.currentTarget.setAttribute('aria-pressed',S.paper);e.currentTarget.textContent=S.paper?'Dark view':'Paper view';paintCanvas();});
+$('overlap').addEventListener('click',e=>{S.overlap=!S.overlap;e.currentTarget.setAttribute('aria-pressed',S.overlap);paintCanvas();});
+$('dotsPrint').addEventListener('click',e=>{S.printDots=!S.printDots;e.currentTarget.setAttribute('aria-pressed',S.printDots);});
+$('stepsBtn').addEventListener('click',e=>{S.steps=!S.steps;e.currentTarget.setAttribute('aria-pressed',S.steps);paint();});
+$('save').addEventListener('click',()=>{
+  const nm=(doc.name||'Untitled').trim()||'Untitled';doc.name=nm;lib[nm]=JSON.parse(JSON.stringify(doc));
+  toast(persist()?'Saved "'+nm+'" in this browser':'Could not save in this browser. Use Layouts, then Copy JSON.');paintPanels();
+});
+$('layouts').addEventListener('click',e=>{showLayouts=!showLayouts;S.view==='compare'&&(S.view='edit');$('compare').setAttribute('aria-pressed',S.view==='compare');e.currentTarget.setAttribute('aria-pressed',showLayouts);paintPanels();});
+$('compare').addEventListener('click',e=>{S.view=S.view==='compare'?'edit':'compare';e.currentTarget.setAttribute('aria-pressed',S.view==='compare');paintPanels();});
+
+/* ================= panels: layouts, compare, build steps ================= */
+function currentDocAsLib(){return JSON.parse(JSON.stringify(doc));}
+function pickList(sel){const names=Object.keys(lib);return '<option value="__cur"'+(sel==='__cur'?' selected':'')+'>Current: '+esc(doc.name)+'</option>'+names.map(n=>'<option value="'+esc(n)+'"'+(n===sel?' selected':'')+'>'+esc(n)+'</option>').join('');}
+function getDoc(k){return k==='__cur'?doc:lib[k];}
+function stepsText(it,gm){
+  const g=G[it.g],p=params(it),x=it.x,y=it.y,x2=it.x+it.w,y2=it.y+it.h;
+  const rect='Mark the corners at dots ('+x+', '+y+') and ('+x2+', '+y2+').';
+  switch(p.k){
+    case'lines':{const rowH=p.rowH||2,hh=p.label?2:0,n=Math.max(1,Math.floor((it.h-hh-(p.reward?2:0))/(p.sub?rowH+1:rowH)));
+      return rect+(p.box?' Rule the outline.':'')+(p.label?' Letter “'+esc(p.label)+'” at the top left.':'')+' Rule '+n+' lines '+rowH+' dot'+(rowH>1?'s':'')+' apart starting '+(y+hh+rowH)+' dots down'+(p.bullet&&p.bullet!=='none'?', adding a '+p.bullet+' marker at the start of each':'')+'.';}
+    case'grid':return rect+' Letter M T W T F S S across the top right, rule habit-name lines every 2 dots and draw one '+(p.cell==='circle'?'circle':'box')+' per day per row.';
+    case'table':return rect+' Draw '+((p.cols||[1]).length-1)+' vertical divider'+((p.cols||[1]).length>2?'s':'')+(p.heads&&p.heads.some(Boolean)?', letter the headings':'')+(p.open?'; leave the columns open.':' and rule rows every '+(p.rowH||2)+' dots.');
+    case'daygrid':return rect+' Split into two rows (3 then 4 boxes), shade each day header and letter the weekday names.';
+    case'dayrows':return rect+' Rule six rows (Mon to Fri, then Sat and Sun side by side) and letter the day names and dates.';
+    case'daycols':return rect+' Draw five day columns above and two below, rule light lines inside and leave the last space open.';
+    case'wheel':return 'Draw a circle about '+it.w+' dots across, a second circle half its radius, then 14 spokes.';
+    case'clock':return 'Draw a circle about '+it.w+' dots across and number it 1 to 12.';
+    case'calendar':return rect+' Letter M T W T F S S, rule a 7 by 6 grid and number the days.';
+    case'axis':return rect+' Rule a vertical line, tick every '+(p.hours?1:2)+' dot'+(p.hours?'':'s')+', label the hours.';
+    case'dots':return 'Leave this area as plain dots. Mark light corner ticks at ('+x+', '+y+') and ('+x2+', '+y2+') if you want an edge.';
+    default:return rect+' Draw it as shown on the page: '+esc(g.group)+'.';
+  }
+}
+function paintPanels(){
+  const box=$('panels');let h='';
+  const stage=$('mainView');
+  if(S.view==='compare'){
+    stage.hidden=true;
+    const names=Object.keys(lib);
+    if(!cmp.a)cmp.a='__cur';if(!cmp.b)cmp.b=names.find(n=>n!==doc.name)||'__cur';
+    const cell=(k,which)=>{const d=getDoc(k)||doc;
+      const parts=d.tabs.map(t=>{const s=stats(t);return '<div class="cell2"><span class="lbl">'+esc(t.label)+'</span><div class="stage">'+sheetSVG(t,{paper:S.paper,px:9,fixed:true})+'</div>'+
+        '<div class="row"><span class="stat">Draw <b>'+s.draw+'</b></span><span class="stat">Daily <b>'+s.daily+'</b></span><span class="stat '+(s.open<.15?'warn':'')+'">Open <b>'+pct(s.open)+'</b></span><span class="stat">Elements <b>'+s.n+'</b></span></div></div>';}).join('');
+      return '<div class="cell"><label class="lbl" for="cmp-'+which+'">Layout '+which.toUpperCase()+'</label><select id="cmp-'+which+'" class="field">'+pickList(k)+'</select>'+parts+'</div>';};
+    const da=getDoc(cmp.a)||doc,db=getDoc(cmp.b)||doc;
+    const keys=d=>new Map(d.tabs.flatMap(t=>t.items.map(i=>[i.g,G[i.g].el_label+' · '+G[i.g].group])));
+    const ka=keys(da),kb=keys(db);
+    const only=(a,b)=>[...a.keys()].filter(k=>!b.has(k)).map(k=>'<li>'+esc(a.get(k))+'</li>').join('')||'<li class="muted">nothing</li>';
+    h='<div class="panel"><div class="row"><h2 style="margin-right:auto">Compare layouts</h2><button class="btn" id="cmpClose" type="button">Back to editing</button></div>'+
+      '<p class="hint">Pick any two saved layouts, or your current one. Save the current layout first if you want to keep it.</p></div>'+
+      '<div class="cmp">'+cell(cmp.a,'a')+cell(cmp.b,'b')+'</div>'+
+      '<div class="cmp"><div class="cell diff"><b>Only in A</b><ul>'+only(ka,kb)+'</ul></div><div class="cell diff"><b>Only in B</b><ul>'+only(kb,ka)+'</ul></div></div>';
+  }else{
+    stage.hidden=false;
+    if(showLayouts){
+      const names=Object.keys(lib);
+      h+='<div class="panel"><div class="row"><h2 style="margin-right:auto">Layouts</h2><button class="btn" id="layClose" type="button">Close</button></div>'+
+        '<p class="hint" style="margin-bottom:8px">Saved layouts live in this browser only. To keep one safely, copy its JSON or download it.</p><div class="liblist">'+
+        (names.length?names.map(n=>'<div class="libitem"><span class="nm">'+esc(n)+'</span><span class="hint">'+(lib[n].kind==='bundle'?'week bundle':lib[n].tabs[0].canvas)+'</span><button class="btn" data-lo="'+esc(n)+'" type="button">Open</button><button class="btn" data-lc="'+esc(n)+'" type="button">Copy JSON</button><button class="btn" data-ld="'+esc(n)+'" type="button">Download</button><button class="btn" data-lx="'+esc(n)+'" type="button">Delete</button></div>').join(''):'<p class="hint">Nothing saved yet. Press Save to keep the current layout.</p>')+
+        '</div><div class="row" style="margin-top:12px"><button class="btn" id="expCur" type="button">Copy current as JSON</button><button class="btn" id="dlCur" type="button">Download current</button><button class="btn" id="impFile" type="button">Load from file</button></div>'+
+        '<label class="lbl" for="impText" style="display:block;margin-top:12px">Paste a layout JSON</label><textarea id="impText" class="json" placeholder="Paste layout JSON here"></textarea><div class="row" style="margin-top:8px"><button class="btn" id="impGo" type="button">Open pasted layout</button></div></div>';
+    }
+    if(S.steps){
+      const tab=doc.tabs[tabIdx],ord=stepOrder(tab),gm=geom(tab.canvas);
+      h+='<div class="panel"><h2>Build steps · '+esc(tab.label)+'</h2><p class="hint" style="margin-bottom:8px">Suggested drawing order, top to bottom and left to right. Use the arrows to change it. Numbers show on the page. Dots are counted from the top left dot of the page.</p><ol class="steps">'+
+        ord.map((id,n)=>{const it=tab.items.find(i=>i.id===id);if(!it)return'';const g=G[it.g];
+          return '<li><div class="row"><b>'+esc(g.el_label)+'</b><span class="hint">'+esc(g.group)+' · '+it.w+' × '+it.h+' dots at ('+it.x+', '+it.y+')</span><span style="margin-left:auto" class="row"><button class="btn" data-up="'+id+'" type="button" aria-label="Move step earlier">↑</button><button class="btn" data-dn="'+id+'" type="button" aria-label="Move step later">↓</button></span></div><p class="hint">'+stepsText(it,gm)+'</p></li>';}).join('')+'</ol></div>';
+    }
+  }
+  box.innerHTML=h;
+}
+$('panels').addEventListener('click',e=>{
+  const t=e.target;
+  if(t.id==='cmpClose'){S.view='edit';$('compare').setAttribute('aria-pressed','false');paintPanels();return;}
+  if(t.id==='layClose'){showLayouts=false;$('layouts').setAttribute('aria-pressed','false');paintPanels();return;}
+  const lo=t.closest('[data-lo]');if(lo){useDoc(JSON.parse(JSON.stringify(lib[lo.dataset.lo])));showLayouts=false;$('layouts').setAttribute('aria-pressed','false');toast('Opened "'+doc.name+'"');return;}
+  const lc=t.closest('[data-lc]');if(lc){copyText(JSON.stringify(lib[lc.dataset.lc],null,1));return;}
+  const ld=t.closest('[data-ld]');if(ld){download(ld.dataset.ld,lib[ld.dataset.ld]);return;}
+  const lx=t.closest('[data-lx]');if(lx){if(lx.dataset.arm==='1'){delete lib[lx.dataset.lx];persist();paintPanels();}else{lx.dataset.arm='1';lx.textContent='Tap again to delete';}return;}
+  if(t.id==='expCur'){copyText(JSON.stringify(doc,null,1));return;}
+  if(t.id==='dlCur'){download(doc.name,doc);return;}
+  if(t.id==='impFile'){$('fileIn').click();return;}
+  if(t.id==='impGo'){try{const d=JSON.parse($('impText').value);if(!d||!d.tabs)throw 0;useDoc(d);showLayouts=false;$('layouts').setAttribute('aria-pressed','false');toast('Opened "'+doc.name+'"');}catch(err){toast('That is not a layout file');}return;}
+  const up=t.closest('[data-up]'),dn=t.closest('[data-dn]');
+  if(up||dn){const tab=doc.tabs[tabIdx],ord=stepOrder(tab),id=(up||dn).dataset.up||(up||dn).dataset.dn,i=ord.indexOf(id),j=up?i-1:i+1;
+    if(j>=0&&j<ord.length){ord.splice(j,0,ord.splice(i,1)[0]);tab.order=ord;paint();}return;}
+});
+$('panels').addEventListener('change',e=>{if(e.target.id==='cmp-a'){cmp.a=e.target.value;paintPanels();}if(e.target.id==='cmp-b'){cmp.b=e.target.value;paintPanels();}});
+$('fileIn').addEventListener('change',e=>{const fl=e.target.files[0];if(!fl)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||!d.tabs)throw 0;useDoc(d);showLayouts=false;$('layouts').setAttribute('aria-pressed','false');toast('Opened "'+doc.name+'"');}catch(err){toast('That is not a layout file');}e.target.value='';};r.readAsText(fl);});
+function copyText(t){try{navigator.clipboard.writeText(t).then(()=>toast('Copied'),()=>fallbackCopy(t));}catch(e){fallbackCopy(t);}}
+function fallbackCopy(t){const a=$('impText');if(a){a.value=t;a.select();toast('Select and copy the text in the box');}else{showLayouts=true;paintPanels();const b=$('impText');if(b){b.value=t;b.select();}toast('Copy the JSON from the box');}}
+function download(name,d){saveFile(safeName(name)+'.json',JSON.stringify(d,null,1)).then(ok=>{if(ok)toast('Saved');});return;try{const b=new Blob([JSON.stringify(d,null,1)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(name||'layout').replace(/[^\w\- ]+/g,'')+'.json';document.body.appendChild(a);a.click();a.remove();toast('Download started. If nothing happens, use Copy JSON.');}catch(e){fallbackCopy(JSON.stringify(d,null,1));}}
+
+/* ================= print ================= */
+$('printBtn').addEventListener('click',()=>{
+  const root=$('printRoot');let h='';
+  const tabs=doc.kind==='bundle'?doc.tabs:[doc.tabs[tabIdx]];
+  tabs.forEach(t=>{const pages=t.canvas==='spread'?[0,1]:[null];pages.forEach(pg=>{
+    h+='<div class="psheet">'+sheetSVG(t,{paper:true,page:pg,dots:S.printDots,fixed:false})+'</div>';});});
+  root.innerHTML=h;
+  try{window.print();}catch(e){toast('Printing is not available here');}
+});
+
+
+/* ================= save files (PNG / SVG / JSON) ================= */
+const EXPORT_CSS='.pg{fill:#f1e8d4}.dots{stroke:#bdb5a5;stroke-width:.14;stroke-linecap:round;fill:none}.ln{stroke:#2b2724;stroke-width:.07;fill:none;stroke-linecap:round;stroke-linejoin:round}.fi{stroke:#8e867a;stroke-width:.06;fill:none;stroke-linecap:round}.dt{stroke:#8e867a;stroke-width:.1;stroke-dasharray:0 .22;stroke-linecap:round;fill:none}.dsh{stroke-dasharray:.28 .2}.fl{fill:#2b2724;stroke:none}.tint{fill:rgba(110,100,170,.14);stroke:none}text{fill:#2b2724;font-family:"Atkinson Hyperlegible",Arial,Helvetica,sans-serif;letter-spacing:.4px}text.lab,text.head{font-weight:700}text.sm{fill:#8e867a}text.ghint{fill:#8e867a;font-style:italic}.hit,.selbox{display:none}';
+function exportSVG(tab,pg){
+  let svg=sheetSVG(tab,{paper:true,page:pg,dots:S.printDots});
+  svg=svg.replace(/^<svg class="sheet th-paper"/,'<svg').replace('xmlns="http://www.w3.org/2000/svg"','xmlns="http://www.w3.org/2000/svg" width="5.5in" height="8.25in"');
+  svg=svg.replace(/(<svg[^>]*>)/,'$1<style>'+EXPORT_CSS+'</style>').replace(/var\(--spine\)/g,'#c9bfa9');
+  return svg;
+}
+async function saveFile(name,data){
+  let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null;}catch(e){dl=null;}
+  if(dl){try{await dl.save({filename:name,data});return true;}catch(e){if(e&&e.code==='declined')return false;toast('Could not save here: '+((e&&e.message)||e));return false;}}
+  try{const blob=data instanceof Blob?data:new Blob([data]),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();return true;}catch(e){return false;}
+}
+const safeName=n=>(n||'layout').replace(/[^\w\- ]+/g,'').trim()||'layout';
+function pagesOf(tab){return tab.canvas==='spread'?[0,1]:[null];}
+$('svgBtn').addEventListener('click',async()=>{
+  const tab=doc.tabs[tabIdx];
+  for(const pg of pagesOf(tab)){const nm=safeName(doc.name)+' - '+safeName(tab.label)+(pg==null?'':(pg?' right':' left'))+'.svg';if(!await saveFile(nm,exportSVG(tab,pg)))break;}
+});
+function svgToPng(svg){return new Promise((res,rej)=>{
+  const img=new Image(),W=1650,H=2475;
+  img.onload=()=>{const c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');x.fillStyle='#f1e8d4';x.fillRect(0,0,W,H);x.drawImage(img,0,0,W,H);c.toBlob(b=>b?res(b):rej(new Error('png failed')),'image/png');};
+  img.onerror=()=>rej(new Error('image failed'));
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);});}
+$('pngBtn').addEventListener('click',async()=>{
+  const tab=doc.tabs[tabIdx];
+  try{for(const pg of pagesOf(tab)){const png=await svgToPng(exportSVG(tab,pg));const nm=safeName(doc.name)+' - '+safeName(tab.label)+(pg==null?'':(pg?' right':' left'))+' (5.5x8.25in 300dpi).png';if(!await saveFile(nm,png))break;}}
+  catch(e){toast('Could not make the PNG here');}
+});
+
+/* ================= boot ================= */
+loadLib();
+useDoc(starterDoc());
+paintTree();
+})();
+</script>
+
+</body>
+</html>
