@@ -1,0 +1,52 @@
+# Batch 1: images 2-6
+REGIONS = {2:(0,0,1500,1047,'spread'), 3:(0,0,1500,1047,'spread'), 4:(75,290,900,1445,'portrait'),
+           5:(30,0,1495,1030,'spread'), 6:(62,68,755,1050,'portrait')}
+ENTRIES = {
+2: [
+ ('week_header','date range + week number + year, rule under',(855,65,1445,125),'Spaced caps date range, "WEEK 49 / 2023" at right, thin rule below.',{}),
+ ('mood_impact','3-column positive / neutral / negative box',(63,531,657,984),'Boxed table under a title; each column ends in a face scale (happy to sad). Fill by listing what influenced mood.',{'adhd+':'Sorting into 3 columns is quick pattern-finding but needs weekly time.'}),
+ ('review_prompts','single open question over blank space',(835,125,1445,780),'One monthly-reflection question at the top of a mostly blank page.',{'adhd+':'Open blank space is easy to leave empty without it looking broken.'}),
+ ('gratitude','dotted box: grateful-for half',(843,885,1437,984),'Lower half of a dashed box; written under "this week I\'m grateful for".',{}),
+ ('highlight_of_day','dotted box: happy-moment half',(843,788,1437,888),'Upper half of the dashed box, labelled "this week\'s happy moment".',{}),
+],
+3: [
+ ('week_header','month/month + week number + year, no rule',(855,60,1445,100),'Bold spaced caps month range with week number and year at right.',{}),
+ ('weekly_goals','3 numbered goals, dotted lines in a box',(62,55,249,281),'Boxed title; three numbered goals each with two dotted lines.',{}),
+ ('todo_list','10 bullet lines, dotted, in a tall box',(62,296,249,636),'Narrow tall box with ten bulleted dotted lines.',{}),
+ ('quote_mantra','quote between two rules',(273,55,657,180),'Printed quote with attribution, framed by thin rules.',{}),
+ ('mood_tracker','circular mood wheel, 7 days x AM/PM',(270,240,660,625),'Ring split into 14 AM/PM segments with weekday labels; colour or mark each segment.',{'draw':3,'daily':2,'skip':'medium','adhd+':'Twice-daily marks are a heavy ask; circle is hard to draw by hand.','sens+':'Curved text and many segments are visually busy.'}),
+ ('mood_tracker','6 colour boxes with face scale',(283,690,645,790),'Six empty boxes over six faces; colour box to match mood.',{'draw':1,'adhd+':'Quick colour-in; rules for what each colour means can be forgotten.'}),
+ ('monthly_calendar','stacked mini month grids (Mon start)',(62,652,249,980),'Two stacked month tables with black header rows for previous and current month.',{}),
+ ('notes','boxed notes area',(281,830,657,983),'Empty box labelled NOTES.',{}),
+ ('week_at_a_glance','7 day rows (Mon-Fri full width, Sat/Sun split)',(843,117,1437,984),'One large box ruled into day rows, each with a big date number, day name and a small divider; weekend shares the last row.',{'adhd+':'Open rows have no prompts, so blank days read as neutral.'}),
+],
+4: [
+ ('week_header','title left + date write-in right',(140,335,830,372),'Spaced "WEEKLY OVERVIEW" title with a short underlined date field.',{}),
+ ('top_priorities','6 bullet lines with tick-off',(140,415,830,680),'Header "top things to get done" then six ruled rows with a bullet to tick.',{'inp':'checkbox'}),
+ ('event_organizer','two-column event / date table',(140,710,830,1045),'Two-column ruled table; wide left column for event, narrow right for date.',{}),
+ ('todo_list','weekly to-do with circle bullets (7 rows)',(140,1075,475,1375),'Ruled list under "to-do this week", each row with a hollow circle bullet.',{}),
+ ('habit_tracker','named habit rows x 7 day checkboxes',(495,1075,835,1370),'Habit names on lines at left, M-S column heads, tick boxes per day.',{}),
+],
+5: [
+ ('month_year_strip','colour-banded month names over 1-31 boxes',(110,88,1435,153),'Pastel month bar over a 1-31 number row; circle today.',{'draw':3,'sens+':'Colour-coded months add visual noise.'}),
+ ('focus_box','single tinted focus box',(110,183,525,330),'Large tinted box titled "today\'s focus"; open writing space.',{}),
+ ('top_priorities','3 numbered dots + reward line',(110,355,525,548),'Header with caption, three numbered dot lines, "Reward:" line at foot.',{'adhd+':'A reward line ties effort to a payoff.'}),
+ ('secondary_tasks','do later: 4 dotted lines + reward',(110,575,525,770),'Pink header, dotted lines, reward line.',{}),
+ ('secondary_tasks','everything else: 4 dotted lines + reward',(110,798,525,990),'Green header, dotted lines, reward line.',{}),
+ ('time_blocks','time | task | tick columns (~20 rows)',(563,183,982,770),'Three-column table with a short how-to line at the top; dotted rows.',{'sens+':'Grid is regular but dense.'}),
+ ('brain_dump','bordered free box with header bar',(563,798,982,990),'Pink header bar ("free space to free your mind") over an open box.',{}),
+ ('productivity_rating','labelled open row',(1020,183,1435,252),'One labelled row to write or shade a score.',{}),
+ ('mood_tracker','single face to colour in',(1020,252,1435,318),'Row labelled Mood with one smiley circle.',{}),
+ ('energy_tracker','5-segment bar to colour in',(1020,318,1435,385),'Pill-shaped bar split into five segments.',{}),
+ ('self_care_grid','4x3 icon grid with corner checkboxes',(1020,413,1435,645),'Twelve line icons (reading, water, shower, meds, sun, brush, weights, cleaning, shoes, food, mind, journal), each with a tiny checkbox.',{}),
+ ('habit_tracker','4 ruled rows + tick column',(1020,668,1435,818),'Purple header with check mark; four ruled rows.',{'adhd+':'Daily habits without day columns avoid streak guilt.'}),
+ ('meals','4 labelled lines (breakfast to snacks)',(1020,840,1435,990),'Header "Meals" and four labelled ruled lines.',{}),
+],
+6: [
+ ('wins','3 ruled lines under a kind prompt',(92,145,740,295),'"Small wins of the week. They matter too!" with three ruled lines.',{}),
+ ('priority_review','3 lines + % column',(92,330,740,480),'Three ruled lines with a narrow % column at right.',{}),
+ ('review_prompts','prompt + 3 ruled lines (time saved)',(92,520,740,665),'Question about saving time with three ruled lines.',{}),
+ ('review_prompts','prompt + open ruled box (centred)',(92,705,740,885),'Question with a boxed open area.',{}),
+ ('improve_next','continue / change: 2 ruled lines',(92,918,740,1020),'Question with two ruled lines.',{}),
+],
+}
